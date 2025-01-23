@@ -8,7 +8,7 @@
 
         <!-- Form -->
         <div class="sm:mx-auto sm:w-full sm:max-w-lg bg-zinc-800 rounded-xl shadow-md p-6">
-            <form class="space-y-6" action="/employees/{{ $employee->id }}" method="POST">
+            <form class="space-y-6" action="{{  route('employees.update', $employee->id) }}" method="POST">
                 @csrf
                 @method('PUT')
 
@@ -33,7 +33,7 @@
                 <!-- Password -->
                 <div>
                     <label for="password" class="block text-sm font-medium text-gray-300">Password</label>
-                    <input name="password" id="password" required value="{{ $employee->password }}"
+                    <input name="password" id="password" required   
                         class="mt-2 block w-full rounded-lg bg-zinc-900 border border-gray-700 px-4 py-3
                         text-gray-300"
                         placeholder="Enter Password" />

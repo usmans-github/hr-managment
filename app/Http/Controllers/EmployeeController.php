@@ -84,17 +84,26 @@ class EmployeeController extends Controller
     public function update(Request $request, $id)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email',
-            'password' => 'required',
-            'phone' => 'required|string|max:15',
-            'department_id' => 'required|exists:departments,id',
-            'position_id' => 'required|exists:positions,id',
-            'salary' => 'required',
+            'name' => ['required'],
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+            'phone' => ['required'],
+            'position_id' => ['required'],
+            'department_id' => ['required'],
+            'salary' => ['required'],
         ]);
 
         $employee = Employee::findOrFail($id);
-        $employee->update($validated);
+        
+        $employee->update([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'password' => bcrypt($validated['password']),
+            'phone' => $request->phone,
+            'position_id' => $validated['position_id'],
+            'department_id' => $validated['department_id'],
+            'salary' => $validated['salary']
+        ]);
 
         return redirect('/dashboard')->with('success', 'Employee updated successfully.');
     }

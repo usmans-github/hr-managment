@@ -11,7 +11,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('employees.index') }}" class="flex items-center gap-3 px-4 py-3 bg-zinc-900 rounded-lg shadow-md">
+                        <a href="/employees" class="flex items-center gap-3 px-4 py-3 bg-zinc-900 rounded-lg shadow-md">
                             <i class="fas fa-users"></i>
                             <span class="font-semibold">Employees</span>
                         </a>
@@ -56,7 +56,7 @@
             <div class="bg-zinc-900 rounded-xl p-6">
                 <div class="flex justify-between items-center mb-6">
                     <h2 class="text-2xl font-bold">All Employees</h2>
-                    <a href="{{ route('employees.create') }}" class="border border-zinc-700 hover:bg-zinc-700 rounded-lg px-4 py-2 text-sm flex items-center gap-2 transition">
+                    <a href="{{ route('employees.store') }}" class="border border-zinc-700 hover:bg-zinc-700 rounded-lg px-4 py-2 text-sm flex items-center gap-2 transition">
                         <i class="fas fa-plus"></i>
                         <span>Add Employee</span>
                     </a>
@@ -85,7 +85,7 @@
                                     <span class="bg-black text-green-500 px-3 py-1 rounded-md text-sm">Present</span>
                                 </td>
                                 <td class="py-4 px-4 flex gap-2">
-                                    <a href="{{ route('employees', $employee->id) }}">
+                                    <a href="{{ route('employees.edit', $employee->id) }}">
                                         <i class="fas fa-edit cursor-pointer rounded-md text-gray-300 hover:text-white
                                     hover:bg-zinc-700 p-2"></i>
                                     </a>

@@ -12,7 +12,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/employees"
+                        <a href="{{ route('employees.index') }}"
                             class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-lg transition">
                             <i class="fas fa-users"></i>
                             <span class="font-semibold">Employees</span>
