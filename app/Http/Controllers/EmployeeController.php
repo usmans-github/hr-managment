@@ -54,7 +54,9 @@ class EmployeeController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'phone' => $request->phone,
-            'position_id' => $request->position_id
+            'position_id' => $request->position_id,
+            'department_id' => $request->department_id,
+            'salary' => $request->salary
         ]);
         // return dd($validated);
         return redirect('/employees')->with('success', 'Employee created successfully.');
@@ -122,12 +124,12 @@ class EmployeeController extends Controller
 
     public function dashboard(Request $request)
     {
-        // return dd($request->all());
         $validated = $request->validate([
             'email' => 'required|email',
             'password' => 'required|min:6',
         ]);
-
+        
+        // return dd($validated);
         if (Auth::attempt($validated)) {
             return view('employee.index');
         }   
