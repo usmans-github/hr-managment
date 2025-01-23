@@ -13,8 +13,7 @@ Route::get('/', [AuthController::class, 'create']);
 //Employee Routes
 
 //Admin Routes
-Route::get('/admin-login', [AdminController::class, 'create']);
-Route::post('/admin-login', [AdminController::class, 'login']);
+Route::resource('admin', AdminController::class);
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'index']);

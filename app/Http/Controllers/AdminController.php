@@ -31,7 +31,7 @@ class AdminController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function login(Request $request)
+    public function store(Request $request)
     {
         $validated = $request->validate([
             'email' => ['required', 'email'],
