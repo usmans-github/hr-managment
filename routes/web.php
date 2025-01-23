@@ -1,17 +1,16 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DepartmentsController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\PositionController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 //General Routes
-Route::get('/', [UserController::class, 'index']);
+Route::get('/', [AuthController::class, 'create']);
 
 //Employee Routes
-Route::post('/user-dashboard', [EmployeeController::class, 'dashboard'])->middleware('auth  ');
 
 //Admin Routes
 Route::get('/admin-login', [AdminController::class, 'create']);
