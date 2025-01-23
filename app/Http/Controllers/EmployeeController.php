@@ -6,8 +6,6 @@ use App\Models\Employee;
 use App\Models\Department;
 use App\Models\Position;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
 class EmployeeController extends Controller
 {
@@ -50,16 +48,16 @@ class EmployeeController extends Controller
 
 
         Employee::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'password' => bcrypt($validated['password']),
             'phone' => $request->phone,
-            'position_id' => $request->position_id,
-            'department_id' => $request->department_id,
-            'salary' => $request->salary
+            'position_id' => $validated['position_id'],
+            'department_id' => $validated['department_id'],
+            'salary' => $validated['salary']
         ]);
         // return dd($validated);
-        return redirect('/employees')->with('success', 'Employee created successfully.');
+        return redirect()->route('employees.index')->with('success', 'Employee created successfully.');
     }
 
     /**
@@ -87,7 +85,7 @@ class EmployeeController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:employees,email',
+            'email' => 'required|email',
             'password' => 'required',
             'phone' => 'required|string|max:15',
             'department_id' => 'required|exists:departments,id',
@@ -119,22 +117,8 @@ class EmployeeController extends Controller
         $employee->delete();
 
         // Redirect back with success message
-        return redirect('/employees')->with('success', 'Employee deleted successfully.');
+        return redirect()->route('employees.index')->with('success', 'Employee deleted successfully.');
     }
 
-    public function dashboard(Request $request)
-    {
-        $validated = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required|min:6',
-        ]);
-        
-        // return dd($validated);
-        if (Auth::attempt($validated)) {
-            return view('employee.index');
-        }   
-
-
-        return back()->withErrors(['email' => 'The provided credentials do not match our records.']);
-    }
+   
 }

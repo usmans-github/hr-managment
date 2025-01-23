@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('employees', function (Blueprint $table) {
             $table->id();   
             $table->string('name')->unique();
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('password');
             $table->string('phone');
             $table->foreignIdFor(Position::class);
