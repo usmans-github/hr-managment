@@ -56,7 +56,7 @@
             <div class="bg-zinc-900 rounded-xl p-6">
                 <div class="flex justify-between items-center mb-6">
                     <h2 class="text-2xl font-bold">All Employees</h2>
-                    <a href="{{ route('employee.store') }}" class="border border-zinc-700 hover:bg-zinc-700 rounded-lg px-4 py-2 text-sm flex items-center gap-2 transition">
+                    <a href="{{ route('employee.create') }}" class="border border-zinc-700 hover:bg-zinc-700 rounded-lg px-4 py-2 text-sm flex items-center gap-2 transition">
                         <i class="fas fa-plus"></i>
                         <span>Add Employee</span>
                     </a>

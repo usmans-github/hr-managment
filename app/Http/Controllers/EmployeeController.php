@@ -57,7 +57,7 @@ class EmployeeController extends Controller
             'salary' => $validated['salary']
         ]);
         // return dd($validated);
-        return redirect()->route('employees.index')->with('success', 'Employee created successfully.');
+        return redirect()->route('/employee')->with('success', 'Employee created successfully.');
     }
 
     /**
@@ -105,7 +105,7 @@ class EmployeeController extends Controller
             'salary' => $validated['salary']
         ]);
 
-        return redirect('/dashboard')->with('success', 'Employee updated successfully.');
+        return redirect('/admin')->with('success', 'Employee updated successfully.');
     }
 
 
@@ -126,7 +126,7 @@ class EmployeeController extends Controller
         $employee->delete();
 
         // Redirect back with success message
-        return redirect()->route('employees.index')->with('success', 'Employee deleted successfully.');
+        return redirect()->route('employee')->with('success', 'Employee deleted successfully.');
     }
 
    

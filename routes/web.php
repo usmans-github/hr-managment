@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [AuthController::class, 'create']);
 
 
-Route::get('admin', [AdminController::class, 'create']);
+Route::get('admin/create', [AdminController::class, 'create']);
 
 
 
