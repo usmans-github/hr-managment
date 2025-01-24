@@ -59,11 +59,11 @@
                     <div class="flex justify-center items-center gap-4">
                         <button class="border border-zinc-700 hover:bg-zinc-700 rounded-lg px-4 text-sm py-2 flex items-center gap-2 transition">
                             <i class="fas fa-plus"></i>
-                            <a href="/position"> Add Position</a>
+                            <a href="/position/create"> Add Position</a>
                         </button>
                         <button class="border border-zinc-700 hover:bg-zinc-700 rounded-lg px-4 text-sm py-2 flex items-center gap-2 transition">
                             <i class="fas fa-plus"></i>
-                            <a href="/department"> Add Department</a>
+                            <a href="/department/create"> Add Department</a>
                         </button>
                     </div>
                 </div>
