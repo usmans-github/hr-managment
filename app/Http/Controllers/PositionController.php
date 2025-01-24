@@ -42,7 +42,7 @@ class PositionController extends Controller
         $position = Position::create($validated);
         $position->save();
 
-        return redirect('/departments');
+        return redirect('/department');
     }
 
     /**

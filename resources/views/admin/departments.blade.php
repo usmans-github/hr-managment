@@ -6,13 +6,13 @@
             <nav class="mt-8">
                 <ul class="space-y-4 px-4">
                     <li>
-                        <a href="/dashboard" class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-lg shadow-md">
+                        <a href="/admin" class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-lg shadow-md">
                             <i class="fas fa-tachometer-alt"></i>
                             <span class="font-semibold">Dashboard</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('employees.index') }}"
+                        <a href="/employee"
                             class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-lg transition">
                             <i class="fas fa-users"></i>
                             <span class="font-semibold">Employees</span>
@@ -40,7 +40,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/departments"
+                        <a href="/department"
                             class="flex items-center gap-3 px-4 py-3 bg-zinc-900 rounded-lg transition">
                             <i class="fas fa-building"></i>
                             <span class="font-semibold">Departments</span>
@@ -59,11 +59,11 @@
                     <div class="flex justify-center items-center gap-4">
                         <button class="border border-zinc-700 hover:bg-zinc-700 rounded-lg px-4 text-sm py-2 flex items-center gap-2 transition">
                             <i class="fas fa-plus"></i>
-                            <a href="/create-position"> Add Position</a>
+                            <a href="/position"> Add Position</a>
                         </button>
                         <button class="border border-zinc-700 hover:bg-zinc-700 rounded-lg px-4 text-sm py-2 flex items-center gap-2 transition">
                             <i class="fas fa-plus"></i>
-                            <a href="/create-department"> Add Department</a>
+                            <a href="/department"> Add Department</a>
                         </button>
                     </div>
                 </div>
@@ -87,10 +87,10 @@
                                 </td>
                                 <td class="py-4 px-4 text-gray-300">{{ $department->employees->count() ?? 'N/A' }} employees</td>
                                 <td class="text-left py-4 px-2 flex gap-2">
-                                    <a href="{{ route('edit-department', $department->id) }}">
+                                    <a href="{{ route('department.edit', $department->id) }}">
                                         <i class="fas fa-edit cursor-pointer rounded-md text-gray-300 hover:text-white hover:bg-zinc-700 p-2"></i>
                                     </a>
-                                    <form method="POST" action="{{ route('delete-department', $department->id) }}"
+                                    <form method="POST" action="{{ route('department.destroy', $department->id) }}"
                                           onsubmit="return confirm('Are you sure you want to delete this department?');">
                                         @csrf
                                         @method('DELETE')

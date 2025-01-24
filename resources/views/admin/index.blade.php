@@ -6,13 +6,13 @@
             <nav class="mt-8">
                 <ul class="space-y-4 px-4">
                     <li>
-                        <a href="/dashboard" class="flex items-center gap-3 px-4 py-3 bg-zinc-900 rounded-lg shadow-md">
+                        <a href="/admin" class="flex items-center gap-3 px-4 py-3 bg-zinc-900 rounded-lg shadow-md">
                             <i class="fas fa-tachometer-alt"></i>
                             <span class="font-semibold">Dashboard</span>
                         </a>
                     </li>
                     <li>
-                <a href="/employees"
+                <a href="/employee"
                             class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-lg transition">
                             <i class="fas fa-users"></i>
                             <span class="font-semibold">Employees</span>
@@ -40,7 +40,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/departments"
+                        <a href="/department"
                             class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-lg transition">
                             <i class="fas fa-building"></i>
                             <span class="font-semibold">Departments</span>
@@ -96,7 +96,7 @@
                     <button
                         class="border border-zinc-700 hover:bg-zinc-700 rounded-lg px-4 text-sm
                         py-2 flex items-center gap-2 transition">
-                        <a href="{{ route('employees.create') }}">
+                        <a href="{{ route('employee.create') }}">
                             <i class="fas fa-plus"></i>
                             <span>Add Employee</span>
                         </a>

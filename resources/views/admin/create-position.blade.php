@@ -54,7 +54,7 @@
             <!-- Back to Departments Link -->
             <p class="mt-6 text-center text-sm text-gray-400">
                 Back to Departments? 
-                <a href="/departments" class="text-white hover:underline">
+                <a href="/department" class="text-white hover:underline">
                     Click Here
                 </a>
             </p>

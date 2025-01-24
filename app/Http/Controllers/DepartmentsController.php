@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UpdatedepartmentsRequest;
 use App\Models\Department;
 use Illuminate\Http\Request;
 
@@ -37,7 +36,7 @@ class DepartmentsController extends Controller
             
         ]);
         Department::create($validated);
-        return redirect('/departments');
+        return redirect('/department');
     }
 
     /**
@@ -70,7 +69,7 @@ class DepartmentsController extends Controller
         $department = Department::findOrFail($id);
         $department->update($validated);
 
-        return redirect('/departments')->with('success', 'Department updated successfully.');
+        return redirect('/department')->with('success', 'Department updated successfully.');
     }
 
 
@@ -91,6 +90,6 @@ class DepartmentsController extends Controller
          $department->delete();
  
          // Redirect back with success message
-         return redirect('/departments')->with('success', 'Department deleted successfully.');
+         return redirect('/department')->with('success', 'Department deleted successfully.');
      }
 }

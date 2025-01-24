@@ -8,7 +8,7 @@
 
         <!-- Form -->
         <div class="sm:mx-auto sm:w-full sm:max-w-md bg-zinc-800 rounded-xl shadow-md p-6">
-            <form class="space-y-6" action="/create-department" method="POST">
+            <form class="space-y-6" action="/department" method="POST">
                 @csrf
 
                 <!-- Department Name -->
@@ -38,7 +38,7 @@
             <!-- Back to Departments Link -->
             <p class="mt-6 text-center text-sm text-gray-400">
                 Back to Departments? 
-                <a href="/departments" class="text-white hover:underline">
+                <a href="/department" class="text-white hover:underline">
                     Click Here
                 </a>
             </p>

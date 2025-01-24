@@ -5,13 +5,13 @@
             <nav class="mt-8">
                 <ul class="space-y-4 px-4">
                     <li>
-                        <a href="/dashboard" class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-lg transition">
+                        <a href="/admin" class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-lg transition">
                             <i class="fas fa-tachometer-alt"></i>
                             <span class="font-semibold">Dashboard</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/employees" class="flex items-center gap-3 px-4 py-3 bg-zinc-900 rounded-lg shadow-md">
+                        <a href="/employee" class="flex items-center gap-3 px-4 py-3 bg-zinc-900 rounded-lg shadow-md">
                             <i class="fas fa-users"></i>
                             <span class="font-semibold">Employees</span>
                         </a>
@@ -35,7 +35,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/departments" class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-lg transition">
+                        <a href="/department" class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-lg transition">
                             <i class="fas fa-building"></i>
                             <span class="font-semibold">Departments</span>
                         </a>
@@ -56,7 +56,7 @@
             <div class="bg-zinc-900 rounded-xl p-6">
                 <div class="flex justify-between items-center mb-6">
                     <h2 class="text-2xl font-bold">All Employees</h2>
-                    <a href="{{ route('employees.store') }}" class="border border-zinc-700 hover:bg-zinc-700 rounded-lg px-4 py-2 text-sm flex items-center gap-2 transition">
+                    <a href="{{ route('employee.store') }}" class="border border-zinc-700 hover:bg-zinc-700 rounded-lg px-4 py-2 text-sm flex items-center gap-2 transition">
                         <i class="fas fa-plus"></i>
                         <span>Add Employee</span>
                     </a>
@@ -85,11 +85,11 @@
                                     <span class="bg-black text-green-500 px-3 py-1 rounded-md text-sm">Present</span>
                                 </td>
                                 <td class="py-4 px-4 flex gap-2">
-                                    <a href="{{ route('employees.edit', $employee->id) }}">
+                                    <a href="{{ route('employee.edit', $employee->id) }}">
                                         <i class="fas fa-edit cursor-pointer rounded-md text-gray-300 hover:text-white
                                     hover:bg-zinc-700 p-2"></i>
                                     </a>
-                                    <form method="POST" action="{{ route('employees.destroy', $employee->id) }}" onsubmit="return confirm('Are you sure you want to delete this employee?');">
+                                    <form method="POST" action="{{ route('employee.destroy', $employee->id) }}" onsubmit="return confirm('Are you sure you want to delete this employee?');">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit">
