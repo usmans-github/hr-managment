@@ -13,20 +13,28 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.index', [
-            'employees' => Employee::with(['position', 'department'])->get(),
-            'totalemployees' => Employee::all()->count()
-        ]);
-      
-    }   
+        $user = Auth::user();
+        if ($user->role === 'admin') {
+            return view('admin.index', [
+                'employees' => Employee::with(['position', 'department'])->get(),
+                'totalemployees' => Employee::all()->count()
+            ]);
+        }
+    }
+    public function employees()
+    {
+        $user = Auth::user();
+        if ($user->role === 'admin') {
+            return view('admin.employees', [
+                'employees' => Employee::with(['department', 'position'])->get()
+            ]);
+        }
+    }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create ()
-    {
-        return view('auth.admin-login');
-    }
+    public function create() {}
 
     /**
      * Store a newly created resource in storage.
@@ -44,10 +52,7 @@ class AdminController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
-    }
+    public function show(string $id) {}
 
     /**
      * Show the form for editing the specified resource.

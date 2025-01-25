@@ -14,9 +14,8 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        return view('admin.employees', [
-            'employees' => Employee::with(['department', 'position'])->get()
-        ]);
+
+        return view('employee.index');
     }
 
     /**
@@ -56,14 +55,15 @@ class EmployeeController extends Controller
             'department_id' => $credentials['department_id'],
             'salary' => $credentials['salary']
         ]);
-        // return dd($validated);
         return redirect()->route('/employee')->with('success', 'Employee created successfully.');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Request $request) {}
+    public function show() {
+        
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -94,7 +94,7 @@ class EmployeeController extends Controller
         ]);
 
         $employee = Employee::findOrFail($id);
-        
+
         $employee->update([
             'name' => $credentials['name'],
             'email' => $credentials['email'],
@@ -128,6 +128,4 @@ class EmployeeController extends Controller
         // Redirect back with success message
         return redirect()->route('employee')->with('success', 'Employee deleted successfully.');
     }
-
-   
 }

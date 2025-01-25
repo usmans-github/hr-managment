@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Department;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DepartmentsController extends Controller
 {
@@ -12,9 +13,12 @@ class DepartmentsController extends Controller
      */
     public function index()
     {
-        return view('admin.departments', [
-            'departments' => Department::with(['positions', 'employees'])->get()
-        ]);
+        $user = Auth::user();
+        if ($user->role === 'admin') {
+            return view('admin.departments', [
+                'departments' => Department::with(['positions', 'employees'])->get()
+            ]);
+        }
     }
 
     /**
@@ -22,7 +26,10 @@ class DepartmentsController extends Controller
      */
     public function create()
     {
-        return view('admin.create-department');
+        $user = Auth::user();
+        if ($user->role === 'admin') {
+            return view('admin.create-department');
+        }
     }
 
     /**
@@ -33,7 +40,7 @@ class DepartmentsController extends Controller
 
         $credentials = $request->validate([
             'department_name' => ['required'],
-            
+
         ]);
         Department::create($credentials);
         return redirect('/department');
@@ -78,18 +85,18 @@ class DepartmentsController extends Controller
      */
     public function destroy($id)
     {
-         // Find the department by ID
-         $department = Department::find($id);
+        // Find the department by ID
+        $department = Department::find($id);
 
-         // Check if employee exists
-         if (!$department) {
-             return redirect()->back()->with('error', 'Department not found.');
-         }
- 
-         // Delete the employee
-         $department->delete();
- 
-         // Redirect back with success message
-         return redirect('/department')->with('success', 'Department deleted successfully.');
-     }
+        // Check if employee exists
+        if (!$department) {
+            return redirect()->back()->with('error', 'Department not found.');
+        }
+
+        // Delete the employee
+        $department->delete();
+
+        // Redirect back with success message
+        return redirect('/department')->with('success', 'Department deleted successfully.');
+    }
 }

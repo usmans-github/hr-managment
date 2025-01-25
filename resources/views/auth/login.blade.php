@@ -56,13 +56,7 @@
                     </ul>
                 </div>
             @endif
-            <!-- Admin Login Link -->
-            <p class="mt-6 text-center text-sm text-gray-400">
-                Admin Login? 
-                <a href="/admin" class="text-gray-300 hover:underline">
-                    Click Here
-                </a>
-            </p>
+            
         </div>
     </div>
 </x-layout>

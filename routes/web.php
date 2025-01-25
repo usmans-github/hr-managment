@@ -17,6 +17,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('admin', AdminController::class);
     Route::resource('department', DepartmentsController::class);
     Route::resource('position', PositionController::class);
+    Route::get('employees', [AdminController::class, 'employees'])->name('admin.employees');
 });
 
 // Employee ROutes
