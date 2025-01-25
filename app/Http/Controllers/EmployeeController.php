@@ -36,7 +36,7 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
+        $credentials = $request->validate([
             'name' => ['required'],
             'email' => ['required', 'email'],
             'password' => ['required'],
@@ -48,13 +48,13 @@ class EmployeeController extends Controller
 
 
         Employee::create([
-            'name' => $validated['name'],
-            'email' => $validated['email'],
-            'password' => bcrypt($validated['password']),
+            'name' => $credentials['name'],
+            'email' => $credentials['email'],
+            'password' => bcrypt($credentials['password']),
             'phone' => $request->phone,
-            'position_id' => $validated['position_id'],
-            'department_id' => $validated['department_id'],
-            'salary' => $validated['salary']
+            'position_id' => $credentials['position_id'],
+            'department_id' => $credentials['department_id'],
+            'salary' => $credentials['salary']
         ]);
         // return dd($validated);
         return redirect()->route('/employee')->with('success', 'Employee created successfully.');
@@ -83,7 +83,7 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validated = $request->validate([
+        $credentials = $request->validate([
             'name' => ['required'],
             'email' => ['required', 'email'],
             'password' => ['required'],
@@ -96,13 +96,13 @@ class EmployeeController extends Controller
         $employee = Employee::findOrFail($id);
         
         $employee->update([
-            'name' => $validated['name'],
-            'email' => $validated['email'],
-            'password' => bcrypt($validated['password']),
+            'name' => $credentials['name'],
+            'email' => $credentials['email'],
+            'password' => bcrypt($credentials['password']),
             'phone' => $request->phone,
-            'position_id' => $validated['position_id'],
-            'department_id' => $validated['department_id'],
-            'salary' => $validated['salary']
+            'position_id' => $credentials['position_id'],
+            'department_id' => $credentials['department_id'],
+            'salary' => $credentials['salary']
         ]);
 
         return redirect('/admin')->with('success', 'Employee updated successfully.');

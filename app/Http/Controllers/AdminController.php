@@ -33,11 +33,11 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
+        $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required']
         ]);
-        Auth::attempt($validated);
+        Auth::attempt($credentials);
         return redirect('/dashboard');
     }
 

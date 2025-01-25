@@ -34,12 +34,12 @@ class PositionController extends Controller
     public function store(Request $request)
     {
         
-        $validated = $request->validate([
+        $credentials = $request->validate([
             'position_name' => ['required'],
             'department_id' => ['required']
         ]);
 
-        $position = Position::create($validated);
+        $position = Position::create($credentials);
         $position->save();
 
         return redirect('/department');

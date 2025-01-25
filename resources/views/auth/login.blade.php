@@ -8,7 +8,7 @@
 
         <!-- Form -->
         <div class="sm:mx-auto sm:w-full sm:max-w-md bg-zinc-800 rounded-xl shadow-md p-6">
-            <form class="space-y-6" action="/" method="POST">
+            <form class="space-y-6" action="/login" method="POST">
                 @csrf
                 <!-- Email Field -->
                 <div>

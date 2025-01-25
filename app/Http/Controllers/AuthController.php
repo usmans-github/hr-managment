@@ -10,10 +10,7 @@ class AuthController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        
-    }
+    public function index() {}
 
     /**
      * Show the form for creating a new resource.
@@ -26,14 +23,20 @@ class AuthController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function authenticate(Request $request)
     {
-        $validated = $request->validate([
-            'email' => 'required|exists:employees,email',
-            'password' => 'required'
-        ]);
-        $user = Auth::attempt($validated);
-        return dd($user);
+        $credentials = $request->only('email', 'password');
+
+        if ($user = Auth::attempt($credentials)) {
+            $user = Auth::user();
+            if ($user->role === 'admin') {
+                return redirect()->route('admin.index');
+            } elseif ($user->role === 'employee') {
+                return redirect()->route('employee.index');
+            }
+        }
+
+        return back()->withErrors(['error' => 'Invalid credentials']);
     }
 
     /**

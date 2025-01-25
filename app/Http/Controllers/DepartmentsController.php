@@ -31,11 +31,11 @@ class DepartmentsController extends Controller
     public function store(Request $request)
     {
 
-        $validated = $request->validate([
+        $credentials = $request->validate([
             'department_name' => ['required'],
             
         ]);
-        Department::create($validated);
+        Department::create($credentials);
         return redirect('/department');
     }
 
@@ -62,12 +62,12 @@ class DepartmentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validated = $request->validate([
+        $credentials = $request->validate([
             'department_name' => 'required|string|max:255'
         ]);
 
         $department = Department::findOrFail($id);
-        $department->update($validated);
+        $department->update($credentials);
 
         return redirect('/department')->with('success', 'Department updated successfully.');
     }
