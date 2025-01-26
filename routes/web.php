@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AttendenceController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DepartmentsController;
 use App\Http\Controllers\EmployeeController;
@@ -15,6 +16,7 @@ Route::post('/login', [AuthController::class, 'authenticate']);
 Route::middleware('auth')->group(function () {
 
     Route::resource('admin', AdminController::class);
+    Route::resource('attendence', AttendenceController::class);
     Route::resource('department', DepartmentsController::class);
     Route::resource('position', PositionController::class);
     Route::get('employees', [AdminController::class, 'employees'])->name('admin.employees');

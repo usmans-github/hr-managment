@@ -87,7 +87,7 @@
                 <!-- Submit Button -->
                 <div>
                     <button type="submit"
-                        class="w-full rounded-lg bg-indigo-600 px-6 py-3 text-sm font-medium text-white hover:bg-indigo-500 ">
+                    class="w-full rounded-lg bg-zinc-700 hover:bg-zinc-600 px-6 py-3 text-sm font-medium text-white">
                         Create Employee
                     </button>
                 </div>

@@ -55,7 +55,7 @@ class EmployeeController extends Controller
             'department_id' => $credentials['department_id'],
             'salary' => $credentials['salary']
         ]);
-        return redirect()->route('/employee')->with('success', 'Employee created successfully.');
+        return redirect()->route('admin.employees')->with('success', 'Employee created successfully.');
     }
 
     /**
@@ -105,7 +105,7 @@ class EmployeeController extends Controller
             'salary' => $credentials['salary']
         ]);
 
-        return redirect('/admin')->with('success', 'Employee updated successfully.');
+        return redirect('admin.employees')->with('success', 'Employee updated successfully.');
     }
 
 
@@ -126,6 +126,6 @@ class EmployeeController extends Controller
         $employee->delete();
 
         // Redirect back with success message
-        return redirect()->route('employee')->with('success', 'Employee deleted successfully.');
+        return redirect()->route('admin.employees')->with('success', 'Employee deleted successfully.');
     }
 }

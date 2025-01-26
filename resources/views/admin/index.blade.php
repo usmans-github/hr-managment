@@ -19,7 +19,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/attendance"
+                        <a href="/attendence"
                             class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-lg transition">
                             <i class="fas fa-calendar-check"></i>
                             <span class="font-semibold">Attendance</span>

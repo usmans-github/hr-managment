@@ -11,13 +11,13 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/employee" class="flex items-center gap-3 px-4 py-3 bg-zinc-900 rounded-lg shadow-md">
+                        <a href="/employees" class="flex items-center gap-3 px-4 py-3 bg-zinc-900 rounded-lg shadow-md">
                             <i class="fas fa-users"></i>
                             <span class="font-semibold">Employees</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/attendance" class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-lg transition">
+                        <a href="/attendence" class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-lg transition">
                             <i class="fas fa-calendar-check"></i>
                             <span class="font-semibold">Attendance</span>
                         </a>
@@ -73,9 +73,9 @@
                             <th class="font-semibold py-4 px-4">Actions</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="divide-y divide-gray-800">
                         @foreach ($employees as $employee)
-                            <tr class="text-left border-b transition-all">
+                            <tr class="text-left transition-all hover:bg-zinc-700">
                                 <td class="py-4 px-4 text-gray-300">{{ $employee->name ?? 'N/A' }}</td>
                                 <td class="py-4 px-4 text-gray-300">{{ $employee->position->position_name ?? 'N/A' }}</td>
                                 <td class="py-4 px-4 text-gray-300">{{ $employee->department->department_name ?? 'N/A' }}</td>
