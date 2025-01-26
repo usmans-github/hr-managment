@@ -19,7 +19,7 @@
                         name="position_name"
                         id="position_name"
                         required
-                        class="mt-2 block w-full rounded-lg bg-zinc-900 border border-gray-700 px-4 py-3 text-gray-300 placeholder-gray-500 focus:ring-indigo-500 focus:border-indigo-500"
+                        class="mt-2 block w-full rounded-xl bg-zinc-900 border border-gray-700 px-4 py-3 text-gray-300 placeholder-gray-500 focus:ring-indigo-500 focus:border-indigo-500"
                         placeholder="Enter position name"
                     />
                 </div>
@@ -31,7 +31,7 @@
                         name="department_id"
                         id="department_id"
                         required
-                        class="mt-2 block w-full rounded-lg bg-zinc-900 border border-gray-700 px-4 py-3 text-gray-300 placeholder-gray-500 focus:ring-indigo-500 focus:border-indigo-500"
+                        class="mt-2 block cursor-pointer w-full rounded-xl bg-zinc-900 border border-gray-700 px-4 py-3 text-gray-300 placeholder-gray-500 focus:ring-indigo-500 focus:border-indigo-500"
                     >
                         <option disabled selected>Select a department</option>
                         @foreach ($departments as $department)
@@ -44,8 +44,7 @@
                 <div>
                     <button
                         type="submit"
-                        class="w-full rounded-lg bg-indigo-600 px-6 py-3 text-sm font-medium text-white hover:bg-indigo-500 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
-                    >
+                        class="w-full  rounded-xl bg-zinc-700 hover:bg-zinc-600 px-6 py-3 text-sm font-medium text-white"   >
                         Create Position
                     </button>
                 </div>

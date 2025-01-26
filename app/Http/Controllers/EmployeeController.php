@@ -42,6 +42,7 @@ class EmployeeController extends Controller
             'phone' => ['required'],
             'position_id' => ['required'],
             'department_id' => ['required'],
+            'join_date' => ['required'],
             'salary' => ['required'],
         ]);
 
@@ -53,9 +54,10 @@ class EmployeeController extends Controller
             'phone' => $request->phone,
             'position_id' => $credentials['position_id'],
             'department_id' => $credentials['department_id'],
+            'join_date' => $credentials['join_date'],
             'salary' => $credentials['salary']
         ]);
-        return redirect()->route('admin.employees')->with('success', 'Employee created successfully.');
+        return redirect()->route('/employees')->with('success', 'Employee created successfully.');
     }
 
     /**
@@ -88,6 +90,7 @@ class EmployeeController extends Controller
             'phone' => ['required'],
             'position_id' => ['required'],
             'department_id' => ['required'],
+            'join_date' => ['required'],
             'salary' => ['required'],
         ]);
 
@@ -100,10 +103,11 @@ class EmployeeController extends Controller
             'phone' => $request->phone,
             'position_id' => $credentials['position_id'],
             'department_id' => $credentials['department_id'],
+            'join_date' => $credentials['join_date'],
             'salary' => $credentials['salary']
         ]);
 
-        return redirect('admin.employees')->with('success', 'Employee updated successfully.');
+        return redirect('/employees')->with('success', 'Employee updated successfully.');
     }
 
 
@@ -124,6 +128,6 @@ class EmployeeController extends Controller
         $employee->delete();
 
         // Redirect back with success message
-        return redirect()->route('admin.employees')->with('success', 'Employee deleted successfully.');
+        return redirect()->route('/employees')->with('success', 'Employee deleted successfully.');
     }
 }

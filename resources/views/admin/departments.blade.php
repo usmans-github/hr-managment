@@ -67,7 +67,7 @@
                         </button>
                     </div>
                 </div>
-                <table class="w-full">
+                <table class="w-full table-auto">
                     <thead>
                         <tr class="text-left bg-zinc-800 text-gray-300">
                             <th class="font-semibold py-4 px-4">Dept. Name</th>
@@ -77,8 +77,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($departments as $department)
-                            <tr class="border-b border-gray-700">
+                        @foreach ($departments as $department)      
+                            <tr class="divide-y divide-gray-800 hover:bg-zinc-800">
                                 <td class="py-4 px-4 text-gray-300">{{ $department->department_name }}</td>
                                 <td class="py-4 px-4 text-gray-300">
                                     @foreach ($department->positions as $position)

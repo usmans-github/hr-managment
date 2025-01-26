@@ -16,7 +16,7 @@
                 <div>
                     <label for="name" class="block text-sm font-medium text-gray-300">Name</label>
                     <input type="text" name="name" id="name" required value="{{ $employee->name }}"
-                        class="mt-2 block w-full rounded-lg bg-zinc-900 border border-gray-700 px-4 py-3
+                        class="mt-2 block w-full rounded-xl bg-zinc-900 border border-gray-700 px-4 py-3
                         text-gray-300"
                         placeholder="Enter employee name" />
                 </div>
@@ -25,7 +25,7 @@
                 <div>
                     <label for="email" class="block text-sm font-medium text-gray-300">Email Address</label>
                     <input type="email" name="email" id="email" required value="{{ $employee->email }}"
-                        class="mt-2 block w-full rounded-lg bg-zinc-900 border border-gray-700 px-4 py-3
+                        class="mt-2 block w-full rounded-xl bg-zinc-900 border border-gray-700 px-4 py-3
                         text-gray-300"
                         placeholder="Enter email address" />
                 </div>
@@ -34,7 +34,7 @@
                 <div>
                     <label for="password" class="block text-sm font-medium text-gray-300">Password</label>
                     <input name="password" id="password" required   
-                        class="mt-2 block w-full rounded-lg bg-zinc-900 border border-gray-700 px-4 py-3
+                        class="mt-2 block w-full rounded-xl bg-zinc-900 border border-gray-700 px-4 py-3
                         text-gray-300"
                         placeholder="Enter Password" />
                 </div>
@@ -43,7 +43,7 @@
                 <div>
                     <label for="phone" class="block text-sm font-medium text-gray-300">Phone</label>
                     <input type="text" name="phone" id="phone" required value="{{ $employee->phone }}"
-                        class="mt-2 block w-full rounded-lg bg-zinc-900 border border-gray-700 px-4 py-3
+                        class="mt-2 block w-full rounded-xl bg-zinc-900 border border-gray-700 px-4 py-3
                         text-gray-300"
                         placeholder="Enter phone number" />
                 </div>
@@ -52,7 +52,7 @@
                 <div>
                     <label for="department" class="block text-sm font-medium text-gray-300">Department</label>
                     <select name="department_id" id="department_id" 
-                        class="mt-2 block w-full rounded-lg bg-zinc-900 border border-gray-700 px-4 py-3 text-gray-300">
+                        class="mt-2 block cursor-pointer w-full rounded-xl bg-zinc-900 border border-gray-700 px-4 py-3 text-gray-300">
                         <option value="" disabled>Select a department</option>
                         @foreach ($departments as $department)
                             <option value="{{ $department->id }}" 
@@ -67,7 +67,7 @@
                 <div>
                     <label for="position" class="block text-sm font-medium text-gray-300">Position</label>
                     <select name="position_id" id="position_id" 
-                        class="mt-2 block w-full rounded-lg bg-zinc-900 border border-gray-700 px-4 py-3 text-gray-300">
+                        class="mt-2 block cursor-pointer w-full rounded-xl bg-zinc-900 border border-gray-700 px-4 py-3 text-gray-300">
                         <option value="" disabled>Select a Position</option>
                         @foreach ($positions as $position)
                             <option value="{{ $position->id }}" 
@@ -78,18 +78,25 @@
                     </select>
                 </div>
 
+                <!-- Join Date -->
+                <div>
+                    <label for="join_date" class="block text-sm font-medium text-gray-300">join Date</label>
+                    <input type="date" name="join_date" id="join_date" required value="{{ $employee->join_date }}"
+                        class="mt-2 block w-full rounded-xl bg-zinc-900 border border-gray-700 px-4 py-3 text-gray-300"
+                        placeholder="Enter Join Date" />
+                </div>
                 <!-- Salary -->
                 <div>
                     <label for="salary" class="block text-sm font-medium text-gray-300">Salary</label>
                     <input type="text" name="salary" id="salary" required value="{{ $employee->salary }}"
-                        class="mt-2 block w-full rounded-lg bg-zinc-900 border border-gray-700 px-4 py-3 text-gray-300"
+                        class="mt-2 block w-full rounded-xl bg-zinc-900 border border-gray-700 px-4 py-3 text-gray-300"
                         placeholder="Enter salary amount" />
                 </div>
 
                 <!-- Submit Button -->
                 <div>
                     <button type="submit"
-                        class="w-full rounded-lg bg-indigo-600 px-6 py-3 text-sm font-medium text-white hover:bg-indigo-500">
+                    class="w-full  rounded-xl bg-zinc-700 hover:bg-zinc-600 px-6 py-3 text-sm font-medium text-white">
                         Update Employee
                     </button>
                 </div>

@@ -18,7 +18,7 @@
                         name="email"
                         id="email"
                         required
-                        class="mt-2 block w-full rounded-lg bg-zinc-900 border border-gray-700 px-4 py-3
+                        class="mt-2 block w-full rounded-xl bg-zinc-900 border border-gray-700 px-4 py-3
                          text-gray-300 placeholder-gray-500"
                         placeholder="Enter your email"
                     />
@@ -32,7 +32,7 @@
                         name="password"
                         id="password"
                         required
-                        class="mt-2 block w-full rounded-lg bg-zinc-900 border border-gray-700 px-4 py-3 text-gray-300
+                        class="mt-2 block w-full  rounded-xl bg-zinc-900 border border-gray-700 px-4 py-3 text-gray-300
                         placeholder-gray-500 "
                         placeholder="Enter your password"
                     />
@@ -42,7 +42,7 @@
                 <div>
                     <button
                         type="submit"
-                        class="w-full rounded-lg bg-zinc-700 hover:bg-zinc-600 px-6 py-3 text-sm font-medium text-white">
+                        class="w-full  rounded-xl bg-zinc-700 hover:bg-zinc-600 px-6 py-3 text-sm font-medium text-white">
                         Sign In
                     </button>
                 </div>

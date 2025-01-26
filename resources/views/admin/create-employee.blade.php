@@ -15,7 +15,7 @@
                 <div>
                     <label for="name" class="block text-sm font-medium text-gray-300">Name</label>
                     <input type="text" name="name" id="name" required
-                        class="mt-2 block w-full rounded-lg bg-zinc-900 border border-gray-700 px-4 py-3
+                        class="mt-2 block w-full rounded-xl bg-zinc-900 border border-gray-700 px-4 py-3
                         text-gray-300"
                         placeholder="Enter employee name" />
                 </div>
@@ -24,7 +24,7 @@
                 <div>
                     <label for="email" class="block text-sm font-medium text-gray-300">Email Address</label>
                     <input type="email" name="email" id="email" required
-                        class="mt-2 block w-full rounded-lg bg-zinc-900 border border-gray-700 px-4 py-3
+                        class="mt-2 block w-full rounded-xl bg-zinc-900 border border-gray-700 px-4 py-3
                         text-gray-300"
                         placeholder="Enter email address" />
                 </div>
@@ -33,7 +33,7 @@
                 <div>
                     <label for="password" class="block text-sm font-medium text-gray-300">Password</label>
                     <input type="password" name="password" id="password" required
-                        class="mt-2 block w-full rounded-lg bg-zinc-900 border border-gray-700 px-4 py-3
+                        class="mt-2 block w-full rounded-xl bg-zinc-900 border border-gray-700 px-4 py-3
                         text-gray-300"
                         placeholder="Enter Password" />
                 </div>
@@ -42,16 +42,16 @@
                 <div>
                     <label for="phone" class="block text-sm font-medium text-gray-300">Phone</label>
                     <input type="text" name="phone" id="phone" required
-                        class="mt-2 block w-full rounded-lg bg-zinc-900 border border-gray-700 px-4 py-3
+                        class="mt-2 block w-full rounded-xl bg-zinc-900 border border-gray-700 px-4 py-3
                         text-gray-300"
                         placeholder="Enter phone number" />
                 </div>
 
                 <!-- Department -->
                 <div>
-                    <label for="department" class="block text-sm font-medium text-gray-300">Department</label>
+                    <label for="department" class="block  text-sm font-medium text-gray-300">Department</label>
                     <select name="department_id" id="department_id" 
-                        class="mt-2 block w-full rounded-lg bg-zinc-900 border border-gray-700 px-4 py-3 text-gray-300">
+                        class="mt-2 cursor-pointer block w-full rounded-xl bg-zinc-900 border border-gray-700 px-4 py-3 text-gray-300">
                         <option value="" disabled selected>Select a department</option>
                         @foreach ($departments as $department)
                             <option value="{{ $department->id }}">
@@ -64,9 +64,9 @@
 
                 <!-- Position -->
                 <div>
-                    <label for="position" class="block text-sm font-medium text-gray-300">Position</label>
+                    <label for="position" class="block  text-sm font-medium text-gray-300">Position</label>
                     <select name="position_id" id="position_id" 
-                        class="mt-2 block w-full rounded-lg bg-zinc-900 border border-gray-700 px-4 py-3 text-gray-300">
+                        class="mt-2 cursor-pointer block w-full rounded-xl bg-zinc-900 border border-gray-700 px-4 py-3 text-gray-300">
                         <option value="" disabled selected>Select a Position</option>
                         @foreach ($positions as $position)
                             <option value="{{ $position->id }}">
@@ -76,22 +76,36 @@
                     </select>
                 </div>
 
+                <!-- Join Date -->
+                <div>
+                    <label for="Join Date" class="block text-sm font-medium text-gray-300">Join Date</label>
+                    <input type="date" name="join_date" id="join_date" required
+                        class="mt-2 block w-full rounded-xl bg-zinc-900 border border-gray-700 px-4 py-3 text-gray-300"
+                        placeholder="Enter joining Date" />
+                </div>
                 <!-- Salary -->
                 <div>
                     <label for="salary" class="block text-sm font-medium text-gray-300">Salary</label>
                     <input type="text" name="salary" id="salary" required
-                        class="mt-2 block w-full rounded-lg bg-zinc-900 border border-gray-700 px-4 py-3 text-gray-300"
+                        class="mt-2 block w-full rounded-xl bg-zinc-900 border border-gray-700 px-4 py-3 text-gray-300"
                         placeholder="Enter salary amount" />
                 </div>
 
                 <!-- Submit Button -->
                 <div>
                     <button type="submit"
-                    class="w-full rounded-lg bg-zinc-700 hover:bg-zinc-600 px-6 py-3 text-sm font-medium text-white">
+                    class="w-full rounded-xl bg-zinc-700 hover:bg-zinc-600 px-6 py-3 text-sm font-medium text-white">
                         Create Employee
                     </button>
                 </div>
             </form>
+             <!-- Back to Employees Link -->
+             <p class="mt-6 text-center text-sm text-gray-400">
+                Back to Employees? 
+                <a href="/employees" class="text-white hover:underline">
+                    Click Here
+                </a>
+            </p>
             @if ($errors->any())
                 <div class="text-red-500">
                     <ul>

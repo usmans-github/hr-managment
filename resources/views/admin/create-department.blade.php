@@ -28,7 +28,7 @@
                 <div>
                     <button
                         type="submit"
-                        class="w-full rounded-lg bg-indigo-600 px-6 py-3 text-sm font-medium text-white hover:bg-indigo-500 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                        class="w-full  rounded-xl bg-zinc-700 hover:bg-zinc-600 px-6 py-3 text-sm font-medium text-white"
                     >
                         Create Department
                     </button>

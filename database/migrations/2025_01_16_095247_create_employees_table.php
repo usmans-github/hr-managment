@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('phone');
             $table->foreignIdFor(Position::class);
             $table->foreignIdFor(Department::class);
+            $table->string('join_date');    
             $table->string('salary');
             $table->timestamps();
         });
