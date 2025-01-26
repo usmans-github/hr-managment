@@ -5,7 +5,8 @@
             <nav class="mt-8">
                 <ul class="space-y-4 px-4">
                     <li>
-                        <a href="/admin" class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-lg transition">
+                        <a href="/admin"
+                            class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-lg transition">
                             <i class="fas fa-tachometer-alt"></i>
                             <span class="font-semibold">Dashboard</span>
                         </a>
@@ -17,25 +18,29 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/attendence" class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-lg transition">
+                        <a href="/attendence"
+                            class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-lg transition">
                             <i class="fas fa-calendar-check"></i>
                             <span class="font-semibold">Attendance</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/payroll" class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-lg transition">
+                        <a href="/payroll"
+                            class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-lg transition">
                             <i class="fas fa-wallet"></i>
                             <span class="font-semibold">Payroll</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/reports" class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-lg transition">
+                        <a href="/reports"
+                            class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-lg transition">
                             <i class="fas fa-chart-line"></i>
                             <span class="font-semibold">Reports</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/department" class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-lg transition">
+                        <a href="/department"
+                            class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-lg transition">
                             <i class="fas fa-building"></i>
                             <span class="font-semibold">Departments</span>
                         </a>
@@ -56,12 +61,13 @@
             <div class="bg-zinc-900 rounded-xl p-6">
                 <div class="flex justify-between items-center mb-6">
                     <h2 class="text-2xl font-bold">All Employees</h2>
-                    <a href="{{ route('employee.create') }}" class="border border-zinc-700 hover:bg-zinc-700 rounded-lg px-4 py-2 text-sm flex items-center gap-2 transition">
-                        <i class="fas fa-plus"></i>
+                    <a href="{{ route('employee.create') }}"
+                        class="border border-zinc-700 hover:bg-zinc-700 rounded-lg px-4 py-2 text-sm flex items-center gap-2 transition">
+                        <i class="fas fa-user-plus"></i>
                         <span>Add Employee</span>
                     </a>
                 </div>
-                <table class="w-full table-auto">
+                <table class="w-full table-auto rounded-xl ">
                     <thead>
                         <tr class="text-left bg-zinc-800 text-gray-300">
                             <th class="font-semibold py-4 px-4">Name</th>
@@ -75,26 +81,32 @@
                     </thead>
                     <tbody class="divide-y divide-gray-800">
                         @foreach ($employees as $employee)
-                            <tr class="text-left transition-all hover:bg-zinc-700">
+                            <tr class="text-left transition-all hover:bg-zinc-800">
                                 <td class="py-4 px-4 text-gray-300">{{ $employee->name ?? 'N/A' }}</td>
-                                <td class="py-4 px-4 text-gray-300">{{ $employee->position->position_name ?? 'N/A' }}</td>
-                                <td class="py-4 px-4 text-gray-300">{{ $employee->department->department_name ?? 'N/A' }}</td>
+                                <td class="py-4 px-4 text-gray-300">{{ $employee->position->position_name ?? 'N/A' }}
+                                </td>
+                                <td class="py-4 px-4 text-gray-300">
+                                    {{ $employee->department->department_name ?? 'N/A' }}</td>
                                 <td class="py-4 px-4 text-gray-300">{{ $employee->salary ?? 'N/A' }}</td>
                                 <td class="py-4 px-4 text-gray-300">{{ $employee->phone ?? 'N/A' }}</td>
                                 <td class="py-4 px-4">
-                                    <span class="bg-black text-green-500 px-3 py-1 rounded-md text-sm">Present</span>
+                                    <span
+                                        class="bg-black text-green-500 border border-green-500 px-3 py-1 rounded-md text-sm">Present</span>
                                 </td>
                                 <td class="py-4 px-4 flex gap-2">
                                     <a href="{{ route('employee.edit', $employee->id) }}">
-                                        <i class="fas fa-edit cursor-pointer rounded-md text-gray-300 hover:text-white
+                                        <i
+                                            class="fas fa-edit cursor-pointer rounded-md text-gray-300 hover:text-white
                                     hover:bg-zinc-700 p-2"></i>
                                     </a>
-                                    <form method="POST" action="{{ route('employee.destroy', $employee->id) }}" onsubmit="return confirm('Are you sure you want to delete this employee?');">
+                                    <form method="POST" action="{{ route('employee.destroy', $employee->id) }}"
+                                        onsubmit="return confirm('Are you sure you want to delete this employee?');">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit">
-                                            <i class="fas fa-trash cursor-pointer rounded-md text-gray-300 hover:text-white
-                                 hover:bg-zinc-700 p-2"></i>
+                                            <i
+                                                class="fas fa-trash cursor-pointer rounded-md text-gray-300 hover:text-white
+                                    hover:bg-zinc-700 p-2"></i>
                                         </button>
                                     </form>
                                 </td>

@@ -5,6 +5,7 @@ use App\Http\Controllers\AttendenceController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DepartmentsController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\PayrollController;
 use App\Http\Controllers\PositionController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,15 +17,15 @@ Route::post('/login', [AuthController::class, 'authenticate']);
 Route::middleware('auth')->group(function () {
 
     Route::resource('admin', AdminController::class);
+    Route::get('employees', [AdminController::class, 'employees'])->name('admin.employees');
+    Route::resource('payroll', PayrollController::class);
     Route::resource('attendence', AttendenceController::class);
     Route::resource('department', DepartmentsController::class);
     Route::resource('position', PositionController::class);
-    Route::get('employees', [AdminController::class, 'employees'])->name('admin.employees');
 });
 
 // Employee ROutes
 Route::middleware('auth')->group(function () {
 
     Route::resource('employee', EmployeeController::class);
-
 });

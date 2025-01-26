@@ -12,7 +12,7 @@
                         </a>
                     </li>
                     <li>
-                <a href="/employees"
+                        <a href="/employees"
                             class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-lg transition">
                             <i class="fas fa-users"></i>
                             <span class="font-semibold">Employees</span>
@@ -97,7 +97,7 @@
                         class="border border-zinc-700 hover:bg-zinc-700 rounded-lg px-4 text-sm
                         py-2 flex items-center gap-2 transition">
                         <a href="{{ route('employee.create') }}">
-                            <i class="fas fa-plus"></i>
+                            <i class="fas fa-user-plus"></i>
                             <span>Add Employee</span>
                         </a>
                     </button>
@@ -111,22 +111,22 @@
                             <th class="font-semibold py-4 px-4">Status</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="divide-y divide-gray-800">
                         @foreach ($employees as $employee)
-                        <tr class="text-left border-b transition-all">
+                            <tr class="text-left transition-all hover:bg-zinc-800">
                                 <td class="py-4 px-4 text-gray-300">{{ $employee->name ?? 'N/A' }}</td>
                                 <td class="py-4 px-4 text-gray-300">{{ $employee->position->position_name ?? 'N/A' }}
                                 </td>
                                 <td class="py-4 px-4 text-gray-300">
                                     {{ $employee->department->department_name ?? 'N/A' }}</td>
-                           
-                            <td class="text-left py-4 px-4">
-                                <span
-                                    class="bg-black text-green-500 px-3 py-1 rounded-md
+
+                                <td class="text-left py-4 px-4">
+                                    <span
+                                        class="bg-black text-green-500 border border-green-500 px-3 py-1 rounded-md
                                  text-sm">Present</span>
-                            </td>
-                            
-                        </tr>
+                                </td>
+
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>
