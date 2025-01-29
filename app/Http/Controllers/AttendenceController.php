@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Attendence;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AttendenceController extends Controller
 {
@@ -11,7 +13,11 @@ class AttendenceController extends Controller
      */
     public function index()
     {
-        return view('attendence.attendences');
+        $user = Auth::user();
+        if ($user->role === 'admin') {
+            $attendences = Attendence::all();
+            return view('attendence.attendences', compact('attendences'));
+        }
     }
 
     /**
@@ -19,7 +25,7 @@ class AttendenceController extends Controller
      */
     public function create()
     {
-        //
+        return view('employee.index');
     }
 
     /**
@@ -27,7 +33,19 @@ class AttendenceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'employee_id' => 'required|exists:employees,id',
+            'date' => 'required|date',
+            'status' => 'required|in:Present,Absent,Leave',
+        ]);
+
+        Attendence::create([
+            'employee_id' => $request->employee_id,
+            'date' => $request->date,
+            'status' => $request->status,
+        ]);
+
+        return redirect()->route('attendence.index')->with('success', 'Attendence recorded successfully.');
     }
 
     /**
@@ -35,7 +53,8 @@ class AttendenceController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $attendence = Attendence::findOrFail($id);
+        return view('attendence.edit', compact('attendence'));
     }
 
     /**
@@ -43,7 +62,8 @@ class AttendenceController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $attendence = Attendence::findOrFail($id);
+        return view('attendence.edit', compact('attendence'));
     }
 
     /**
@@ -51,7 +71,16 @@ class AttendenceController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'status' => 'required|in:Present,Absent,Leave',
+        ]);
+
+        $attendence = Attendence::findOrFail($id);
+        $attendence->update([
+            'status' => $request->status,
+        ]);
+
+        return redirect()->route('attendence.index')->with('success', 'Attendence updated successfully.');
     }
 
     /**
@@ -59,6 +88,9 @@ class AttendenceController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $attendence = Attendence::findOrFail($id);
+        $attendence->delete();
+
+        return redirect()->route('attendence.index')->with('success', 'attendence deleted successfully.');
     }
 }
