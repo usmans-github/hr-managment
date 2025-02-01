@@ -6,7 +6,8 @@
             <nav class="mt-8">
                 <ul class="space-y-4 px-4">
                     <li>
-                        <a href="/admin" class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-lg shadow-md">
+                        <a href="/admin"
+                            class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-lg shadow-md">
                             <i class="fas fa-tachometer-alt"></i>
                             <span class="font-semibold">Dashboard</span>
                         </a>
@@ -53,21 +54,25 @@
         <!-- Main Content -->
         <main class="flex-1 ml-64 p-8">
             <!-- Employee Table -->
-            <div class="bg-zinc-900 rounded-xl shadow-sm p-6">
-                <div class="flex justify-between items-center mb-6">
+            <div class=" rounded-xl shadow-sm mb-6">
+                <div class="flex justify-between items-center ">
                     <h2 class="text-2xl font-bold">Departments</h2>
                     <div class="flex justify-center items-center gap-4">
-                        <button class="border border-zinc-700 hover:bg-zinc-700 rounded-lg px-4 text-sm py-2 flex items-center gap-2 transition">
+                        <button
+                            class="border border-zinc-700 hover:bg-zinc-700 rounded-lg px-4 text-sm py-2 flex items-center gap-2 transition">
                             <i class="fas fa-circle-plus"></i>
                             <a href="/position/create"> Add Position</a>
                         </button>
-                        <button class="border border-zinc-700 hover:bg-zinc-700 rounded-lg px-4 text-sm py-2 flex items-center gap-2 transition">
+                        <button
+                            class="border border-zinc-700 hover:bg-zinc-700 rounded-lg px-4 text-sm py-2 flex items-center gap-2 transition">
                             <i class="fas fa-square-plus"></i>
                             <a href="/department/create"> Add Department</a>
                         </button>
                     </div>
                 </div>
-                <table class="w-full table-auto">
+            </div>
+            <div class="bg-zinc-900 rounded-xl overflow-hidden">
+                <table class="w-full">
                     <thead>
                         <tr class="text-left bg-zinc-800 text-gray-300">
                             <th class="font-semibold py-4 px-4">Dept. Name</th>
@@ -77,7 +82,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($departments as $department)      
+                        @foreach ($departments as $department)
                             <tr class="divide-y divide-gray-800 hover:bg-zinc-800">
                                 <td class="py-4 px-4 text-gray-300">{{ $department->department_name }}</td>
                                 <td class="py-4 px-4 text-gray-300">
@@ -85,17 +90,20 @@
                                         <div>{{ $position->position_name }}</div>
                                     @endforeach
                                 </td>
-                                <td class="py-4 px-4 text-gray-300">{{ $department->employees->count() ?? 'N/A' }} employees</td>
+                                <td class="py-4 px-4 text-gray-300">{{ $department->employees->count() ?? 'N/A' }}
+                                    employees</td>
                                 <td class="text-left py-4 px-2 flex gap-2">
                                     <a href="{{ route('department.edit', $department->id) }}">
-                                        <i class="fas fa-edit cursor-pointer rounded-md text-gray-300 hover:text-white hover:bg-zinc-700 p-2"></i>
+                                        <i
+                                            class="fas fa-edit cursor-pointer rounded-md text-gray-300 hover:text-white hover:bg-zinc-700 p-2"></i>
                                     </a>
                                     <form method="POST" action="{{ route('department.destroy', $department->id) }}"
-                                          onsubmit="return confirm('Are you sure you want to delete this department?');">
+                                        onsubmit="return confirm('Are you sure you want to delete this department?');">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit">
-                                            <i class="fas fa-trash cursor-pointer rounded-md text-gray-300 hover:text-white hover:bg-zinc-700 p-2"></i>
+                                            <i
+                                                class="fas fa-trash cursor-pointer rounded-md text-gray-300 hover:text-white hover:bg-zinc-700 p-2"></i>
                                         </button>
                                     </form>
                                 </td>

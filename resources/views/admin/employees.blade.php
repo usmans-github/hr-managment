@@ -52,68 +52,75 @@
         <!-- Main Content -->
         <main class="flex-1 ml-64 p-8">
             <!-- Header -->
-            <div class="mb-8">
-                <h1 class="text-3xl font-bold text-white">Employees</h1>
-                <p class="text-gray-300 text-sm font-semibold">Manage your employees efficiently.</p>
+            <div class="mb-8 flex justify-between items-center">
+                <div>
+
+                    <h1 class="text-3xl font-bold text-white">Employees</h1>
+                    <p class="text-gray-300 text-sm font-semibold">Manage your employees efficiently.</p>
+                </div>
+                <a href="{{ route('employee.create') }}"
+                    class="border border-zinc-700 hover:bg-zinc-700 rounded-lg px-4 py-2 text-sm flex items-center gap-2 transition">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Add Employee</span>
+                </a>
             </div>
 
             <!-- Employee Table -->
             <div class="bg-zinc-900 rounded-xl p-6">
                 <div class="flex justify-between items-center mb-6">
                     <h2 class="text-2xl font-bold">All Employees</h2>
-                    <a href="{{ route('employee.create') }}"
-                        class="border border-zinc-700 hover:bg-zinc-700 rounded-lg px-4 py-2 text-sm flex items-center gap-2 transition">
-                        <i class="fas fa-user-plus"></i>
-                        <span>Add Employee</span>
-                    </a>
+
                 </div>
-                <table class="w-full table-auto rounded-xl ">
-                    <thead>
-                        <tr class="text-left bg-zinc-800 text-gray-300">
-                            <th class="font-semibold py-4 px-4">Name</th>
-                            <th class="font-semibold py-4 px-4">Position</th>
-                            <th class="font-semibold py-4 px-4">Department</th>
-                            <th class="font-semibold py-4 px-4">Salary</th>
-                            <th class="font-semibold py-4 px-4">Phone</th>
-                            <th class="font-semibold py-4 px-4">Status</th>
-                            <th class="font-semibold py-4 px-4">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-gray-800">
-                        @foreach ($employees as $employee)
-                            <tr class="text-left transition-all hover:bg-zinc-800">
-                                <td class="py-4 px-4 text-gray-300">{{ $employee->name ?? 'N/A' }}</td>
-                                <td class="py-4 px-4 text-gray-300">{{ $employee->position->position_name ?? 'N/A' }}
-                                </td>
-                                <td class="py-4 px-4 text-gray-300">
-                                    {{ $employee->department->department_name ?? 'N/A' }}</td>
-                                <td class="py-4 px-4 text-gray-300">{{ $employee->salary ?? 'N/A' }}</td>
-                                <td class="py-4 px-4 text-gray-300">{{ $employee->phone ?? 'N/A' }}</td>
-                                <td class="py-4 px-4">
-                                    <span
-                                        class="bg-black text-green-500 border border-green-500 px-3 py-1 rounded-md text-sm">Present</span>
-                                </td>
-                                <td class="py-4 px-4 flex gap-2">
-                                    <a href="{{ route('employee.edit', $employee->id) }}">
-                                        <i
-                                            class="fas fa-edit cursor-pointer rounded-md text-gray-300 hover:text-white
-                                    hover:bg-zinc-700 p-2"></i>
-                                    </a>
-                                    <form method="POST" action="{{ route('employee.destroy', $employee->id) }}"
-                                        onsubmit="return confirm('Are you sure you want to delete this employee?');">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit">
-                                            <i
-                                                class="fas fa-trash cursor-pointer rounded-md text-gray-300 hover:text-white
-                                    hover:bg-zinc-700 p-2"></i>
-                                        </button>
-                                    </form>
-                                </td>
+                <div class="bg-zinc-900 rounded-xl overflow-hidden">
+                    <table class="w-full  rounded-xl ">
+                        <thead>
+                            <tr class="text-left bg-zinc-800 text-gray-300">
+                                <th class="font-semibold py-4 px-4">Name</th>
+                                <th class="font-semibold py-4 px-4">Position</th>
+                                <th class="font-semibold py-4 px-4">Department</th>
+                                <th class="font-semibold py-4 px-4">Salary</th>
+                                <th class="font-semibold py-4 px-4">Phone</th>
+                                <th class="font-semibold py-4 px-4">Status</th>
+                                <th class="font-semibold py-4 px-4">Actions</th>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody class="divide-y divide-gray-800">
+                            @foreach ($employees as $employee)
+                                <tr class="text-left transition-all hover:bg-zinc-800">
+                                    <td class="py-4 px-4 text-gray-300">{{ $employee->name ?? 'N/A' }}</td>
+                                    <td class="py-4 px-4 text-gray-300">
+                                        {{ $employee->position->position_name ?? 'N/A' }}
+                                    </td>
+                                    <td class="py-4 px-4 text-gray-300">
+                                        {{ $employee->department->department_name ?? 'N/A' }}</td>
+                                    <td class="py-4 px-4 text-gray-300">{{ $employee->salary ?? 'N/A' }}</td>
+                                    <td class="py-4 px-4 text-gray-300">{{ $employee->phone ?? 'N/A' }}</td>
+                                    <td class="py-4 px-4">
+                                        <span
+                                            class="bg-black text-green-500 border border-green-500 px-3 py-1 rounded-md text-sm">Present</span>
+                                    </td>
+                                    <td class="py-4 px-4 flex gap-2">
+                                        <a href="{{ route('employee.edit', $employee->id) }}">
+                                            <i
+                                                class="fas fa-edit cursor-pointer rounded-md text-gray-300 hover:text-white
+                                    hover:bg-zinc-700 p-2"></i>
+                                        </a>
+                                        <form method="POST" action="{{ route('employee.destroy', $employee->id) }}"
+                                            onsubmit="return confirm('Are you sure you want to delete this employee?');">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit">
+                                                <i
+                                                    class="fas fa-trash cursor-pointer rounded-md text-gray-300 hover:text-white
+                                    hover:bg-zinc-700 p-2"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </main>
     </div>

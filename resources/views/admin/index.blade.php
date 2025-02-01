@@ -91,18 +91,12 @@
 
             <!-- Employee Table -->
             <div class="bg-zinc-900 rounded-xl p-6">
-                <div class="flex justify-between items-center mb-6">
+                <div class=" mb-6">
                     <h2 class="text-2xl font-bold">Recent Employees</h2>
-                    <button
-                        class="border border-zinc-700 hover:bg-zinc-700 rounded-lg px-4 text-sm
-                        py-2 flex items-center gap-2 transition">
-                        <a href="{{ route('employee.create') }}">
-                            <i class="fas fa-user-plus"></i>
-                            <span>Add Employee</span>
-                        </a>
-                    </button>
+                  
                 </div>
-                <table class="w-full table-auto">
+                <div class="bg-zinc-900 rounded-xl overflow-hidden">
+                <table class="w-full">
                     <thead>
                         <tr class="text-left bg-zinc-800 text-gray-300">
                             <th class="font-semibold py-4 px-4">Name</th>
@@ -130,6 +124,7 @@
                         @endforeach
                     </tbody>
                 </table>
+                </div>
             </div>
         </main>
     </div>
