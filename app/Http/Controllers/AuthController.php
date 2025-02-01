@@ -30,9 +30,9 @@ class AuthController extends Controller
         if ($user = Auth::attempt($credentials)) {
             $user = Auth::user();
             if ($user->role === 'admin') {
-                return redirect()->route('admin.index');
+                return redirect()->route('admin.index')->with('success', 'Admin logged in successfully!');
             } elseif ($user->role === 'employee') {
-                return redirect()->route('employee.index');
+                return redirect()->route('employee.index')->with('success', 'Employee logged in successfully!');
             }
         }
 

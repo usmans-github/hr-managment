@@ -1,4 +1,35 @@
 <x-layout>
+
+    @if (session('success'))
+        <div class="fixed top-4 left-1/2 transform -translate-x-1/2 z-50">
+            <div id="toast-success"
+                class="flex items-center w-full max-w-xs p-4 text-gray-300 bg-zinc-800 border border-gray-700 rounded-lg shadow-sm"
+                role="alert">
+                <div
+                    class="inline-flex items-center justify-center shrink-0 w-8 h-8 text-green-400 bg-zinc-700 rounded-lg">
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                        viewBox="0 0 20 20">
+                        <path
+                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                    </svg>
+                    <span class="sr-only">Check icon</span>
+                </div>
+                <div class="mx-3 text-sm font-normal">{{ session('success') }}</div>
+                <button type="button"
+                    class="ms-auto -mx-1.5 -my-1.5 bg-zinc-800 text-gray-300 hover:text-white rounded-lg
+         p-1.5 hover:bg-zinc-700 inline-flex items-center justify-center h-8 w-8"
+                    data-dismiss-target="#toast-success" aria-label="Close">
+                    <span class="sr-only">Close</span>
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    @endif
+
     <div class="flex min-h-screen">
         <!-- Sidebar -->
         <aside class="w-64 absolute h-full">
@@ -59,9 +90,9 @@
                     <p class="text-gray-300 text-sm font-semibold">Manage your employees efficiently.</p>
                 </div>
                 <a href="{{ route('employee.create') }}"
-                    class="border border-zinc-700 hover:bg-zinc-700 rounded-lg px-4 py-2 text-sm flex items-center gap-2 transition">
+                    class="border border-zinc-700 hover:bg-zinc-700 rounded-lg p-2 text-sm flex items-center gap-2 transition-all">
+                    Add Employee
                     <i class="fas fa-user-plus"></i>
-                    <span>Add Employee</span>
                 </a>
             </div>
 
@@ -87,7 +118,8 @@
                         <tbody class="divide-y divide-gray-800">
                             @foreach ($employees as $employee)
                                 <tr class="text-left transition-all hover:bg-zinc-800">
-                                    <td class="py-4 px-4 text-gray-300">{{ $employee->name ?? 'N/A' }}</td>
+                                    <td class="py-4 px-4 text-gray-300">{{ $employee->first_name ?? 'N/A' }}
+                                        {{ $employee->last_name ?? 'N/A' }}</td>
                                     <td class="py-4 px-4 text-gray-300">
                                         {{ $employee->position->position_name ?? 'N/A' }}
                                     </td>

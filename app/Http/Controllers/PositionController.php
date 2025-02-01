@@ -42,7 +42,7 @@ class PositionController extends Controller
         $position = Position::create($credentials);
         $position->save();
 
-        return redirect('/department');
+        return redirect('/department')->with('success', 'Position created successfully!');
     }
 
     /**

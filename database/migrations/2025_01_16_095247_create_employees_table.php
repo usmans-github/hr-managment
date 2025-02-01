@@ -15,12 +15,13 @@ return new class extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->id();   
-            $table->string('name')->unique();
+            $table->string('first_name')->unique();
+            $table->string('last_name')->unique();
             $table->string('email');
             $table->string('password');
             $table->string('phone');
-            $table->foreignIdFor(Position::class);
-            $table->foreignIdFor(Department::class);
+            $table->foreignIdFor(Position::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignIdFor(Department::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('join_date');    
             $table->string('salary');
             $table->timestamps();

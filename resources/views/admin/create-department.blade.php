@@ -1,4 +1,7 @@
 <x-layout>
+   
+
+    
     <div class="flex min-h-screen flex-col px-6 lg:px-8">
         <!-- Header -->
         <div class="sm:mx-auto sm:w-full sm:max-w-md text-center mb-8">

@@ -11,13 +11,21 @@
             <form class="space-y-6" action="{{ route('employee.store') }}" method="POST">
                 @csrf
 
-                <!-- Name -->
+                <!-- First Name -->
                 <div>
-                    <label for="name" class="block text-sm font-medium text-gray-300">Name</label>
-                    <input type="text" name="name" id="name" required
+                    <label for="first_name" class="block text-sm font-medium text-gray-300">First Name</label>
+                    <input type="text" name="first_name" id="first_name" required
                         class="mt-2 block w-full rounded-xl bg-zinc-900 border border-gray-700 px-4 py-3
                         text-gray-300"
-                        placeholder="Enter employee name" />
+                        placeholder="Enter first name" />
+                </div>
+                <!-- Last Name -->
+                <div>
+                    <label for="last_name" class="block text-sm font-medium text-gray-300">Last Name</label>
+                    <input type="text" name="last_name" id="last_name" required
+                        class="mt-2 block w-full rounded-xl bg-zinc-900 border border-gray-700 px-4 py-3
+                        text-gray-300"
+                        placeholder="Enter last name" />
                 </div>
 
                 <!-- Email -->
@@ -102,7 +110,7 @@
              <!-- Back to Employees Link -->
              <p class="mt-6 text-center text-sm text-gray-400">
                 Back to Employees? 
-                <a href="/employees" class="text-white hover:underline">
+                <a href="{{ route('admin.employees') }}" class="text-white hover:underline">
                     Click Here
                 </a>
             </p>

@@ -43,7 +43,7 @@ class DepartmentsController extends Controller
 
         ]);
         Department::create($credentials);
-        return redirect('/department');
+        return redirect('/department')->with('success', 'Department created successfully!');;
     }
 
     /**
@@ -76,7 +76,7 @@ class DepartmentsController extends Controller
         $department = Department::findOrFail($id);
         $department->update($credentials);
 
-        return redirect('/department')->with('success', 'Department updated successfully.');
+        return redirect('department')->with('success', 'Department updated successfully.');
     }
 
 
@@ -88,7 +88,7 @@ class DepartmentsController extends Controller
         // Find the department by ID
         $department = Department::find($id);
 
-        // Check if employee exists
+        // Check if department exists
         if (!$department) {
             return redirect()->back()->with('error', 'Department not found.');
         }

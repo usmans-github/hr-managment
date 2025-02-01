@@ -36,7 +36,8 @@ class EmployeeController extends Controller
     public function store(Request $request)
     {
         $credentials = $request->validate([
-            'name' => ['required'],
+            'first_name' => ['required'],
+            'last_name' => ['required'],
             'email' => ['required', 'email'],
             'password' => ['required'],
             'phone' => ['required'],
@@ -48,7 +49,8 @@ class EmployeeController extends Controller
 
 
         Employee::create([
-            'name' => $credentials['name'],
+            'first_name' => $credentials['first_name'],
+            'last_name' => $credentials['last_name'],
             'email' => $credentials['email'],
             'password' => bcrypt($credentials['password']),
             'phone' => $request->phone,
@@ -57,7 +59,7 @@ class EmployeeController extends Controller
             'join_date' => $credentials['join_date'],
             'salary' => $credentials['salary']
         ]);
-        return redirect()->route('/employees')->with('success', 'Employee created successfully.');
+        return redirect('employees')->with('success', 'Employee created successfully.');
     }
 
     /**
@@ -84,7 +86,8 @@ class EmployeeController extends Controller
     public function update(Request $request, $id)
     {
         $credentials = $request->validate([
-            'name' => ['required'],
+            'first_name' => ['required'],
+            'last_name' => ['required'],
             'email' => ['required', 'email'],
             'password' => ['required'],
             'phone' => ['required'],
@@ -97,8 +100,8 @@ class EmployeeController extends Controller
         $employee = Employee::findOrFail($id);
 
         $employee->update([
-            'name' => $credentials['name'],
-            'email' => $credentials['email'],
+            'first_name' => $credentials['first_name'],
+            'last_name' => $credentials['last_name'],
             'password' => bcrypt($credentials['password']),
             'phone' => $request->phone,
             'position_id' => $credentials['position_id'],
@@ -107,7 +110,7 @@ class EmployeeController extends Controller
             'salary' => $credentials['salary']
         ]);
 
-        return redirect('/employees')->with('success', 'Employee updated successfully.');
+        return redirect('employees')->with('success', 'Employee updated successfully.');
     }
 
 
@@ -128,6 +131,6 @@ class EmployeeController extends Controller
         $employee->delete();
 
         // Redirect back with success message
-        return redirect()->route('/employees')->with('success', 'Employee deleted successfully.');
+        return redirect('employees')->with('success', 'Employee deleted successfully.');
     }
 }

@@ -8,7 +8,7 @@
 
         <!-- Form -->
         <div class="sm:mx-auto sm:w-full sm:max-w-lg bg-zinc-800 rounded-xl shadow-md p-6">
-            <form class="space-y-6" action="department/{{ $department->id }}" method="POST">
+            <form class="space-y-6" action="{{ route('department.update', $department->id) }}" method="POST">
                 @csrf
                 @method('PUT')
 
@@ -20,13 +20,12 @@
                         text-gray-300"
                         placeholder="Enter department name" />
                 </div>
-
                
 
                 <!-- Submit Button -->
                 <div>
                     <button type="submit"
-                        class="w-full rounded-lg bg-indigo-600 px-6 py-3 text-sm font-medium text-white hover:bg-indigo-500">
+                    class="w-full  rounded-xl bg-zinc-700 hover:bg-zinc-600 px-6 py-3 text-sm font-medium text-white">
                         Update Department
                     </button>
                 </div>
