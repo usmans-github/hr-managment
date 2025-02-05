@@ -11,12 +11,7 @@
 </head>
 
 <body class="bg-black text-white pb-20">
-    <div class="px-10">
-        <nav class="flex justify-between items-center px-10 py-4">
-            <div class="text-4xl font-bold "><a href="/">HRMS</a></div>
-        </nav>
         <main class="">{{ $slot }}</main>
-    </div>
 </body>
 
 </html>

@@ -33,6 +33,7 @@
     <div class="flex min-h-screen">
         <!-- Sidebar -->
         <aside class="w-64 absolute h-full">
+           <a href="/"> <div class="mt-4 px-4 text-3xl font-extrabold">HR-Managment</div> </a>
             <nav class="mt-8">
                 <ul class="space-y-4 px-4">
                     <li>
