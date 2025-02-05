@@ -15,7 +15,7 @@ Route::post('/login', [AuthController::class, 'authenticate']);
 
 
 // Admin ROutes
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth:admin'])->group(function () {
 
     Route::resource('admin', AdminController::class);
     Route::get('employees', [AdminController::class, 'employees'])->name('admin.employees');
@@ -27,7 +27,7 @@ Route::middleware('auth')->group(function () {
 });
 
 // Employee ROutes
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth:employee'])->group(function () {
 
     Route::resource('employee', EmployeeController::class);
 });
