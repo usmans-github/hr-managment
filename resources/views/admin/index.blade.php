@@ -31,11 +31,13 @@
     @endif
 
 
-    <div class="flex min-h-screen"> 
+    <div class="flex min-h-screen">
         <!-- Sidebar -->
         <aside class="w-64 absolute h-full">
 
-           <a href="/"> <div class="mt-4 px-4 text-3xl font-extrabold">HR-Managment</div> </a>
+            <a href="/">
+                <div class="mt-4 px-4 text-3xl font-extrabold">HR-Managment</div>
+            </a>
             <nav class="mt-8">
                 <ul class="space-y-4 px-4">
                     <li>
@@ -141,18 +143,22 @@
                         <tbody class="divide-y divide-gray-800">
                             @foreach ($employees as $employee)
                                 <tr class="text-left transition-all hover:bg-zinc-800">
-                                    <td class="py-4 px-4 text-gray-300">{{ $employee->first_name ?? 'N/A' }} {{ $employee->last_name ?? 'N/A' }}</td>
+                                    <td class="py-4 px-4 text-gray-300">{{ $employee->first_name ?? 'N/A' }}
+                                        {{ $employee->last_name ?? 'N/A' }}</td>
                                     <td class="py-4 px-4 text-gray-300">
                                         {{ $employee->position->position_name ?? 'N/A' }}
                                     </td>
                                     <td class="py-4 px-4 text-gray-300">
                                         {{ $employee->department->department_name ?? 'N/A' }}</td>
 
-                                    <td class="text-left py-4 px-4">
+                                    <td class="py-4 px-4">
                                         <span
-                                            class="bg-black text-green-500 border border-green-500 px-3 py-1 rounded-md
-                                 text-sm">Present</span>
+                                            class="inline-flex items-center bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-semibold w-auto">
+                                            <span class="h-2 w-2 bg-green-700 rounded-full mr-2"></span>
+                                            Present
+                                        </span>
                                     </td>
+
 
                                 </tr>
                             @endforeach

@@ -110,12 +110,12 @@
                     <h2 class="text-2xl font-bold">Departments</h2>
                     <div class="flex justify-center items-center gap-4">
                         <button
-                            class="border border-zinc-700 hover:bg-zinc-700 rounded-lg p-2 text-sm flex items-center gap-2 transition-all">
+                            class="bg-zinc-900 hover:bg-zinc-800 rounded-xl border border-gray-700 text-sm font-medium px-3 py-2 ">
                             <a href="/position/create"> Add Position</a>
                             <i class="fas fa-circle-plus"></i>
                         </button>
                         <button
-                            class="border border-zinc-700 hover:bg-zinc-700 rounded-lg p-2 text-sm flex items-center gap-2 transition">
+                            class="bg-zinc-900 hover:bg-zinc-800 rounded-xl border border-gray-700 text-sm font-medium px-3 py-2 ">
                             <a href="/department/create"> Add Department</a>
                             <i class="fas fa-square-plus"></i>
                         </button>

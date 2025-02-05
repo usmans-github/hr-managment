@@ -91,9 +91,9 @@
                     <p class="text-gray-300 text-sm font-semibold">Manage your employees efficiently.</p>
                 </div>
                 <a href="{{ route('employee.create') }}"
-                    class="border border-zinc-700 hover:bg-zinc-700 rounded-lg p-2 text-sm flex items-center gap-2 transition-all">
+                    class="bg-zinc-900 hover:bg-zinc-800  rounded-xl border border-gray-700 text-sm font-medium px-3 py-2   flex items-center gap-2 transition-all">
                     Add Employee
-                    <i class="fas fa-user-plus"></i>
+                    <i class="fa fa-user-plus"></i>
                 </a>
             </div>
 
@@ -128,9 +128,12 @@
                                         {{ $employee->department->department_name ?? 'N/A' }}</td>
                                     <td class="py-4 px-4 text-gray-300">{{ $employee->salary ?? 'N/A' }}</td>
                                     <td class="py-4 px-4 text-gray-300">{{ $employee->phone ?? 'N/A' }}</td>
-                                    <td class="py-4 px-4">
+                                    <td class=" py-4 px-4">
                                         <span
-                                            class="bg-black text-green-500 border border-green-500 px-3 py-1 rounded-md text-sm">Present</span>
+                                            class="inline-flex items-center bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-semibold w-auto">
+                                            <span class="h-2 w-2 bg-green-700 rounded-full mr-2"></span>
+                                            Present
+                                        </span>
                                     </td>
                                     <td class="py-4 px-4 flex gap-2">
                                         <a href="{{ route('employee.edit', $employee->id) }}">

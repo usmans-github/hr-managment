@@ -139,7 +139,6 @@
                                     <th class="px-6 py-4 text-left">Check In</th>
                                     <th class="px-6 py-4 text-left">Check Out</th>
                                     <th class="px-6 py-4 text-left">Status</th>
-                                    <th class="px-6 py-4 text-left">Actions</th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-800">
@@ -162,13 +161,12 @@
                                     <td class="px-6 py-4">06:00 PM</td>
                                     <td class="px-6 py-4">
                                         <span
-                                            class="bg-black text-green-500 border border-green-500 px-3 py-1 rounded-md text-sm">Present</span>
+                                            class="inline-flex items-center bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-semibold w-auto">
+                                            <span class="h-2 w-2 bg-green-700 rounded-full mr-2"></span>
+                                            Present
+                                        </span>
                                     </td>
-                                    <td class="px-6 py-4">
-                                        <button>
-                                            <i class="fas fa-circle-info p-2 cursor-pointer rounded-md text-gray-300 hover:text-white hover:bg-zinc-700 "></i>
-                                        </button>
-                                    </td>
+                                    
                                 </tr>
                                 <tr class="hover:bg-zinc-800">
                                     <td class="px-6 py-4">
@@ -189,13 +187,12 @@
                                     <td class="px-6 py-4">05:45 PM</td>
                                     <td class="px-6 py-4">
                                         <span
-                                            class="border border-yellow-300 bg-black text-yellow-300 px-2 py-1 rounded text-sm">Late</span>
+                                            class="inline-flex items-center bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm font-semibold w-auto">
+                                            <span class="h-2 w-2 bg-yellow-700 rounded-full mr-2"></span>
+                                            Late
+                                        </span>
                                     </td>
-                                    <td class="px-6 py-4">
-                                        <button>
-                                            <i class="fas fa-circle-info p-2 cursor-pointer rounded-md text-gray-300 hover:text-white hover:bg-zinc-700 "></i>
-                                        </button>
-                                    </td>
+                                    
                                 </tr>
                                 <tr class="hover:bg-zinc-800">
                                     <td class="px-6 py-4">
@@ -216,13 +213,12 @@
                                     <td class="px-6 py-4">--</td>
                                     <td class="px-6 py-4">
                                         <span
-                                            class="border border-red-400 bg-black text-red-400 px-2 py-1 rounded text-sm">Absent</span>
+                                            class="inline-flex items-center bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm font-semibold w-auto">
+                                            <span class="h-2 w-2 bg-red-700 rounded-full mr-2"></span>
+                                            Absent
+                                        </span>
                                     </td>
-                                    <td class="px-6 py-4">
-                                        <button>
-                                            <i class="fas fa-circle-info p-2 cursor-pointer rounded-md text-gray-300 hover:text-white hover:bg-zinc-700 "></i>
-                                        </button>
-                                    </td>
+                                    
                                 </tr>
                             </tbody>
                         </table>

@@ -130,7 +130,11 @@
                                 <td class="px-6 py-4">Jan 2024</td>
                                 <td class="px-6 py-4">$2,500</td>
                                 <td class="px-6 py-4">
-                                    <span class="bg-black text-green-500 border border-green-500 px-3 py-1 rounded-md text-sm">Paid</span>
+                                    <span
+                                        class="inline-flex items-center bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-semibold w-auto">
+                                        <span class="h-2 w-2 bg-green-700 rounded-full mr-2"></span>
+                                        Paid
+                                    </span>
                                 </td>
                                 <td class="px-6 py-4">
                                     <button>
@@ -152,7 +156,11 @@
                                 <td class="px-6 py-4">Jan 2024</td>
                                 <td class="px-6 py-4">$2,300</td>
                                 <td class="px-6 py-4">
-                                    <span class="border border-yellow-300 bg-black text-yellow-300 px-2 py-1 rounded text-sm">Pending</span>
+                                    <span
+                                        class="inline-flex items-center bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm font-semibold w-auto">
+                                        <span class="h-2 w-2 bg-yellow-700 rounded-full mr-2"></span>
+                                        Pending
+                                    </span>
                                 </td>
                                 <td class="px-6 py-4">
                                     <button>
