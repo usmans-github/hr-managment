@@ -28,16 +28,16 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
 
         // Check for Admin Login
-        if (Auth::guard('admin')->attempt($credentials)) {
-            $user = Auth::guard('admin')->user();
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
             if ($user->role === 'admin') {
                 return redirect()->route('admin.index')->with('success', 'Admin logged in successfully!');
             }
         }
 
         // Check for Employee Login
-        if (Auth::guard('employee')->attempt($credentials)) {
-            $employee = Auth::guard('employee')->user();
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
             return redirect()->route('employee.index')->with('success', 'Employee logged in successfully!');
         }
 

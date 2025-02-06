@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Employee;
+
 use App\Models\User;
 
 return [
@@ -39,13 +39,9 @@ return [
     */
 
     'guards' => [
-        'admin' => [
+        'web' => [
             'driver' => 'session',
             'provider' => 'users',
-        ],
-        'employee' => [
-            'driver' => 'session',
-            'provider' => 'employees',
         ],
     ],
 
@@ -67,16 +63,16 @@ return [
     */
 
     'providers' => [
-    'users' => [
-        'driver' => 'eloquent',
-        'model' => User::class,
-    ],
+        'users' => [
+            'driver' => 'eloquent',
+            'model' => env('AUTH_MODEL', User::class),
+        ],
 
-    'employees' => [
-        'driver' => 'eloquent',
-        'model' => Employee::class,
+        // 'users' => [
+        //     'driver' => 'database',
+        //     'table' => 'users',
+        // ],
     ],
-],
 
     /*
     |--------------------------------------------------------------------------
