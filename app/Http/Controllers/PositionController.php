@@ -6,6 +6,7 @@ use App\Http\Requests\UpdatepositionRequest;
 use App\Models\Department;
 use App\Models\Position;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PositionController extends Controller
 {
@@ -22,10 +23,13 @@ class PositionController extends Controller
      */
     public function create()
     {
-        
-       return view('admin.create-position', [
-        'departments' =>  Department::all()
-       ]);
+        $user = Auth::user();
+        if ($user->role === 'admin') {
+
+            return view('admin.create-position', [
+                'departments' =>  Department::all()
+            ]);
+        }
     }
 
     /**
@@ -33,16 +37,20 @@ class PositionController extends Controller
      */
     public function store(Request $request)
     {
-        
-        $credentials = $request->validate([
-            'position_name' => ['required'],
-            'department_id' => ['required']
-        ]);
+        $user = Auth::user();
+        if ($user->role === 'admin') {
 
-        $position = Position::create($credentials);
-        $position->save();
 
-        return redirect('/department')->with('success', 'Position created successfully!');
+            $credentials = $request->validate([
+                'position_name' => ['required'],
+                'department_id' => ['required']
+            ]);
+
+            $position = Position::create($credentials);
+            $position->save();
+
+            return redirect('/department')->with('success', 'Position created successfully!');
+        }
     }
 
     /**

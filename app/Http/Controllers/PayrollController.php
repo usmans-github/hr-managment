@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PayrollController extends Controller
 {
@@ -11,7 +12,10 @@ class PayrollController extends Controller
      */
     public function index()
     {
-        return view('admin.payrolls');
+        $user = Auth::user();
+        if ($user->role === 'admin') {
+            return view('admin.payrolls');
+        }
     }
 
     /**

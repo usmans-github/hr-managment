@@ -59,9 +59,12 @@ class DepartmentsController extends Controller
      */
     public function edit($id)
     {
-        $department = Department::findOrFail($id);
+        $user = Auth::user();
+        if ($user->role === 'admin') {
+            $department = Department::findOrFail($id);
 
-        return view('admin.edit-department', compact('department'));
+            return view('admin.edit-department', compact('department'));
+        }
     }
 
     /**
@@ -69,14 +72,17 @@ class DepartmentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $credentials = $request->validate([
-            'department_name' => 'required|string|max:255'
-        ]);
+        $user = Auth::user();
+        if ($user->role === 'admin') {
+            $credentials = $request->validate([
+                'department_name' => 'required|string|max:255'
+            ]);
 
-        $department = Department::findOrFail($id);
-        $department->update($credentials);
+            $department = Department::findOrFail($id);
+            $department->update($credentials);
 
-        return redirect('department')->with('success', 'Department updated successfully.');
+            return redirect('department')->with('success', 'Department updated successfully.');
+        }
     }
 
 
@@ -85,18 +91,21 @@ class DepartmentsController extends Controller
      */
     public function destroy($id)
     {
-        // Find the department by ID
-        $department = Department::find($id);
+        $user = Auth::user();
+        if ($user->role === 'admin') {
+            // Find the department by ID
+            $department = Department::find($id);
 
-        // Check if department exists
-        if (!$department) {
-            return redirect()->back()->with('error', 'Department not found.');
+            // Check if department exists
+            if (!$department) {
+                return redirect()->back()->with('error', 'Department not found.');
+            }
+
+            // Delete the employee
+            $department->delete();
+
+            // Redirect back with success message
+            return redirect('/department')->with('success', 'Department deleted successfully.');
         }
-
-        // Delete the employee
-        $department->delete();
-
-        // Redirect back with success message
-        return redirect('/department')->with('success', 'Department deleted successfully.');
     }
 }
