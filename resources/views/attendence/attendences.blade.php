@@ -161,7 +161,8 @@
                                     <td class="px-6 py-4">06:00 PM</td>
                                     <td class="px-6 py-4">
                                         <span
-                                            class="inline-flex items-center bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-semibold w-auto">
+                                            class="inline-flex items-center bg-green-100 text-green-700 px-3 py-1 rounded-full
+                                             text-sm font-semibold w-auto">
                                             <span class="h-2 w-2 bg-green-700 rounded-full mr-2"></span>
                                             Present
                                         </span>

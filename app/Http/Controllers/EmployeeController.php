@@ -7,6 +7,7 @@ use App\Models\Department;
 use App\Models\Position;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EmployeeController extends Controller
 {
@@ -15,7 +16,9 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        return view('employee.index');
+        $user = Auth::user();
+        $employee = Employee::where('user_id', $user->id)->first();
+        return view('employee.index', compact('employee'));
     }
 
     /**

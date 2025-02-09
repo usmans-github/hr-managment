@@ -1,40 +1,30 @@
 <x-layout>
-    
+
     @if (session('success'))
         <div class="fixed top-4 left-1/2 transform -translate-x-1/2 z-50">
             <div id="toast-success"
-                class="flex items-center w-full max-w-xs p-4 text-gray-300 bg-zinc-800 border border-gray-700 rounded-lg shadow-sm"
-                role="alert">
-                <div
-                    class="inline-flex items-center justify-center shrink-0 w-8 h-8 text-green-400 bg-zinc-700 rounded-lg">
-                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                        viewBox="0 0 20 20">
-                        <path
-                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
-                    </svg>
-                    <span class="sr-only">Check icon</span>
+                class="flex items-center w-full max-w-xs p-4 text-gray-300 bg-zinc-800
+                 border border-gray-700 rounded-lg shadow-sm" role="alert">
+                <div class="inline-flex items-center justify-center shrink-0 w-8 h-8 text-green-400
+                 bg-zinc-700 rounded-lg">
+                    <i class="fa fa-check"></i>
                 </div>
                 <div class="mx-3 text-sm font-normal">{{ session('success') }}</div>
                 <button type="button"
                     class="ms-auto -mx-1.5 -my-1.5 bg-zinc-800 text-gray-300 hover:text-white rounded-lg
-             p-1.5 hover:bg-zinc-700 inline-flex items-center justify-center h-8 w-8"
-                    data-dismiss-target="#toast-success" aria-label="Close">
-                    <span class="sr-only">Close</span>
-                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 14 14">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                    </svg>
+                    p-1.5 hover:bg-zinc-700 inline-flex items-center justify-center h-8 w-8"
+                   data-dismiss-target="#toast-success" aria-label="Close">
+                    <i class="fa fa-xmark"></i>
                 </button>
             </div>
         </div>
     @endif
-    
-    
 
     <!-- Sidebar -->
     <aside class="w-64 absolute h-full">
-
+        <a href="/employee">
+            <div class="mt-4 px-4 text-3xl font-extrabold">HR-Managment</div>
+        </a>
         <nav class="mt-8">
             <ul class="space-y-4 px-4">
                 <li>
@@ -79,13 +69,12 @@
     <main class="flex-1 ml-64 p-8">
         <!-- Welcome Header -->
         <div class="mb-2">
-            <h1 class="text-3xl font-bold">Employee Dashboard</h1>
-            <p class="text-gray-300 text-sm font-semibold">Manage your hr operations effortlessly.</p>
+            <h1 class="text-3xl font-bold">Hello {{ $employee->first_name . ' ' . $employee->last_name }},</h1>
         </div>
 
         <div class="max-w-7xl mx-auto py-6">
             <!-- Attendance Card -->
-            <div class="bg-zinc-900 overflow-hidden shadow-sm sm:rounded-lg mb-6">
+            <div class="bg-zinc-900 overflow-hidden shadow-sm sm:rounded-xl mb-6">
                 <div class="p-6">
                     <h3 class="text-lg font-semibold  mb-4">Today's Attendance</h3>
                     <div class="flex items-center justify-between">
@@ -104,20 +93,19 @@
 
             <!-- Quick Actions -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-                <div class="bg-zinc-900 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="bg-zinc-900 overflow-hidden shadow-sm rounded-xl">
                     <div class="p-6">
                         <h3 class="text-lg font-semibold mb-4">Quick Actions</h3>
                         <div class="space-y-2">
                             <button
-                                class="w-full bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-4 rounded">
+                                class="w-full bg-indigo-500 hover:bg-indigo-600 text-white
+                                 font-semibold py-2 px-4 rounded">
                                 Apply for Leave
                             </button>
-                            <button
-                                class="w-full  font-semibold py-2 px-4 rounded">
+                            <button class="w-full  font-semibold py-2 px-4 rounded">
                                 Request WFH
                             </button>
-                            <button
-                                class="w-full  font-semibold py-2 px-4 rounded">
+                            <button class="w-full  font-semibold py-2 px-4 rounded">
                                 Submit Expense
                             </button>
                         </div>

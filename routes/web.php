@@ -24,11 +24,11 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('reports', ReportsController::class);
     Route::resource('department', DepartmentsController::class);
     Route::resource('position', PositionController::class);
-    Route::resource('employee', EmployeeController::class);
 });
 
 // Employee ROutes
 Route::middleware(['auth'])->group(function () {
 
+    Route::resource('employee', EmployeeController::class);
     
 });
