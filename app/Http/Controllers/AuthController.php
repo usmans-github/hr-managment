@@ -38,7 +38,9 @@ class AuthController extends Controller
         // Check for Employee Login
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
-            return redirect()->route('employee.index')->with('success', 'Employee logged in successfully!');
+            if ($user->role === 'employee') {
+                return redirect()->route('employee.index')->with('success', 'Employee logged in successfully!');
+            }
         }
 
         return back()->withErrors(['error' => 'Invalid credentials']);
