@@ -69,27 +69,37 @@
     <main class="flex-1 ml-64 p-8">
         <!-- Welcome Header -->
         <div class="mb-2">
-            <h1 class="text-3xl font-bold">Hello {{ $employee->first_name . ' ' . $employee->last_name }},</h1>
+            <h1 class="text-xl font-semibold">Welcome Back, </h1>
+            <h1 class="text-3xl font-bold"> {{ $employee->first_name . ' ' . $employee->last_name }}</h1>
         </div>
 
         <div class="max-w-7xl mx-auto py-6">
-            <!-- Attendance Card -->
-            <div class="bg-zinc-900 overflow-hidden shadow-sm sm:rounded-xl mb-6">
-                <div class="p-6">
-                    <h3 class="text-lg font-semibold  mb-4">Today's Attendance</h3>
-                    <div class="flex items-center justify-between">
-                        <div>
-                            <p class="text-sm ">Current Status:</p>
-                            <p class="text-lg font-semibold text-green-600">Checked In</p>
-                            <p class="text-sm ">09:00 AM</p>
-                        </div>
-                        <button class="w-48 h-28 text-2xl bg-red-500 hover:bg-red-600 font-semibold  rounded">
-                            Check Out
-                            <i class="fa-solid fa-right-from-bracket "></i>
-                        </button>
-                    </div>
+           <!-- Check-in/Check-out Section -->
+           <div class="bg-zinc-900 rounded-xl  p-6 mb-8">
+            <h2 class="text-2xl font-bold mb-4">Attendance</h2>
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-gray-300 mb-2">Current Status:</p>
+                    <span class="inline-flex items-center bg-green-100 text-green-700 px-3 py-1
+                     rounded-full text-sm font-semibold">
+                        <span class="h-2 w-2 bg-green-700 rounded-full mr-2"></span>
+                        {{-- {{ $checkedIn ? 'Checked In' : 'Checked Out' }} --}} Checked In
+                    </span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <button id="checkin-button" class="w-48 h-16 text-xl bg-green-200 text-green-600
+                     font-semibold rounded mb-2" onclick="toggleButtons()">
+                     <i class="fa-solid fa-chevron-left mx-2"></i>
+                        Check In
+                    </button>
+                    <button id="checkout-button" class="w-48 h-16 text-xl bg-red-200 text-red-600
+                     font-semibold rounded hidden" onclick="toggleButtons()">
+                        Check Out
+                        <i class="fa-solid fa-chevron-right mx-2"></i>
+                    </button>
                 </div>
             </div>
+        </div>
 
             <!-- Quick Actions -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
@@ -175,3 +185,12 @@
     </main>
     </div>
 </x-layout>
+
+<script>
+     function toggleButtons() {
+        const checkinButton = document.getElementById('checkin-button');
+        const checkoutButton = document.getElementById('checkout-button');
+        checkinButton.classList.toggle('hidden');
+        checkoutButton.classList.toggle('hidden');
+    }
+</script>

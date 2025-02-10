@@ -5,3 +5,4 @@ document.querySelectorAll('[data-dismiss-target]').forEach(button => {
         this.parentElement.remove();
     });
 });
+
