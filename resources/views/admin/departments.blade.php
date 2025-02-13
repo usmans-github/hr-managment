@@ -156,7 +156,7 @@
                         <div class="grid grid-cols-2 gap-2">
                             @foreach ($department->positions as $position)
                             <div class="bg-zinc-800 px-3 py-2 rounded-xl text-sm text-gray-300">
-                                {{ $position->position_name }}
+                                {{ $position->position_name ?? 'No Positions' }}
                             </div>
                             @endforeach
                         </div>

@@ -3,11 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\Department;
+use App\Models\Position;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class DepartmentsController extends Controller
 {
+
+    public function getPositions($id)
+    {
+        $positions = Position::where('department_id', $id)->get();
+        return response()->json($positions);
+    }
+
+
     /**
      * Display a listing of the resource.
      */
@@ -49,7 +58,7 @@ class DepartmentsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Department $departments)
+    public function show(Request $request)
     {
         //
     }
@@ -75,11 +84,12 @@ class DepartmentsController extends Controller
         $user = Auth::user();
         if ($user->role === 'admin') {
             $credentials = $request->validate([
-                'department_name' => 'required|string|max:255'
+                'department_name' => 'required|string|max:255',
+                'positions' => 'required|array',
             ]);
 
             $department = Department::findOrFail($id);
-            $department->update($credentials);
+            $department->update($credentials);  
 
             return redirect('department')->with('success', 'Department updated successfully.');
         }

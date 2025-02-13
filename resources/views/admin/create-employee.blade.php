@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="flex min-h-screen flex-col justify-center px-6 lg:px-8">
+    <div class="flex min-h-screen flex-col justify-center px-6 lg:px-8 pt-12">
         <!-- Header -->
         <div class="sm:mx-auto sm:w-full sm:max-w-lg text-center mb-8">
             <h2 class="text-2xl font-semibold text-gray-100">Create New Employee</h2>
