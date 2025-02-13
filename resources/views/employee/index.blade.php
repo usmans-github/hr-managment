@@ -4,8 +4,10 @@
         <div class="fixed top-4 left-1/2 transform -translate-x-1/2 z-50">
             <div id="toast-success"
                 class="flex items-center w-full max-w-xs p-4 text-gray-300 bg-zinc-800
-                 border border-gray-700 rounded-lg shadow-sm" role="alert">
-                <div class="inline-flex items-center justify-center shrink-0 w-8 h-8 text-green-400
+                 border border-gray-700 rounded-lg shadow-sm"
+                role="alert">
+                <div
+                    class="inline-flex items-center justify-center shrink-0 w-8 h-8 text-green-400
                  bg-zinc-700 rounded-lg">
                     <i class="fa fa-check"></i>
                 </div>
@@ -13,7 +15,7 @@
                 <button type="button"
                     class="ms-auto -mx-1.5 -my-1.5 bg-zinc-800 text-gray-300 hover:text-white rounded-lg
                     p-1.5 hover:bg-zinc-700 inline-flex items-center justify-center h-8 w-8"
-                   data-dismiss-target="#toast-success" aria-label="Close">
+                    data-dismiss-target="#toast-success" aria-label="Close">
                     <i class="fa fa-xmark"></i>
                 </button>
             </div>
@@ -74,32 +76,51 @@
         </div>
 
         <div class="max-w-7xl mx-auto py-6">
-           <!-- Check-in/Check-out Section -->
-           <div class="bg-zinc-900 rounded-xl  p-6 mb-8">
-            <h2 class="text-2xl font-bold mb-4">Attendance</h2>
-            <div class="flex items-center justify-between">
-                <div>
-                    <p class="text-gray-300 mb-2">Current Status:</p>
-                    <span class="inline-flex items-center bg-green-100 text-green-700 px-3 py-1
+            <!-- Check-in/Check-out Section -->
+            <div class="bg-zinc-900 rounded-xl  p-6 mb-8">
+                <h2 class="text-2xl font-bold mb-4">Attendance</h2>
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-300 mb-2">Current Status:</p>
+                        <span
+                            class="inline-flex items-center bg-green-100 text-green-700 px-3 py-1
                      rounded-full text-sm font-semibold">
-                        <span class="h-2 w-2 bg-green-700 rounded-full mr-2"></span>
-                        {{-- {{ $checkedIn ? 'Checked In' : 'Checked Out' }} --}} Checked In
-                    </span>
-                </div>
-                <div class="flex flex-col items-center">
-                    <button id="checkin-button" class="w-48 h-16 text-xl bg-green-200 text-green-600
-                     font-semibold rounded mb-2" onclick="toggleButtons()">
-                     <i class="fa-solid fa-chevron-left mx-2"></i>
-                        Check In
-                    </button>
-                    <button id="checkout-button" class="w-48 h-16 text-xl bg-red-200 text-red-600
-                     font-semibold rounded hidden" onclick="toggleButtons()">
-                        Check Out
-                        <i class="fa-solid fa-chevron-right mx-2"></i>
-                    </button>
+                            <span class="h-2 w-2 bg-green-700 rounded-full mr-2"></span>
+                            {{ $employee->latestAttendence ? ($employee->latestAttendence->status === 'checked_in' ? 'Checked In' : 'Checked Out') : 'No Attendance Record' }}
+                        </span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <form id="checkin-form" action="{{ route('attendence.checkin', $employee->id) }}" method="POST" >
+                            @csrf
+                            <input type="hidden" name="date" id="date" value="{{ now()->format('d-m-Y') }}">
+                            <input type="hidden" name="time" id="time" value="{{ now()->format('h:i:s A') }}">
+                            <input type="hidden" name="status" value="checked_in">
+
+                            <button id="checkin-button", type="submit"
+                                class="w-48 h-16 text-xl bg-green-200 text-green-600
+                                font-semibold rounded mb-2"
+                                onclick="toggleButtons()">
+                                <i class="fa-solid fa-chevron-left mx-2"></i>
+                                Check In
+                            </button>
+                        </form>
+                        <form id="checkout-form" action="{{ route('attendence.checkout', $employee->id) }}" " method="POST">
+                            @csrf
+                            <input type="hidden" name="date" id="date" value="{{ now()->format('d-m-Y') }}">
+                            <input type="hidden" name="time" id="time" value="{{ now()->format('h:i:s A') }}">
+                            <input type="hidden" name="status" value="checked_out">
+
+                            <button id="checkout-button", type="submit"
+                            class="w-48 h-16 text-xl bg-red-200 text-red-600
+                            font-semibold rounded hidden"
+                            onclick="toggleButtons()">
+                            Check Out
+                            <i class="fa-solid fa-chevron-right mx-2"></i>
+                        </button>
+                    </form>
+                    </div>
                 </div>
             </div>
-        </div>
 
             <!-- Quick Actions -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
@@ -187,10 +208,17 @@
 </x-layout>
 
 <script>
-     function toggleButtons() {
+    function toggleButtons() {
         const checkinButton = document.getElementById('checkin-button');
         const checkoutButton = document.getElementById('checkout-button');
         checkinButton.classList.toggle('hidden');
         checkoutButton.classList.toggle('hidden');
     }
+
+    // function handleCheckin(e) {
+    //     e.preventDefault();
+    // }
+    // function handleCheckout(e) {
+    //     e.preventDefault();
+    // }
 </script>

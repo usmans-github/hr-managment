@@ -21,6 +21,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('employees', [AdminController::class, 'employees'])->name('admin.employees');
     Route::resource('payroll', PayrollController::class);
     Route::resource('attendence', AttendenceController::class);
+    Route::post('attendence/checkin/{id}', [AttendenceController::class, 'checkin'])->name('attendence.checkin');
+    Route::post('attendence/checkout/{id}', [AttendenceController::class, 'checkout'])->name('attendence.checkout');
     Route::resource('reports', ReportsController::class);
     Route::resource('department', DepartmentsController::class);
     Route::resource('position', PositionController::class);

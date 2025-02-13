@@ -17,8 +17,7 @@ class EmployeeController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $employee = Employee::where('user_id', $user->id)->first();
-        
+        $employee = Employee::where('user_id', $user->id)->with('latestAttendence')->first();
         return view('employee.index', compact('employee'));
     }
 

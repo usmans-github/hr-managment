@@ -33,19 +33,7 @@ class AttendenceController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'employee_id' => 'required|exists:employees,id',
-            'date' => 'required|date',
-            'status' => 'required|in:Present,Absent,Leave',
-        ]);
-
-        Attendence::create([
-            'employee_id' => $request->employee_id,
-            'date' => $request->date,
-            'status' => $request->status,
-        ]);
-
-        return redirect()->route('attendence.index')->with('success', 'Attendence recorded successfully.');
+        
     }
 
     /**
@@ -93,4 +81,28 @@ class AttendenceController extends Controller
 
         return redirect()->route('attendence.index')->with('success', 'attendence deleted successfully.');
     }
+
+
+    public function checkin(Request $request, $id)
+    {
+        // dd($request->all());
+        $request->validate([
+            'date' => 'required|date',
+            'time' => 'required',
+            'status' => 'required|in:checked_in, checked_out, absent',
+        ]);
+
+        Attendence::create([
+            'employee_id' => $id,
+            'date' => $request->date,
+            'time' => $request->time,
+            'status' => $request->status,
+        ]);
+
+        return redirect()->route('employee.index')->with('success', 'Checked In successfully.');
+        
+
+    }
+
+
 }
