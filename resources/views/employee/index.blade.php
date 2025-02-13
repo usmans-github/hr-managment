@@ -90,34 +90,42 @@
                         </span>
                     </div>
                     <div class="flex flex-col items-center">
-                        <form id="checkin-form" action="{{ route('attendence.checkin', $employee->id) }}" method="POST" >
-                            @csrf
-                            <input type="hidden" name="date" id="date" value="{{ now()->format('d-m-Y') }}">
-                            <input type="hidden" name="time" id="time" value="{{ now()->format('h:i:s A') }}">
-                            <input type="hidden" name="status" value="checked_in">
+                        @if (
+                            !$employee->latestAttendence ||
+                                ($employee->latestAttendence->status === 'checked_out' || $employee->latestAttendence->status === 'absent'))
+                            <form id="checkin-form" action="{{ route('attendence.checkin', $employee->id) }}"
+                                method="POST">
+                                @csrf
+                                <input type="hidden" name="date" id="date"
+                                    value="{{ now()->format('d-m-Y') }}">
+                                <input type="hidden" name="time" id="time"
+                                    value="{{ now()->format('h:i:s A') }}">
+                                <input type="hidden" name="status" value="checked_in">
 
-                            <button id="checkin-button", type="submit"
-                                class="w-48 h-16 text-xl bg-green-200 text-green-600
-                                font-semibold rounded mb-2"
-                                onclick="toggleButtons()">
-                                <i class="fa-solid fa-chevron-left mx-2"></i>
-                                Check In
-                            </button>
-                        </form>
-                        <form id="checkout-form" action="{{ route('attendence.checkout', $employee->id) }}" " method="POST">
-                            @csrf
-                            <input type="hidden" name="date" id="date" value="{{ now()->format('d-m-Y') }}">
-                            <input type="hidden" name="time" id="time" value="{{ now()->format('h:i:s A') }}">
-                            <input type="hidden" name="status" value="checked_out">
+                                <button id="checkin-button" type="submit"
+                                    class="w-48 h-16 text-xl bg-green-200 text-green-600 font-semibold rounded mb-2">
+                                    <i class="fa-solid fa-chevron-left mx-2"></i>
+                                    Check In
+                                </button>
+                            </form>
+                        @else
+                            <form id="checkout-form" action="{{ route('attendence.checkout', $employee->id) }}"
+                                method="POST">
+                                @csrf
+                                <input type="hidden" name="date" id="date"
+                                    value="{{ now()->format('d-m-Y') }}">
+                                <input type="hidden" name="time" id="time"
+                                    value="{{ now()->format('h:i:s A') }}">
+                                <input type="hidden" name="status" value="checked_out">
 
-                            <button id="checkout-button", type="submit"
-                            class="w-48 h-16 text-xl bg-red-200 text-red-600
-                            font-semibold rounded hidden"
-                            onclick="toggleButtons()">
-                            Check Out
-                            <i class="fa-solid fa-chevron-right mx-2"></i>
-                        </button>
-                    </form>
+                                <button id="checkout-button" type="submit"
+                                    class="w-48 h-16 text-xl bg-red-200 text-red-600 font-semibold rounded ">
+                                    Check Out
+                                    <i class="fa-solid fa-chevron-right mx-2"></i>
+                                </button>
+                            </form>
+                        @endif
+
                     </div>
                 </div>
             </div>
@@ -205,20 +213,13 @@
         </div>
     </main>
     </div>
-</x-layout>
+</x-layout> 
 
 <script>
-    function toggleButtons() {
-        const checkinButton = document.getElementById('checkin-button');
-        const checkoutButton = document.getElementById('checkout-button');
-        checkinButton.classList.toggle('hidden');
-        checkoutButton.classList.toggle('hidden');
-    }
-
-    // function handleCheckin(e) {
-    //     e.preventDefault();
-    // }
-    // function handleCheckout(e) {
-    //     e.preventDefault();
+    // function toggleButtons() {
+    //     const checkinButton = document.getElementById('checkin-button');
+    //     const checkoutButton = document.getElementById('checkout-button');
+    //     checkinButton.classList.toggle('hidden');
+    //     checkoutButton.classList.toggle('hidden');
     // }
 </script>

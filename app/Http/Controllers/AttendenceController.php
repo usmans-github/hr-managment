@@ -89,7 +89,7 @@ class AttendenceController extends Controller
         $request->validate([
             'date' => 'required|date',
             'time' => 'required',
-            'status' => 'required|in:checked_in, checked_out, absent',
+            'status' => 'required|checked_in',
         ]);
 
         Attendence::create([
@@ -100,6 +100,27 @@ class AttendenceController extends Controller
         ]);
 
         return redirect()->route('employee.index')->with('success', 'Checked In successfully.');
+        
+
+    }
+
+    public function checkout(Request $request, $id)
+    {
+        // dd($request->all());
+        $request->validate([
+            'date' => 'required|date',
+            'time' => 'required',
+            'status' => 'required|checked_out',
+        ]);
+
+        Attendence::create([
+            'employee_id' => $id,
+            'date' => $request->date,
+            'time' => $request->time,
+            'status' => $request->status,
+        ]);
+
+        return redirect()->route('employee.index')->with('success', 'Checked Out successfully.');
         
 
     }
