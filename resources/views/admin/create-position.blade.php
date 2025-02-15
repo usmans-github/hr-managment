@@ -8,31 +8,22 @@
 
         <!-- Form -->
         <div class="sm:mx-auto sm:w-full sm:max-w-md bg-zinc-800 rounded-xl shadow-md p-6">
-            <form class="space-y-6" action="/position" method="POST">
+            <form class="space-y-6" action="{{ route('position.store') }}" method="POST">
                 @csrf
 
                 <!-- Position Name -->
                 <div>
                     <label for="position_name" class="block text-sm font-medium text-gray-300">Position Name</label>
-                    <input
-                        type="text"
-                        name="position_name"
-                        id="position_name"
-                        required
+                    <input type="text" name="position_name" id="position_name" required
                         class="mt-2 block w-full rounded-xl bg-zinc-900 border border-gray-700 px-4 py-3 text-gray-300 placeholder-gray-500 focus:ring-indigo-500 focus:border-indigo-500"
-                        placeholder="Enter position name"
-                    />
+                        placeholder="Enter position name" />
                 </div>
 
                 <!-- Department Name -->
                 <div>
                     <label for="department_id" class="block text-sm font-medium text-gray-300">Department Name</label>
-                    <select
-                        name="department_id"
-                        id="department_id"
-                        required
-                        class="mt-2 block cursor-pointer w-full rounded-xl bg-zinc-900 border border-gray-700 px-4 py-3 text-gray-300 placeholder-gray-500 focus:ring-indigo-500 focus:border-indigo-500"
-                    >
+                    <select name="department_id" id="department_id" required
+                        class="mt-2 block cursor-pointer w-full rounded-xl bg-zinc-900 border border-gray-700 px-4 py-3 text-gray-300 placeholder-gray-500 focus:ring-indigo-500 focus:border-indigo-500">
                         <option disabled selected>Select a department</option>
                         @foreach ($departments as $department)
                             <option value="{{ $department->id }}">{{ $department->department_name }}</option>
@@ -42,9 +33,8 @@
 
                 <!-- Submit Button -->
                 <div>
-                    <button
-                        type="submit"
-                        class="w-full  rounded-xl bg-zinc-700 hover:bg-zinc-600 px-6 py-3 text-sm font-medium text-white"   >
+                    <button type="submit"
+                        class="w-full rounded-xl bg-zinc-700 hover:bg-zinc-600 px-6 py-3 text-sm font-medium text-white">
                         Create Position
                     </button>
                 </div>
@@ -52,8 +42,8 @@
 
             <!-- Back to Departments Link -->
             <p class="mt-6 text-center text-sm text-gray-400">
-                Back to Departments? 
-                <a href="/department" class="text-white hover:underline">
+                Back to Departments?
+                <a href="{{ route('department.index') }}" class="text-white hover:underline">
                     Click Here
                 </a>
             </p>

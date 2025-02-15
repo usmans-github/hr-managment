@@ -89,7 +89,7 @@ class AttendenceController extends Controller
         $request->validate([
             'date' => 'required|date',
             'time' => 'required',
-            'status' => 'required|checked_in',
+            'status' => 'required|in:checked_in',
         ]);
 
         Attendence::create([
@@ -110,7 +110,7 @@ class AttendenceController extends Controller
         $request->validate([
             'date' => 'required|date',
             'time' => 'required',
-            'status' => 'required|checked_out',
+            'status' => 'required|in:checked_out'
         ]);
 
         Attendence::create([
