@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Attendence;
+use App\Models\Employee;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,8 +17,8 @@ class AttendenceController extends Controller
     {
         $user = Auth::user();
         if ($user->role === 'admin') {
-            $attendences = Attendence::all();
-            return view('attendence.attendences', compact('attendences'));
+            $employees = Employee::all();
+            return view('attendence.attendences', compact('employees'));
         }
     }
 

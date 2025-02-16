@@ -2,7 +2,9 @@
         <div class="flex min-h-screen">
             <!-- Sidebar -->
             <aside class="w-64 absolute h-full">
-               <a href="/"> <div class="mt-4 px-4 text-3xl font-extrabold">HR-Managment</div> </a>
+                <a href="/">
+                    <div class="mt-4 px-4 text-3xl font-extrabold">HR-Managment</div>
+                </a>
                 <nav class="mt-8">
                     <ul class="space-y-4 px-4">
                         <li>
@@ -142,34 +144,51 @@
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-800">
-                                <tr class="hover:bg-zinc-800">
-                                    <td class="px-6 py-4">
-                                        <div class="flex items-center">
-                                            <div
-                                                class="w-8 h-8 rounded-full bg-black flex items-center justify-center mr-3">
-                                                JD
+                                @foreach ($employees as $employee)
+                                    <tr class="hover:bg-zinc-800">
+
+                                        <td class="px-6 py-4">
+                                            <div class="flex items-center">
+                                                <div
+                                                    class="w-8 h-8 rounded-full bg-black flex items-center justify-center mr-3">
+                                                    {{ $employee->first_name[0] . ' ' . $employee->last_name[0] }}
+                                                </div>
+                                                <div>
+                                                    <div class="font-medium">
+                                                        {{ $employee->first_name . ' ' . $employee->last_name }}</div>
+                                                    <div class="text-sm text-gray-400">#{{ $employee->id }}</div>
+                                                </div>
                                             </div>
-                                            <div>
-                                                <div class="font-medium">John Doe</div>
-                                                <div class="text-sm text-gray-400">#EMP001</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-4">Development</td>
-                                    <td class="px-6 py-4">2024-01-26</td>
-                                    <td class="px-6 py-4">09:00 AM</td>
-                                    <td class="px-6 py-4">06:00 PM</td>
-                                    <td class="px-6 py-4">
-                                        <span
-                                            class="inline-flex items-center bg-green-100 text-green-700 px-3 py-1 rounded-full
-                                             text-sm font-semibold w-auto">
-                                            <span class="h-2 w-2 bg-green-700 rounded-full mr-2"></span>
-                                            Present
-                                        </span>
-                                    </td>
-                                    
-                                </tr>
-                                <tr class="hover:bg-zinc-800">
+                                        </td>
+                                        <td class="px-6 py-4">{{ $employee->department->department_name }}</td>
+                                        <td class="px-6 py-4">{{ $employee->latestAttendence->date }}</td>
+                                        <td class="px-6 py-4">{{ $employee->latestAttendence->checked_in }}</td>
+                                        <td class="px-6 py-4">{{ $employee->latestAttendence->checked_out }}</td>
+                                        <td class="px-6 py-4">
+                                            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold w-auto 
+                                                 {{ $employee->latestAttendence->status === 'Present'
+                                                     ? 'bg-green-100 text-green-700'
+                                                     : ($employee->latestAttendence->status === 'Late'
+                                                         ? 'bg-yellow-100 text-yellow-700'
+                                                         : 'bg-red-100 text-red-700') }}">
+
+                                                <span class="h-2 w-2 rounded-full mr-2 
+                                                {{ $employee->latestAttendence->status === 'Present'
+                                                    ? 'bg-green-700'
+                                                    : ($employee->latestAttendence->status === 'Late'
+                                                        ? 'bg-yellow-700'
+                                                        : 'bg-red-700') }}">
+                                                </span>
+
+                                                {{ $employee->latestAttendence->status }}
+                                            </span>
+
+
+                                        </td>
+
+                                    </tr>
+                                @endforeach
+                                {{-- <tr class="hover:bg-zinc-800">
                                     <td class="px-6 py-4">
                                         <div class="flex items-center">
                                             <div
@@ -190,10 +209,10 @@
                                         <span
                                             class="inline-flex items-center bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm font-semibold w-auto">
                                             <span class="h-2 w-2 bg-yellow-700 rounded-full mr-2"></span>
-                                            Late
+                                            Leave
                                         </span>
                                     </td>
-                                    
+
                                 </tr>
                                 <tr class="hover:bg-zinc-800">
                                     <td class="px-6 py-4">
@@ -219,8 +238,8 @@
                                             Absent
                                         </span>
                                     </td>
-                                    
-                                </tr>
+
+                                </tr> --}}
                             </tbody>
                         </table>
 
