@@ -83,7 +83,7 @@ class AttendenceController extends Controller
             return redirect()->route('employee.index')->with('error', 'Already checked in.');
         }
         //Time
-        $timetoday = Carbon::now()->toTimeString();
+        $timetoday = Carbon::now()->format('h:i A');
         // Create new check-in record
         Attendence::create([
             'employee_id' => $id,
@@ -107,7 +107,7 @@ class AttendenceController extends Controller
 
         // Update check-out time
         $attendance->update([
-            'checked_out' => Carbon::now()->toTimeString(),
+            'checked_out' => Carbon::now()->format('h:i A'),
         ]);
 
         return redirect()->route('employee.index')->with('success', 'Check out successfully');

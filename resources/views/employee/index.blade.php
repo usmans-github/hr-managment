@@ -73,45 +73,58 @@
         <div class="mb-6">
             <h1 class="text-sm font-medium text-gray-300">Welcome Back,</h1>
             <h1 class="text-4xl font-bold">{{ $employee->first_name . ' ' . $employee->last_name }}</h1>
+          
         </div>
 
         <div class="max-w-7xl mx-auto space-y-6 ">
-            <!-- Check-in/Check-out Section -->
-            <div class="bg-zinc-900 text-white rounded-xl p-6 shadow-lg">
-                <h2 class="text-2xl font-bold mb-4">Attendance</h2>
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-gray-300 mb-2">Current Status:</p>
-                        <span
-                            class="inline-flex items-center bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-semibold">
-                            <span class="h-2 w-2 bg-green-700 rounded-full mr-2"></span>
-                            {{ $employee->latestAttendence ? ($employee->latestAttendence->checked_in ? 'Checked In' : 'Checked Out') : 'No Attendance Record' }}
+            <div class="max-w-7xl mx-auto py-6">
+           <!-- Check-in/Check-out Section -->
+        <div class="bg-zinc-900 rounded-xl p-6 mb-8">
+            <h2 class="text-2xl font-bold mb-4">Attendance</h2>
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="mb-2 text-sm font-medium text-gray-300">Current Status:</p>
+                    @if ($employee->latestAttendence && $employee->latestAttendence->checked_out)
+                        <span class="inline-flex items-center bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm font-semibold">
+                            <span class="h-2 w-2 bg-gray-700 rounded-full mr-2"></span>
+                            Checked Out ({{ $employee->latestAttendence->checked_in }} - {{ $employee->latestAttendence->checked_out }})
                         </span>
-                    </div>
-                    <div>
-                        @if (
-                            !$employee->latestAttendence ||
-                                $employee->latestAttendence->status === 'checked_out' ||
-                                $employee->latestAttendence->status === 'absent')
-                            <form action="{{ route('attendence.checkin', $employee->id) }}" method="POST">
-                                @csrf
-                                <button type="submit"
-                                    class="w-48 h-14 text-lg bg-green-500 hover:bg-green-600 text-white font-semibold rounded-xl shadow">
-                                    <i class="fa-solid fa-check mx-2"></i> Check In
-                                </button>
-                            </form>
-                        @else
-                            <form action="{{ route('attendence.checkout', $employee->id) }}" method="POST">
-                                @csrf
-                                <button type="submit"
-                                    class="w-48 h-14 text-lg bg-red-500 hover:bg-red-600 text-white font-semibold rounded-xl shadow">
-                                    Check Out <i class="fa-solid fa-times mx-2"></i>
-                                </button>
-                            </form>
-                        @endif
-                    </div>
+                    @elseif ($employee->latestAttendence && $employee->latestAttendence->checked_in)
+                        <span class="inline-flex items-center bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-semibold">
+                            <span class="h-2 w-2 bg-green-700 rounded-full mr-2"></span>
+                            Checked In
+                        </span>
+                    @else
+                        <span class="inline-flex items-center bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm font-semibold">
+                            <span class="h-2 w-2 bg-gray-700 rounded-full mr-2"></span>
+                            No Attendance Record
+                        </span>
+                    @endif
+                </div>
+                <div class="flex flex-col items-center">
+                    @if (!$employee->latestAttendence || $employee->latestAttendence->checked_out)
+                        <form id="checkin-form" action="{{ route('attendence.checkin', $employee->id) }}" method="POST">
+                            @csrf
+                            <button id="checkin-button" type="submit" class="w-48 h-16 text-xl bg-green-200 text-green-600 font-semibold rounded-xl mb-2">
+                                <i class="fa-solid fa-chevron-left mx-2"></i>
+                                Check In
+                            </button>
+                        </form>
+                    @elseif (!$employee->latestAttendence->checked_out)
+                        <form id="checkout-form" action="{{ route('attendence.checkout', $employee->id) }}" method="POST">
+                            @csrf
+                            <button id="checkout-button" type="submit" class="w-48 h-16 text-xl bg-red-200 text-red-600 font-semibold rounded-xl ">
+                                Check Out
+                                <i class="fa-solid fa-chevron-right mx-2"></i>
+                            </button>
+                        </form>
+                    @endif
                 </div>
             </div>
+        </div>
+    </div>
+    </div>
+    </div>
 
             <!-- Quick Actions & Information Cards -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
