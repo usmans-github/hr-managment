@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Attendence;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -41,8 +42,7 @@ class AttendenceController extends Controller
      */
     public function show(string $id)
     {
-        $attendence = Attendence::findOrFail($id);
-        return view('attendence.edit', compact('attendence'));
+        
     }
 
     /**
@@ -50,8 +50,7 @@ class AttendenceController extends Controller
      */
     public function edit(string $id)
     {
-        $attendence = Attendence::findOrFail($id);
-        return view('attendence.edit', compact('attendence'));
+        
     }
 
     /**
@@ -83,45 +82,44 @@ class AttendenceController extends Controller
     }
 
 
-    public function checkin(Request $request, $id)
+    public function checkin($id)
     {
-        dd($request->all());
-        // $request->validate([
-        //     'date' => 'required|date',
-        //     'time' => 'required',
-        //     'status' => 'required|in:checked_in',
-        // ]);
+        // dd($request->all());
+        $user = Auth::user();
+        $today = Carbon::today()->toDateString();
 
-        // Attendence::create([
-        //     'employee_id' => $id,
-        //     'date' => $request->date,
-        //     'time' => $request->time,
-        //     'status' => $request->status,
-        // ]);
+        // Check if already checked in
+        $attendance = Attendence::where('employee_id', $id)->where('date', $today)->first();
+        if ($attendance) {
+            return redirect()->route('employee.index')->with('error', 'Already checked in.');
+        }
 
-        // return redirect()->route('employee.index')->with('success', 'Checked In successfully.');
+        // Create new check-in record
+        Attendence::create([
+            'employee_id' => $id,
+            'date' => $today,
+            'check_in' => Carbon::now()->toTimeString(),
+        ]);
+        return redirect()->route('employee.index')->with('success', 'Checked in successfully.');
         
 
     }
 
-    public function checkout(Request $request, $id)
+    public function checkout( $id)
     {
-        dd($request->all());
-        // $request->validate([
-        //     'date' => 'required|date',
-        //     'time' => 'required',
-        //     'status' => 'required|in:checked_out'
-        // ]);
+        // dd($request->all());
+        $today = Carbon::today()->toDateString();
 
-        // Attendence::create([
-        //     'employee_id' => $id,
-        //     'date' => $request->date,
-        //     'time' => $request->time,
-        //     'status' => $request->status,
-        // ]);
+        // Find today's attendance record
+        $attendance = Attendence::where('emplpoyee_id', $id)->where('date', $today)->first();
+        if (!$attendance || $attendance->check_out) {
+            return redirect()->route('employee.index')->with('error', 'Either not checkin OR Already checked out.');
+        }
 
-        // return redirect()->route('employee.index')->with('success', 'Checked Out successfully.');
-        
+        // Update check-out time
+        $attendance->update([
+            'check_out' => Carbon::now()->toTimeString(),
+        ]);
 
     }
 

@@ -16,8 +16,8 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Employee::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->date('date');
-            $table->time('checked_in');
-            $table->time('checked_out');
+            $table->time('checked_in')->nullable();
+            $table->time('checked_out')->nullable();
             $table->enum('status', ['checked_in', 'checked_out', 'absent']);
             $table->timestamps();
         });
