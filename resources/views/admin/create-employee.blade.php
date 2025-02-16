@@ -86,8 +86,8 @@
 
                 <!-- Join Date -->
                 <div>
-                    <label for="Join Date" class="block text-sm font-medium text-gray-300">Join Date</label>
-                    <input type="date" name="join_date" id="join_date" required
+                    <label for="Join Date" class="block text-sm font-medium text-gray-300">Date of Joining</label>
+                    <input type="date" name=" join_date" id="join_date" required
                         class="mt-2 block w-full rounded-xl bg-zinc-900 border border-gray-700 px-4 py-3 text-gray-300"
                         placeholder="Enter joining Date" />
                 </div>

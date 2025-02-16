@@ -32,26 +32,17 @@ class AttendenceController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        
-    }
+    public function store(Request $request) {}
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        
-    }
+    public function show(string $id) {}
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        
-    }
+    public function edit(string $id) {}
 
     /**
      * Update the specified resource in storage.
@@ -83,9 +74,7 @@ class AttendenceController extends Controller
 
 
     public function checkin($id)
-    {
-        // dd($request->all());
-        $user = Auth::user();
+    {   //DAte
         $today = Carbon::today()->toDateString();
 
         // Check if already checked in
@@ -93,35 +82,34 @@ class AttendenceController extends Controller
         if ($attendance) {
             return redirect()->route('employee.index')->with('error', 'Already checked in.');
         }
-
+        //Time
+        $timetoday = Carbon::now()->toTimeString();
         // Create new check-in record
         Attendence::create([
             'employee_id' => $id,
             'date' => $today,
-            'check_in' => Carbon::now()->toTimeString(),
+            'checked_in' => $timetoday,
+            'status' => 'Present',
         ]);
         return redirect()->route('employee.index')->with('success', 'Checked in successfully.');
-        
-
     }
 
-    public function checkout( $id)
+    public function checkout($id)
     {
-        // dd($request->all());
+        // return dd($id);
         $today = Carbon::today()->toDateString();
 
         // Find today's attendance record
-        $attendance = Attendence::where('emplpoyee_id', $id)->where('date', $today)->first();
-        if (!$attendance || $attendance->check_out) {
+        $attendance = Attendence::where('employee_id', $id)->where('date', $today)->first();
+        if (!$attendance || $attendance->checked_out) {
             return redirect()->route('employee.index')->with('error', 'Either not checkin OR Already checked out.');
         }
 
         // Update check-out time
         $attendance->update([
-            'check_out' => Carbon::now()->toTimeString(),
+            'checked_out' => Carbon::now()->toTimeString(),
         ]);
 
+        return redirect()->route('employee.index')->with('success', 'Check out successfully');
     }
-
-
 }
