@@ -85,42 +85,42 @@ class AttendenceController extends Controller
 
     public function checkin(Request $request, $id)
     {
-        // dd($request->all());
-        $request->validate([
-            'date' => 'required|date',
-            'time' => 'required',
-            'status' => 'required|in:checked_in',
-        ]);
+        dd($request->all());
+        // $request->validate([
+        //     'date' => 'required|date',
+        //     'time' => 'required',
+        //     'status' => 'required|in:checked_in',
+        // ]);
 
-        Attendence::create([
-            'employee_id' => $id,
-            'date' => $request->date,
-            'time' => $request->time,
-            'status' => $request->status,
-        ]);
+        // Attendence::create([
+        //     'employee_id' => $id,
+        //     'date' => $request->date,
+        //     'time' => $request->time,
+        //     'status' => $request->status,
+        // ]);
 
-        return redirect()->route('employee.index')->with('success', 'Checked In successfully.');
+        // return redirect()->route('employee.index')->with('success', 'Checked In successfully.');
         
 
     }
 
     public function checkout(Request $request, $id)
     {
-        // dd($request->all());
-        $request->validate([
-            'date' => 'required|date',
-            'time' => 'required',
-            'status' => 'required|in:checked_out'
-        ]);
+        dd($request->all());
+        // $request->validate([
+        //     'date' => 'required|date',
+        //     'time' => 'required',
+        //     'status' => 'required|in:checked_out'
+        // ]);
 
-        Attendence::create([
-            'employee_id' => $id,
-            'date' => $request->date,
-            'time' => $request->time,
-            'status' => $request->status,
-        ]);
+        // Attendence::create([
+        //     'employee_id' => $id,
+        //     'date' => $request->date,
+        //     'time' => $request->time,
+        //     'status' => $request->status,
+        // ]);
 
-        return redirect()->route('employee.index')->with('success', 'Checked Out successfully.');
+        // return redirect()->route('employee.index')->with('success', 'Checked Out successfully.');
         
 
     }

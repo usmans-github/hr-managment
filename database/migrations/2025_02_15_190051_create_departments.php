@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        if (!Schema::hasTable('departments')) {
-            Schema::create('departments', function (Blueprint $table) {
-                $table->id();
-                $table->string('department_name');
-                $table->timestamps();
-            });
-        }
+
+        Schema::create('departments', function (Blueprint $table) {
+            $table->id();
+            $table->string('department_name');
+            $table->timestamps();
+        });
     }
+
 
     /**
      * Reverse the migrations.
