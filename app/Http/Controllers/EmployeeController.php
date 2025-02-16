@@ -38,16 +38,25 @@ class EmployeeController extends Controller
     public function store(Request $request)
     {
         $credentials = $request->validate([
-            'first_name' => ['required'],
-            'last_name' => ['required'],
-            'email' => ['required', 'email'],
-            'password' => ['required'],
-            'phone' => ['required'],
-            'position_id' => ['required'],
-            'department_id' => ['required'],
-            'join_date' => ['required'],
-            'salary' => ['required'],
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
+            'email' => 'required|email',
+            'password' => 'required',
+            'phone' =>  'required',
+            'position_id' => 'required',
+            'department_id' => 'required',
+            'join_date' => 'required',
+            'salary' => 'required',
         ]);
+
+        if (User::where('email', $credentials['email'])->exists()) {
+            return back()->withErrors(['error', 'User already exists.']);
+        }
+
+        if (Employee::where('email', $credentials['email'])->exists()) {
+            return back()->withErrors(['error', 'Employee already exists.']);
+        }
+
 
         User::create([
             'email' => $credentials['email'],

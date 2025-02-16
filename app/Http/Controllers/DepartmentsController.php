@@ -46,11 +46,12 @@ class DepartmentsController extends Controller
      */
     public function store(Request $request)
     {
-
         $credentials = $request->validate([
             'department_name' => ['required'],
-
         ]);
+        if (Department::where('department_name', $credentials['department_name'])->exists()) {
+            return redirect()->back()->with('error', 'Department already exists.');
+        }
         Department::create($credentials);
         return redirect('/department')->with('success', 'Department created successfully!');;
     }
@@ -89,7 +90,7 @@ class DepartmentsController extends Controller
             ]);
 
             $department = Department::findOrFail($id);
-            $department->update($credentials);  
+            $department->update($credentials);
 
             return redirect('department')->with('success', 'Department updated successfully.');
         }

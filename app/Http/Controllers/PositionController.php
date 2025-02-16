@@ -29,6 +29,8 @@ class PositionController extends Controller
             return view('admin.create-position', [
                 'departments' =>  Department::all()
             ]);
+        }else{
+            return redirect('/department')->with('error', 'Authorization error!');
         }
     }
 
@@ -50,6 +52,8 @@ class PositionController extends Controller
             $position->save();
 
             return redirect('/department')->with('success', 'Position created successfully!');
+        }else{
+            return redirect('/department')->with('error', 'You are not authorized to create a position!');
         }
     }
 
