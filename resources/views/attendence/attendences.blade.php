@@ -101,7 +101,7 @@
                                 class="w-14 h-14 bg-black rounded-xl flex items-center justify-center fas fa-users text-3xl text-green-500"></i>
                             <div>
                                 <div class="text-sm text-gray-300 mb-1 font-semibold">Total Present</div>
-                                <div class="text-2xl font-semibold text-green-400">130</div>
+                                <div class="text-2xl font-semibold text-green-400">{{ $presentemployees }}</div>
                             </div>
                         </div>
                         <div class="bg-zinc-900 p-4 rounded-xl flex gap-4 items-center">
@@ -150,7 +150,7 @@
                                         <td class="px-6 py-4">
                                             <div class="flex items-center">
                                                 <div
-                                                    class="w-8 h-8 rounded-full bg-black flex items-center justify-center mr-3">
+                                                    class="w-10 h-10 rounded-full bg-black flex items-center justify-center mr-3">
                                                     {{ $employee->first_name[0] . ' ' . $employee->last_name[0] }}
                                                 </div>
                                                 <div>

@@ -100,7 +100,7 @@
                     </div>
                     <div>
                         <h3 class="text-sm text-gray-300 mb-1 font-semibold">Present Today</h3>
-                        <p class="text-2xl font-bold">130</p>
+                        <p class="text-2xl font-bold">{{ $presentemployees }}</p>
                     </div>
                 </div>
                 <div class="bg-zinc-900 rounded-xl p-6 flex items-center gap-4">

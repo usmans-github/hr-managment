@@ -18,7 +18,11 @@ class AttendenceController extends Controller
         $user = Auth::user();
         if ($user->role === 'admin') {
             $employees = Employee::all();
-            return view('attendence.attendences', compact('employees'));
+            $presentemployees = Attendence::where('status', 'Present')
+                ->whereDate('date', today())->count();
+
+                
+            return view('attendence.attendences', compact('employees', 'presentemployees'));
         }
     }
 

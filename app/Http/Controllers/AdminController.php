@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Attendence;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,10 +16,13 @@ class AdminController extends Controller
     {
         $user = Auth::user();
         if ($user->role === 'admin') {
-            return view('admin.index', [
-                'employees' => Employee::with(['position', 'department'])->get(),
-                'totalemployees' => Employee::all()->count()
-            ]);
+
+            $employees = Employee::with(['position', 'department'])->get();
+            $totalemployees = Employee::all()->count();
+            $presentemployees = Attendence::where('status', 'Present')
+                ->whereDate('date', today())->count();
+
+            return view('admin.index', compact('employees', 'totalemployees', 'presentemployees'));
         }
     }
     public function employees()
