@@ -139,13 +139,19 @@ class EmployeeController extends Controller
     {
         // Find the employee by ID
         $employee = Employee::find($id);
+
+        $user = $employee->user;
+
         // Check if employee exists
-        if (!$employee) {
+        if (!$employee || !$user) {
             return redirect()->back()->with('error', 'Employee not found.');
         }
-
+        
+        $user->delete();
         // Delete the employee
         $employee->delete();
+
+        
 
         // Redirect back with success message
         return redirect('employees')->with('success', 'Employee deleted successfully.');
