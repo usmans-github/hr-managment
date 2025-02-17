@@ -64,9 +64,10 @@
 
                         {{-- EMployee filter --}}
                         <div>
-                            <label for="search" class="block text-sm font-medium mb-1">Search Employee</label>
-                            <input type="text" name="search" id="search" placeholder="Search by name or ID"
+                                <label for="search" class="block text-sm font-medium mb-1">Search Employee</label>
+                                <input type="text" name="search" id="search" placeholder="Search by name or ID"
                                 class="w-full px-3 py-2 bg-zinc-900 rounded-xl border border-gray-700">
+                          
                         </div>
                     </div>
 
