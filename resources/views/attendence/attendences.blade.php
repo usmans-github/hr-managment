@@ -72,7 +72,7 @@
                     </div>
 
                     <!-- Stats Cards -->
-                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                         <div class="bg-zinc-900 p-4 rounded-xl flex gap-4 items-center">
                             <i
                                 class="w-14 h-14 bg-black rounded-xl flex items-center justify-center fas fa-users text-3xl text-green-500"></i>
@@ -86,7 +86,7 @@
                                 class="w-14 h-14 bg-black rounded-xl flex items-center justify-center fas fa-user-times text-3xl text-red-500"></i>
                             <div>
                                 <div class="text-sm text-gray-300 mb-1 font-semibold">Total Absent</div>
-                                <div class="text-2xl font-semibold text-red-400">15</div>
+                                <div class="text-2xl font-semibold text-red-400">{{ $absentemployees }}</div>
                             </div>
                         </div>
                         <div class="bg-zinc-900 p-4 rounded-xl flex gap-4 items-center">
@@ -94,17 +94,17 @@
                                 class="w-14 h-14 bg-black rounded-xl flex items-center justify-center fas fa-clock text-3xl text-yellow-500"></i>
                             <div>
                                 <div class="text-sm text-gray-300 mb-1 font-semibold">Late Arrivals</div>
-                                <div class="text-2xl font-semibold text-yellow-400">8</div>
+                                <div class="text-2xl font-semibold text-yellow-400">{{ $lateemployees}}</div>
                             </div>
                         </div>
-                        <div class="bg-zinc-900 p-4 rounded-xl flex gap-4 items-center">
+                        {{-- <div class="bg-zinc-900 p-4 rounded-xl flex gap-4 items-center">
                             <i
                                 class="w-14 h-14 bg-black rounded-xl flex items-center justify-center fas fa-user-times text-3xl text-indigo-500"></i>
                             <div>
                                 <div class="text-sm text-gray-300 mb-1 font-semibold">On Leave</div>
                                 <div class="text-2xl font-semibold text-blue-400">5</div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
 
                     <!-- Attendance Table -->
@@ -226,24 +226,6 @@
                                 </tr> --}}
                             </tbody>
                         </table>
-
-                        <!-- Pagination -->
-                        <div class="bg-zinc-900 px-6 py-4 flex items-center justify-between">
-                            <div class="text-sm text-gray-400">
-                                Showing 1 to 3 of 145 entries
-                            </div>
-                            <div class="flex space-x-2">
-                                <button
-                                    class="px-3 py-1 rounded border border-gray-700 text-gray-400 hover:text-white">Previous</button>
-                                <button class="px-3 py-1 rounded bg-blue-600 text-white">1</button>
-                                <button
-                                    class="px-3 py-1 rounded border border-gray-700 text-gray-400 hover:text-white">2</button>
-                                <button
-                                    class="px-3 py-1 rounded border border-gray-700 text-gray-400 hover:text-white">3</button>
-                                <button
-                                    class="px-3 py-1 rounded border border-gray-700 text-gray-400 hover:text-white">Next</button>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </main>

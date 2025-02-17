@@ -18,12 +18,21 @@ class AttendenceController extends Controller
     {
         $user = Auth::user();
         if ($user->role === 'admin') {
+            //All Employees
             $employees = Employee::all();
+            //All Deparmtnets
+            $departments = Department::all();
+            //All Present Employees
             $presentemployees = Attendence::where('status', 'Present')
                 ->whereDate('date', today())->count();
-            $departments = Department::all();
-                 
-            return view('attendence.attendences', compact('employees', 'presentemployees', 'departments'));
+            //All Late EMployees    
+            $lateemployees = Attendence::where('status', 'Late') 
+                ->whereDate('date', today())->count();
+            //All Absent Employees          
+            $absentemployees = Attendence::where('status', 'Absent')
+                ->whereDate('date', today())->count();        
+
+            return view('attendence.attendences', compact('employees',  'departments', 'presentemployees', 'lateemployees', 'absentemployees'));
         }
     }
 
