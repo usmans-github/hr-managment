@@ -33,5 +33,6 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['auth'])->group(function () {
 
     Route::resource('employee', EmployeeController::class);
+    Route::get('/employee/profile', [EmployeeController::class, 'profile']);
     
 });

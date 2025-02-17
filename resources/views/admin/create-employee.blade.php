@@ -54,6 +54,14 @@
                         text-gray-300"
                         placeholder="Enter phone number" />
                 </div>
+                {{-- <!-- Adress -->
+                <div>
+                    <label for="address" class="block text-sm font-medium text-gray-300">Adress</label>
+                    <input type="text" name="address" id="address" required
+                        class="mt-2 block w-full rounded-xl bg-zinc-900 border border-gray-700 px-4 py-3
+                        text-gray-300"
+                        placeholder="Enter your address" />
+                </div> --}}
 
                 <!-- Department -->
                 <div>

@@ -30,13 +30,13 @@
         <nav class="mt-8">
             <ul class="space-y-4 px-4">
                 <li>
-                    <a href="/admin" class="flex items-center gap-3 px-4 py-3 bg-zinc-900 rounded-xl">
+                    <a href="/employee" class="flex items-center gap-3 px-4 py-3 bg-zinc-900 rounded-xl">
                         <i class="fas fa-tachometer-alt"></i>
                         <span class="font-semibold">Dashboard</span>
                     </a>
                 </li>
                 <li>
-                    <a href="/employees"
+                    <a href="/employee/profile"
                         class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-xl transition">
                         <i class="fas fa-user"></i>
                         <span class="font-semibold">My Profile</span>
@@ -76,10 +76,10 @@
           
         </div>
 
-        <div class="max-w-7xl mx-auto space-y-6 ">
-            <div class="max-w-7xl mx-auto py-6">
+        <div class="max-w-7xl mx-auto ">
+            <div class="max-w-7xl mx-auto ">
            <!-- Check-in/Check-out Section -->
-        <div class="bg-zinc-900 rounded-xl p-6 mb-8">
+        <div class="bg-zinc-900 rounded-xl p-6">
             <h2 class="text-2xl font-bold mb-4">Attendance</h2>
             <div class="flex items-center justify-between">
                 <div>
@@ -127,7 +127,7 @@
     </div>
 
             <!-- Quick Actions & Information Cards -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 py-6">
                 <div class="bg-zinc-900 text-white rounded-xl p-6 shadow-lg">
                     <h3 class="text-lg font-semibold mb-4">Quick Actions</h3>
                     <div class="space-y-3">

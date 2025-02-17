@@ -156,4 +156,17 @@ class EmployeeController extends Controller
         // Redirect back with success message
         return redirect('employees')->with('success', 'Employee deleted successfully.');
     }
+
+    public function profile ()
+    {
+        // $user = Auth::user();
+        // $employee = Employee::where('user_id', $user->id)->first();
+
+        dd("efef");
+        // if (!$employee) {
+        //     return redirect()->back()->with('error', 'Employee profile not found.');
+        // }
+
+        // return view('employee.profile', compact('employee'));
+    }
 }
