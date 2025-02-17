@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Employee;
 use App\Models\Department;
+use App\Models\Employee;
 use App\Models\Position;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -66,11 +66,12 @@ class EmployeeController extends Controller
 
 
         Employee::create([
-            'user_id'=>  User::latest()->first()->id,
+            'user_id' =>  User::latest()->first()->id,
             'first_name' => $credentials['first_name'],
             'last_name' => $credentials['last_name'],
             'email' => $credentials['email'],
             'password' => bcrypt($credentials['password']),
+            'address' => $credentials['address'],
             'phone' => $request->phone,
             'position_id' => $credentials['position_id'],
             'department_id' => $credentials['department_id'],
@@ -83,10 +84,7 @@ class EmployeeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show() 
-    {
-
-    }
+    public function show() {}
 
     /**
      * Show the form for editing the specified resource.
@@ -107,15 +105,15 @@ class EmployeeController extends Controller
     public function update(Request $request, $id)
     {
         $credentials = $request->validate([
-            'first_name' => ['required'],
-            'last_name' => ['required'],
-            'email' => ['required', 'email'],
-            'password' => ['required'],
-            'phone' => ['required'],
-            'position_id' => ['required'],
-            'department_id' => ['required'],
-            'join_date' => ['required'],
-            'salary' => ['required'],
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required',
+            'phone' => 'required',
+            'position_id' => 'required',
+            'department_id' => 'required',
+            'join_date' => 'required',
+            'salary' => 'required',
         ]);
 
         $employee = Employee::findOrFail($id);
@@ -124,6 +122,7 @@ class EmployeeController extends Controller
             'first_name' => $credentials['first_name'],
             'last_name' => $credentials['last_name'],
             'password' => bcrypt($credentials['password']),
+            'address' => $credentials['address'],
             'phone' => $request->phone,
             'position_id' => $credentials['position_id'],
             'department_id' => $credentials['department_id'],
@@ -142,25 +141,25 @@ class EmployeeController extends Controller
     {
         // Find the employee by ID
         $employee = Employee::find($id);
-        
+
         $user = $employee->user;
 
         // Check if employee exists
         if (!$employee || !$user) {
             return redirect()->back()->with('error', 'Employee not found.');
         }
-        
+
         $user->delete();
         // Delete the employee
         $employee->delete();
 
-        
+
 
         // Redirect back with success message
         return redirect('employees')->with('success', 'Employee deleted successfully.');
     }
 
-    public function profile ()
+    public function profile()
     {
         // $user = Auth::user();
         // $employee = Employee::where('user_id', $user->id)->first();
