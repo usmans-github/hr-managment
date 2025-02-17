@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="flex min-h-screen flex-col justify-center px-6 lg:px-8">
+    <div class="flex min-h-screen mt-16 flex-col justify-center px-6 lg:px-8">
         <!-- Header -->
         <div class="sm:mx-auto sm:w-full sm:max-w-lg text-center mb-8">
             <h2 class="text-2xl font-semibold text-gray-100">Edit Employee</h2>
@@ -110,6 +110,13 @@
                     </button>
                 </div>
             </form>
+            <!-- Back to Employees Link -->
+             <p class="mt-6 text-center text-sm text-gray-400">
+                Back to Employees? 
+                <a href="{{ route('admin.employees') }}" class="text-white hover:underline">
+                    Click Here
+                </a>
+            </p>
             @if ($errors->any())
                 <div class="text-red-500">
                     <ul>
