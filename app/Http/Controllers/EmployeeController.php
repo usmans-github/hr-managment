@@ -139,7 +139,6 @@ class EmployeeController extends Controller
     {
         // Find the employee by ID
         $employee = Employee::find($id);
-
         // Check if employee exists
         if (!$employee) {
             return redirect()->back()->with('error', 'Employee not found.');
