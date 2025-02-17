@@ -8,6 +8,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\PayrollController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\ReportsController;
+use App\Models\LeaveRequest;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [AuthController::class, 'create']);
@@ -34,5 +35,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('employee', EmployeeController::class);
     Route::get('/profile', [EmployeeController::class, 'profile']);
-    
+
+    Route::resource('/leave-requests', LeaveRequest::class);
 });
