@@ -126,7 +126,7 @@
                         <div>
                             <div class="flex items-center gap-3">
                                 <div class="">
-                                    <i class="fas fa-building text-gray-300 p-4 bg-zinc-800 rounded-lg"></i>
+                                    <i class="fa-regular fa-building text-gray-300 p-4 bg-zinc-800 rounded-lg"></i>
                                 </div>
                                 <div>
                                     <h3 class="text-lg font-semibold text-white">{{ $department->department_name }}</h3>

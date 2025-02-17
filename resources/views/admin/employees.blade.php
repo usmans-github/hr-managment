@@ -125,7 +125,7 @@
                                 <span class="text-sm">{{ $employee->phone ?? 'N/A' }}</span>
                             </div>
                             <div class="flex items-center gap-2 text-gray-300">
-                                <i class="fa-solid fa-building-user"></i>
+                                <i class="fa-regular fa-building"></i>
                                 <span class="text-sm">{{ $employee->department->department_name ?? 'N/A' }} </span>
                             </div>
                             <div class="flex items-center gap-2 text-gray-300">
