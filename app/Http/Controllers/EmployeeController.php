@@ -117,17 +117,12 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // return dd($request->all(), $id);
         $credentials = $request->validate([
             'first_name' => 'required',
             'last_name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required',
             'address' => 'required',
             'phone' => 'required',
-            'position_id' => 'required',
-            'department_id' => 'required',
-            'join_date' => 'required',
-            'salary' => 'required',
         ]);
 
         $employee = Employee::findOrFail($id);
@@ -135,16 +130,12 @@ class EmployeeController extends Controller
         $employee->update([
             'first_name' => $credentials['first_name'],
             'last_name' => $credentials['last_name'],
-            'password' => bcrypt($credentials['password']),
             'address' => $credentials['address'],
             'phone' => $request->phone,
-            'position_id' => $credentials['position_id'],
-            'department_id' => $credentials['department_id'],
-            'join_date' => $credentials['join_date'],
-            'salary' => $credentials['salary']
         ]);
+        
 
-        return redirect('employees')->with('success', 'Employee updated successfully.');
+        return redirect('/employee')->with('success', 'Employee updated successfully.');
     }
 
 
@@ -175,14 +166,12 @@ class EmployeeController extends Controller
 
     public function profile()
     {
-        // $user = Auth::user();
-        // $employee = Employee::where('user_id', $user->id)->first();
+        $user = Auth::user();
+        $employee = Employee::where('user_id', $user->id)->first();
+        if (!$employee) {
+            return redirect()->back()->with('error', 'Employee profile not found.');
+        }
 
-        dd("efef");
-        // if (!$employee) {
-        //     return redirect()->back()->with('error', 'Employee profile not found.');
-        // }
-
-        // return view('employee.profile', compact('employee'));
+        return view('employee.profile', compact('employee'));
     }
 }
