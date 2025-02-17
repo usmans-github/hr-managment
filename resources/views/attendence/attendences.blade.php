@@ -60,15 +60,15 @@
 
                     <!-- Filters -->
 
-                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-                           
-                            {{-- EMployee filter --}}
-                            <div>
-                                <label for="search" class="block text-sm font-medium mb-1">Search Employee</label>
-                                <input type="text" name="search" id="search" placeholder="Search by name or ID"
-                                    class="w-full px-3 py-2 bg-zinc-900 rounded-xl border border-gray-700">
-                            </div>
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+
+                        {{-- EMployee filter --}}
+                        <div>
+                            <label for="search" class="block text-sm font-medium mb-1">Search Employee</label>
+                            <input type="text" name="search" id="search" placeholder="Search by name or ID"
+                                class="w-full px-3 py-2 bg-zinc-900 rounded-xl border border-gray-700">
                         </div>
+                    </div>
 
                     <!-- Stats Cards -->
                     <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
@@ -123,7 +123,7 @@
                                 @foreach ($employees as $employee)
                                     <tr class="hover:bg-zinc-800">
 
-                                        <td class="px-6 py-4">
+                                    <td class="px-6 py-4">
                                             <div class="flex items-center">
                                                 <div
                                                     class="w-10 h-10 rounded-full bg-black flex items-center justify-center mr-3">
@@ -137,31 +137,36 @@
                                             </div>
                                         </td>
                                         <td class="px-6 py-4">{{ $employee->department->department_name }}</td>
-                                        <td class="px-6 py-4">{{ $employee->latestAttendence->date }}</td>
-                                        <td class="px-6 py-4">{{ $employee->latestAttendence->checked_in }}</td>
-                                        <td class="px-6 py-4">{{ $employee->latestAttendence->checked_out }}</td>
+                                        <td class="px-6 py-4">
+                                            {{ $employee->latestAttendence?->date ?? 'No Attendence record' }}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            {{ $employee->latestAttendence?->checked_in ?? 'Not checked in' }}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            {{ $employee->latestAttendence?->checked_out ?? 'Not checked out' }}
+                                        </td>
+
                                         <td class="px-6 py-4">
                                             <span
                                                 class="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold w-auto 
-                                                 {{ $employee->latestAttendence->status === 'Present'
-                                                     ? 'bg-green-100 text-green-700'
-                                                     : ($employee->latestAttendence->status === 'Late'
-                                                         ? 'bg-yellow-100 text-yellow-700'
-                                                         : 'bg-red-100 text-red-700') }}">
+                                                {{ $employee->latestAttendence?->status === 'Present'
+                                                    ? 'bg-green-100 text-green-700'
+                                                    : ($employee->latestAttendence?->status === 'Late'
+                                                        ? 'bg-yellow-100 text-yellow-700'
+                                                        : 'bg-red-100 text-red-700') }}">
 
                                                 <span
                                                     class="h-2 w-2 rounded-full mr-2 
-                                                {{ $employee->latestAttendence->status === 'Present'
+                                                {{ $employee->latestAttendence?->status === 'Present'
                                                     ? 'bg-green-700'
-                                                    : ($employee->latestAttendence->status === 'Late'
+                                                    : ($employee->latestAttendence?->status === 'Late'
                                                         ? 'bg-yellow-700'
                                                         : 'bg-red-700') }}">
                                                 </span>
 
-                                                {{ $employee->latestAttendence->status }}
+                                                {{ $employee->latestAttendence?->status ?? 'No Record' }}
                                             </span>
-
-
                                         </td>
 
                                     </tr>
