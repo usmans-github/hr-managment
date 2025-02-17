@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Attendence;
+use App\Models\Department;
 use App\Models\Employee;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -22,8 +23,9 @@ class AdminController extends Controller
             $totalemployees = Employee::all()->count();
             $presentemployees = Attendence::where('status', 'Present')
                 ->whereDate('date', today())->count();
+            $totaldepartments = Department::all()->count();   
 
-            return view('admin.index', compact('employees', 'totalemployees', 'presentemployees'));
+            return view('admin.index', compact('employees', 'totalemployees', 'presentemployees', 'totaldepartments'));
         }
     }
     public function employees()

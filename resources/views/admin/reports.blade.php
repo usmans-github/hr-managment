@@ -52,32 +52,7 @@
 
                 <!-- Filters -->
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-                    <div>
-                        <label class="block text-sm font-medium mb-1">Department</label>
-                        <select class="w-full px-3 py-2 bg-zinc-900 rounded-xl border border-gray-700">
-                            <option>All Departments</option>
-                            <option>Development</option>
-                            <option>Design</option>
-                            <option>Management</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium mb-1">Date Range</label>
-                        <select class="w-full px-3 py-2 bg-zinc-900 rounded-xl border border-gray-700">
-                            <option>Last 30 Days</option>
-                            <option>Last Quarter</option>
-                            <option>Last Year</option>
-                            <option>Custom Range</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium mb-1">Status</label>
-                        <select class="w-full px-3 py-2 bg-zinc-900 rounded-xl border border-gray-700">
-                            <option>All Status</option>
-                            <option>Complete</option>
-                            <option>Pending</option>
-                        </select>
-                    </div>
+                    
                     <div>
                         <label class="block text-sm font-medium mb-1">Search</label>
                         <input type="text" placeholder="Search by name or ID" class="w-full px-3 py-2 bg-zinc-900 rounded-xl border border-gray-700">
@@ -85,7 +60,7 @@
                 </div>
 
                 <!-- Stats Cards -->
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                     <div class="bg-zinc-900 p-4 rounded-xl flex gap-4 items-center">
                         <i class="w-14 h-14 bg-black rounded-xl flex items-center justify-center fas fa-users text-3xl text-blue-500"></i>
                         <div>
@@ -107,13 +82,13 @@
                             <div class="text-2xl font-semibold text-indigo-400">$284,500</div>
                         </div>
                     </div>
-                    <div class="bg-zinc-900 p-4 rounded-xl flex gap-4 items-center">
+                    {{-- <div class="bg-zinc-900 p-4 rounded-xl flex gap-4 items-center">
                         <i class="w-14 h-14 bg-black rounded-xl flex items-center justify-center fas fa-briefcase text-3xl text-yellow-500"></i>
                         <div>
                             <div class="text-sm text-gray-300 mb-1 font-semibold">Open Positions</div>
                             <div class="text-2xl font-semibold text-yellow-400">7</div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
 
                 <!-- Reports Table -->

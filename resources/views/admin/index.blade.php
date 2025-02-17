@@ -106,11 +106,11 @@
                 </div>
                 <div class="bg-zinc-900 rounded-xl p-6 flex items-center gap-4">
                     <div class="w-14 h-14 bg-black rounded-xl flex items-center justify-center">
-                        <i class="fas fa-user-times text-3xl text-red-500"></i>
+                        <i class="fa-regular fa-building text-3xl text-yellow-500"></i>
                     </div>
                     <div>
-                        <h3 class="text-sm text-gray-300 mb-1 font-semibold">On Leave</h3>
-                        <p class="text-2xl font-bold">15</p>
+                        <h3 class="text-sm text-gray-300 mb-1 font-semibold">Total Departments</h3>
+                        <p class="text-2xl font-bold">{{ $totaldepartments }}</p>
                     </div>
                 </div>
             </div>
@@ -143,16 +143,24 @@
                                         {{ $employee->department->department_name ?? 'N/A' }}</td>
 
                                     <td class="py-4 px-4">
-                                        @if ($employee->latestAttendence && $employee->latestAttendence->status)
-                                        <span
-                                            class="inline-flex items-center bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-semibold w-auto">
-                                            <span class="h-2 w-2 bg-green-700 rounded-full mr-2"></span>
-                                                {{ $employee->latestAttendence->status }}
-                                            @else
-                                             <span class="inline-flex items-center bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm font-semibold">
-                                                 <span class="h-2 w-2 bg-gray-700 rounded-full mr-2"></span>
-                                                    No Attendance Record
-                                            @endif
+                                         <span
+                                                class="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold w-auto 
+                                       {{ $employee->latestAttendence?->status === 'Present'
+                                                    ? 'bg-green-100 text-green-700'
+                                                    : ($employee->latestAttendence?->status === 'Late'
+                                                        ? 'bg-yellow-100 text-yellow-700'
+                                                        : 'bg-red-100 text-red-700') }}">
+
+                                                <span
+                                                    class="h-2 w-2 rounded-full mr-2 
+                                                {{ $employee->latestAttendence?->status === 'Present'
+                                                    ? 'bg-green-700'
+                                                    : ($employee->latestAttendence?->status === 'Late'
+                                                        ? 'bg-yellow-700'
+                                                        : 'bg-red-700') }}">
+                                                </span>
+
+                                                {{ $employee->latestAttendence?->status ?? 'No Record' }}
 
                                         </span>
                                     </td>

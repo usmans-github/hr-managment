@@ -53,39 +53,13 @@
                 <!-- Filters -->
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
                     <div>
-                        <label class="block text-sm font-medium mb-1">Date Range</label>
-                        <select class="w-full px-3 py-2 bg-zinc-900 rounded-xl border border-gray-700">
-                            <option>Today</option>
-                            <option>Last 7 Days</option>
-                            <option>This Month</option>
-                            <option>Custom Range</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium mb-1">Department</label>
-                        <select class="w-full px-3 py-2 bg-zinc-900 rounded-xl border border-gray-700">
-                            <option>All Departments</option>
-                            <option>Development</option>
-                            <option>Design</option>
-                            <option>Management</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium mb-1">Status</label>
-                        <select class="w-full px-3 py-2 bg-zinc-900 rounded-xl border border-gray-700">
-                            <option>All Status</option>
-                            <option>Paid</option>
-                            <option>Pending</option>
-                        </select>
-                    </div>
-                    <div>
                         <label class="block text-sm font-medium mb-1">Search Employee</label>
                         <input type="text" placeholder="Search by name or ID" class="w-full px-3 py-2 bg-zinc-900 rounded-xl border border-gray-700">
                     </div>
                 </div>
 
                 <!-- Stats Cards -->
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                     <div class="bg-zinc-900 p-4 rounded-xl flex gap-4 items-center">
                         <i class="w-14 h-14 bg-black rounded-xl flex items-center justify-center fas fa-check-circle text-3xl text-green-500"></i>
                         <div>
