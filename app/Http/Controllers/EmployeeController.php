@@ -8,6 +8,7 @@ use App\Models\Position;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class EmployeeController extends Controller
 {
@@ -35,6 +36,7 @@ class EmployeeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+
     public function store(Request $request)
     {
         $credentials = $request->validate([
@@ -42,6 +44,7 @@ class EmployeeController extends Controller
             'last_name' => 'required|string',
             'email' => 'required|email',
             'password' => 'required',
+            'address' => 'required',
             'phone' =>  'required',
             'position_id' => 'required',
             'department_id' => 'required',
@@ -49,36 +52,46 @@ class EmployeeController extends Controller
             'salary' => 'required',
         ]);
 
+        // Check if the user already exists
         if (User::where('email', $credentials['email'])->exists()) {
-            return back()->withErrors(['error', 'User already exists.']);
+            return back()->withErrors(['error' => 'User already exists.']);
         }
 
-        if (Employee::where('email', $credentials['email'])->exists()) {
-            return back()->withErrors(['error', 'Employee already exists.']);
+        // Start a database transaction
+        DB::beginTransaction();
+
+        try {
+            // Create the user
+            $user = User::create([
+                'email' => $credentials['email'],
+                'password' => bcrypt($credentials['password']),
+                'role' => 'employee'
+            ]);
+
+            // Create the employee linked to the user
+            Employee::create([
+                'user_id' => $user->id,
+                'first_name' => $credentials['first_name'],
+                'last_name' => $credentials['last_name'],
+                'email' => $credentials['email'],
+                'password' => bcrypt($credentials['password']),
+                'address' => $credentials['address'],
+                'phone' => $request->phone,
+                'position_id' => $credentials['position_id'],
+                'department_id' => $credentials['department_id'],
+                'join_date' => $credentials['join_date'],
+                'salary' => $credentials['salary']
+            ]);
+
+            // Commit the transaction if everything is successful
+            DB::commit();
+
+            return redirect('employees')->with('success', 'Employee created successfully.');
+        } catch (\Exception $e) {
+            // Rollback the transaction if anything goes wrong
+            DB::rollBack();
+            return back()->withErrors(['error' => 'An error occurred while creating the employee. Please try again.']);
         }
-
-
-        User::create([
-            'email' => $credentials['email'],
-            'password' => bcrypt($credentials['password']),
-            'role' => 'employee'
-        ]);
-
-
-        Employee::create([
-            'user_id' =>  User::latest()->first()->id,
-            'first_name' => $credentials['first_name'],
-            'last_name' => $credentials['last_name'],
-            'email' => $credentials['email'],
-            'password' => bcrypt($credentials['password']),
-            'address' => $credentials['address'],
-            'phone' => $request->phone,
-            'position_id' => $credentials['position_id'],
-            'department_id' => $credentials['department_id'],
-            'join_date' => $credentials['join_date'],
-            'salary' => $credentials['salary']
-        ]);
-        return redirect('employees')->with('success', 'Employee created successfully.');
     }
 
     /**
@@ -109,6 +122,7 @@ class EmployeeController extends Controller
             'last_name' => 'required',
             'email' => 'required|email',
             'password' => 'required',
+            'address' => 'required',
             'phone' => 'required',
             'position_id' => 'required',
             'department_id' => 'required',
