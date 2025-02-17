@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\Attendence;
+use App\Models\Employee;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 
@@ -27,8 +28,40 @@ class CheckAbsentEmployees extends Command
      */
     public function handle()
     {
-        $cutoffTime = Carbon::today()->setHour(7)->setMinute(0)->setSecond(0);
+        // Define the cutoff time in the same format as stored in DB
+        $cutoffTime = Carbon::createFromFormat('h:i A', '07:00 PM');
 
-        $attendences = Attendence::where('checked_in');
+        $employees = Employee::all();
+
+        foreach ($employees as $employee) {
+
+            // Fetch today's attendance record for the employee
+            $attendence = Attendence::where('employee_id', $employee->id)
+                ->whereDate('date', Carbon::today())
+                ->first();
+
+            // If an attendance record exists
+            if ($attendence && $attendence->checked_in) {
+                // Convert stored checked_in time into Carbon instance
+                $checkedInTime = Carbon::createFromFormat('h:i A', $attendence->checked_in);
+
+                if ($checkedInTime->greaterThan($cutoffTime)) {
+                    $attendence->status = 'Late';
+                    $attendence->save();
+                    $this->info("Marked Late: " . $employee->first_name . ' ' . $employee->last_name);
+                }
+            }
+            // If there is no attendance record, mark as Absent
+            elseif (!$attendence) {
+                Attendence::create([
+                    'employee_id' => $employee->id,
+                    'date' => Carbon::today()->toDateString(),
+                    'checked_in' => null,
+                    'checked_out' => null,
+                    'status' => 'Absent'
+                ]);
+                $this->info("Marked Absent: " . $employee->first_name . ' ' . $employee->last_name);
+            }
+        }
     }
 }
