@@ -22,14 +22,14 @@
                         placeholder="Enter department name" />
                 </div>
 
-                <!-- Positions -->
+                {{-- <!-- Positions -->
                 <div>
                     <label for="positions" class="block text-sm font-medium text-gray-300">Positions</label>
                     <select name="positions[]" id="positions" multiple
                         class="mt-2 block w-full rounded-lg bg-zinc-900 border border-gray-700 px-4 py-3 text-gray-300">
                         <!-- Options will be populated by JavaScript -->
                     </select>
-                </div>
+                </div> --}}
 
 
                 <!-- Submit Button -->
