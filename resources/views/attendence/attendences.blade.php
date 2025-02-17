@@ -59,40 +59,16 @@
                     <h2 class="text-3xl font-bold text-white mb-6">Attendance Management</h2>
 
                     <!-- Filters -->
-                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-                        <div>
-                            <label class="block text-sm font-medium mb-1">Date Range</label>
-                            <select class="w-full px-3 py-2 bg-zinc-900 rounded-xl border border-gray-700">
-                                <option>Today</option>
-                                <option>Last 7 Days</option>
-                                <option>This Month</option>
-                                <option>Custom Range</option>
-                            </select>
+
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                           
+                            {{-- EMployee filter --}}
+                            <div>
+                                <label for="search" class="block text-sm font-medium mb-1">Search Employee</label>
+                                <input type="text" name="search" id="search" placeholder="Search by name or ID"
+                                    class="w-full px-3 py-2 bg-zinc-900 rounded-xl border border-gray-700">
+                            </div>
                         </div>
-                        <div>
-                            <label class="block text-sm font-medium mb-1">Department</label>
-                            <select class="w-full px-3 py-2 bg-zinc-900 rounded-xl border border-gray-700">
-                                <option>All Departments</option>
-                                <option>Development</option>
-                                <option>Design</option>
-                                <option>Management</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium mb-1">Status</label>
-                            <select class="w-full px-3 py-2 bg-zinc-900 rounded-xl border border-gray-700">
-                                <option>All Status</option>
-                                <option>Present</option>
-                                <option>Absent</option>
-                                <option>Late</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium mb-1">Search Employee</label>
-                            <input type="text" placeholder="Search by name or ID"
-                                class="w-full px-3 py-2 bg-zinc-900 rounded-xl border border-gray-700">
-                        </div>
-                    </div>
 
                     <!-- Stats Cards -->
                     <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
@@ -165,14 +141,16 @@
                                         <td class="px-6 py-4">{{ $employee->latestAttendence->checked_in }}</td>
                                         <td class="px-6 py-4">{{ $employee->latestAttendence->checked_out }}</td>
                                         <td class="px-6 py-4">
-                                            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold w-auto 
+                                            <span
+                                                class="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold w-auto 
                                                  {{ $employee->latestAttendence->status === 'Present'
                                                      ? 'bg-green-100 text-green-700'
                                                      : ($employee->latestAttendence->status === 'Late'
                                                          ? 'bg-yellow-100 text-yellow-700'
                                                          : 'bg-red-100 text-red-700') }}">
 
-                                                <span class="h-2 w-2 rounded-full mr-2 
+                                                <span
+                                                    class="h-2 w-2 rounded-full mr-2 
                                                 {{ $employee->latestAttendence->status === 'Present'
                                                     ? 'bg-green-700'
                                                     : ($employee->latestAttendence->status === 'Late'

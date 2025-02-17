@@ -21,6 +21,7 @@
     @endif
 
 
+
     <div class="flex min-h-screen">
         <!-- Sidebar -->
         <aside class="w-64 absolute h-full">
@@ -142,10 +143,17 @@
                                         {{ $employee->department->department_name ?? 'N/A' }}</td>
 
                                     <td class="py-4 px-4">
+                                        @if ($employee->latestAttendence && $employee->latestAttendence->status)
                                         <span
                                             class="inline-flex items-center bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-semibold w-auto">
                                             <span class="h-2 w-2 bg-green-700 rounded-full mr-2"></span>
-                                            Present
+                                                {{ $employee->latestAttendence->status }}
+                                            @else
+                                             <span class="inline-flex items-center bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm font-semibold">
+                                                 <span class="h-2 w-2 bg-gray-700 rounded-full mr-2"></span>
+                                                    No Attendance Record
+                                            @endif
+
                                         </span>
                                     </td>
 

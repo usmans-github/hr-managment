@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Attendence;
 use App\Models\Employee;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,7 +18,7 @@ class AdminController extends Controller
         $user = Auth::user();
         if ($user->role === 'admin') {
 
-            $employees = Employee::with(['position', 'department'])->get();
+            $employees = Employee::with(['position', 'department'])->latest()->get();
             $totalemployees = Employee::all()->count();
             $presentemployees = Attendence::where('status', 'Present')
                 ->whereDate('date', today())->count();
@@ -81,4 +82,15 @@ class AdminController extends Controller
     {
         //
     }
+
+    public function checkAbsentEmployees()
+    {
+        $deadline = Carbon::today()->setHour(9)->setMinute(0);
+
+        Employee::whereNull('checked_in')
+            ->update(['status' => 'Absent']);
+
+        return redirect()->route('admin.index')->with('success', 'Absent employees marked successfully.');
+    }
+
 }

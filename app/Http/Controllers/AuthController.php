@@ -2,11 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Employee;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
+    // public function markAbsentEmployees()
+    // {
+    //     $deadline = Carbon::today()->setHour(9)->setMinute(0);
+
+    //     // Mark employees absent if they haven't checked in by 9 AM
+    //     Employee::whereNull('check_in_time')
+    //         ->where('status', '!=', 'Present')
+    //         ->update(['status' => 'Absent']);
+    // }
+
     /**
      * Display a listing of the resource.
      */

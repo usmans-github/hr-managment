@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Attendence;
+use App\Models\Department;
 use App\Models\Employee;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -20,9 +21,9 @@ class AttendenceController extends Controller
             $employees = Employee::all();
             $presentemployees = Attendence::where('status', 'Present')
                 ->whereDate('date', today())->count();
-
-                
-            return view('attendence.attendences', compact('employees', 'presentemployees'));
+            $departments = Department::all();
+                 
+            return view('attendence.attendences', compact('employees', 'presentemployees', 'departments'));
         }
     }
 
@@ -42,7 +43,10 @@ class AttendenceController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id) {}
+    public function show(Request $request)
+    {
+        //
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -117,4 +121,14 @@ class AttendenceController extends Controller
 
         return redirect()->route('employee.index')->with('success', 'Check out successfully');
     }
+
+    public function search (Request $request) 
+    {
+        dd($request->all());
+        // $query  = Attendence::query();
+
+        // //Filter by date
+        // if($request->dater)
+    }
+
 }
