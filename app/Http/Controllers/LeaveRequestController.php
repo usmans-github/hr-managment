@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Attendence;
 use App\Models\LeaveRequest;
 use App\Models\Employee;
 use Illuminate\Http\Request;
@@ -62,6 +63,10 @@ class LeaveRequestController extends Controller
             'end_date' => $credenetials['end_date'],
             'reason' => $credenetials['reason']
         ]);
+        //Also mark employee's attendence as leave
+        Attendence::where('employee_id', $employeeId)->first();
+
+
         return redirect('/leave-request')->with('success', 'Leave request created successfuly');
     }
 
