@@ -43,7 +43,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href='/leave-requests'
+                    <a href='/leave-request'
                         class="flex items-center gap-3 px-4 py-3 bg-zinc-900 rounded-xl transition">
                         <i class="fas fa-calendar-check"></i>
                         <span class="font-semibold">Leave Requests</span>
@@ -119,7 +119,7 @@
 
                     <button type="submit"
                         class="w-full mt-6 bg-indigo-500 hover:bg-indigo-600 text-white font-semibold
-                    py-3 rounded-xl shadow-lg transition">
+                        py-3 rounded-xl shadow-lg transition">
                         Submit Request
                     </button>
                 </form>
@@ -139,7 +139,7 @@
         <tbody class="divide-y divide-gray-800">
             @foreach ($leaverequests as $leave)
                 <tr class="hover:bg-zinc-800">
-                    <td class="px-6 py-4">{{ ucfirst($leave->leave_type) }}</td>
+                    <td class="px-6 py-4">{{ $leave->leave_type }}</td>
                     <td class="px-6 py-4">{{ $leave->start_date }}</td>
                     <td class="px-6 py-4">{{ $leave->end_date }}</td>
                     <td class="px-6 py-4">

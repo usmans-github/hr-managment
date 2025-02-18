@@ -11,4 +11,9 @@ class LeaveRequest extends Model
     use HasFactory;
 
     protected $fillable = ['leave_type', 'employee_id', 'start_date', 'end_date', 'reason', 'status'];
+
+    public function employee() 
+    {
+        return $this->belongsTo(Employee::class);
+    }
 }

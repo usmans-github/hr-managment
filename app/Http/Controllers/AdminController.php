@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Attendence;
 use App\Models\Department;
 use App\Models\Employee;
+use App\Models\LeaveRequest;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,9 +24,10 @@ class AdminController extends Controller
             $totalemployees = Employee::all()->count();
             $presentemployees = Attendence::where('status', 'Present')
                 ->whereDate('date', today())->count();
-            $totaldepartments = Department::all()->count();   
+            $totaldepartments = Department::all()->count(); 
+            $leaverequests = LeaveRequest::all();  
 
-            return view('admin.index', compact('employees', 'totalemployees', 'presentemployees', 'totaldepartments'));
+            return view('admin.index', compact('employees', 'totalemployees', 'presentemployees', 'totaldepartments', 'leaverequests'));
         }
     }
     public function employees()
@@ -85,14 +87,32 @@ class AdminController extends Controller
         //
     }
 
-    public function checkAbsentEmployees()
+    public function leaveRequestApprove($id)
     {
-        $deadline = Carbon::today()->setHour(9)->setMinute(0);
+        // return dd($id);
+        $leaverequest = LeaveRequest::where('id', $id)->first();
+        if (!$leaverequest) {
+           return back()->withErrors('error', 'Leave Request not found'); 
+        }
 
-        Employee::whereNull('checked_in')
-            ->update(['status' => 'Absent']);
+        $leaverequest->update(['status' => 'Approved']);
+        $leaverequest->save();
 
-        return redirect()->route('admin.index')->with('success', 'Absent employees marked successfully.');
+        return redirect()->route('admin.index')->with('success', 'Leave request approved successfully.');
+    }
+
+    public function leaveRequestReject($id)
+    {
+        // return dd($id);
+        $leaverequest = LeaveRequest::where('id', $id)->first();
+        if (!$leaverequest) {
+           return back()->withErrors('error', 'Leave Request not found'); 
+        }
+
+        $leaverequest->update(['status' => 'Rejected']);
+        $leaverequest->save();
+
+        return redirect()->route('admin.index')->with('success', 'Leave request rejected successfully.');
     }
 
 }

@@ -115,56 +115,66 @@
                 </div>
             </div>
 
-            <!-- Employee Table -->
+            <!-- Activities Table -->
             <div class="bg-zinc-900 rounded-xl p-6">
-                <div class=" mb-6">
-                    <h2 class="text-2xl font-bold">Recent Employees</h2>
-
+                <div class="mb-6">
+                    <h2 class="text-2xl font-bold text-gray-300">Leave Requests</h2>
                 </div>
                 <div class="bg-zinc-900 rounded-xl overflow-hidden">
                     <table class="w-full">
                         <thead>
                             <tr class="text-left bg-zinc-800 text-gray-300">
-                                <th class="font-semibold py-4 px-4">Name</th>
-                                <th class="font-semibold py-4 px-4">Position</th>
-                                <th class="font-semibold py-4 px-4">Department</th>
-                                <th class="font-semibold py-4 px-4">Status</th>
+                                <th class="font-semibold py-4 px-4">ID</th>
+                                <th class="font-semibold py-4 px-4">Employee</th>
+                                <th class="font-semibold py-4 px-4">Duration</th>
+                                <th class="font-semibold py-4 px-4">Reason</th>
+                                <th class="font-semibold py-4 px-4">Action</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-800">
-                            @foreach ($employees as $employee)
+                            @foreach ($leaverequests as $leave)
                                 <tr class="text-left transition-all hover:bg-zinc-800">
-                                    <td class="py-4 px-4 text-gray-300">{{ $employee->first_name ?? 'N/A' }}
-                                        {{ $employee->last_name ?? 'N/A' }}</td>
-                                    <td class="py-4 px-4 text-gray-300">
-                                        {{ $employee->position->position_name ?? 'N/A' }}
+                                    <td class="py-4 px-4 text-gray-300">{{ $leave->id }}</td>
+                                    <td class="py-4 px-4 text-gray-300 flex items-center space-x-3">
+                                        <div>
+                                            <div class="font-semibold">{{ $leave->employee->first_name }}
+                                                {{ $leave->employee->last_name }}</div>
+                                            <div class="text-sm text-gray-400">
+                                                {{ $leave->employee->position->position_name ?? 'N/A' }}</div>
+                                        </div>
                                     </td>
-                                    <td class="py-4 px-4 text-gray-300">
-                                        {{ $employee->department->department_name ?? 'N/A' }}</td>
+                                    <td class="py-4 px-4 text-gray-300">{{ $leave->start_date }} -
+                                        {{ $leave->end_date }}</td>
+                                    <td class="py-4 px-4 text-gray-300 break-words ">{{ $leave->reason }}</td>
+                                    <td class="py-4 px-4 flex items-center space-x-2">
+                                        @if ($leave->status === 'Approved')
+                                            <span
+                                                class="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold bg-green-100 text-green-700">
+                                                <span class="h-2 w-2 rounded-full bg-green-700 mr-2"></span> Approved
+                                            </span>
+                                        @elseif ($leave->status === 'Rejected')
+                                            <span
+                                                class="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold bg-red-100 text-red-700">
+                                                <span class="h-2 w-2 rounded-full bg-red-700 mr-2"></span> Rejected
+                                            </span>
+                                        @else
+                                            <form action="{{ route('leave-request.approve', $leave->id )}}" method="post">
+                                                @csrf
+                                                @method('PUT')
+                                                <button 
+                                                type="submit"
+                                                class="px-4 py-2 text-sm font-semibold bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-full transition">Approve</button>
+                                            </form>
+                                        @endif
 
-                                    <td class="py-4 px-4">
-                                         <span
-                                                class="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold w-auto 
-                                       {{ $employee->latestAttendence?->status === 'Present'
-                                                    ? 'bg-green-100 text-green-700'
-                                                    : ($employee->latestAttendence?->status === 'Late'
-                                                        ? 'bg-yellow-100 text-yellow-700'
-                                                        : 'bg-red-100 text-red-700') }}">
-
-                                                <span
-                                                    class="h-2 w-2 rounded-full mr-2 
-                                                {{ $employee->latestAttendence?->status === 'Present'
-                                                    ? 'bg-green-700'
-                                                    : ($employee->latestAttendence?->status === 'Late'
-                                                        ? 'bg-yellow-700'
-                                                        : 'bg-red-700') }}">
-                                                </span>
-
-                                                {{ $employee->latestAttendence?->status ?? 'No Record' }}
-
-                                        </span>
+                                        <!-- Reject Button (X) -->
+                                          <form action="{{ route('leave-request.reject', $leave->id )}}" method="post">
+                                            @csrf
+                                            @method('PUT')
+                                            <button
+                                            class="w-8 h-8 flex items-center justify-center bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-full transition">✕</button>
+                                          </form>
                                     </td>
-
 
                                 </tr>
                             @endforeach
@@ -172,6 +182,7 @@
                     </table>
                 </div>
             </div>
+
         </main>
     </div>
 </x-layout>
