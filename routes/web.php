@@ -24,7 +24,6 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('attendence', AttendenceController::class);
     Route::put('attendence/checkin/{id}', [AttendenceController::class, 'checkin'])->name('attendence.checkin');
     Route::put('attendence/checkout/{id}', [AttendenceController::class, 'checkout'])->name('attendence.checkout');
-    Route::get('attendence/search', [AttendenceController::class, 'search']);
     Route::put('leave-request/approve/{id}', [AdminController::class, 'leaveRequestApprove'])->name('leave-request.approve');
     Route::put('leave-request/reject/{id}', [AdminController::class, 'leaveRequestReject'])->name('leave-request.reject');
     Route::resource('reports', ReportsController::class);
