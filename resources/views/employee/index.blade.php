@@ -103,16 +103,18 @@
                 </div>
                 <div class="flex flex-col items-center">
                     @if (!$employee->latestAttendence || $employee->latestAttendence->checked_out)
-                        <form id="checkin-form" action="{{ route('attendence.checkin', $employee->id) }}" method="POST">
+                        <form id="checkin-form" action="{{ route('attendence.checkin', $employee->id) }}" method="post">
                             @csrf
+                            @method('PUT')
                             <button id="checkin-button" type="submit" class="w-48 h-16 text-xl bg-green-200 text-green-600 font-semibold rounded-xl mb-2">
                                 <i class="fa-solid fa-chevron-left mx-2"></i>
                                 Check In
                             </button>
                         </form>
                     @elseif (!$employee->latestAttendence->checked_out)
-                        <form id="checkout-form" action="{{ route('attendence.checkout', $employee->id) }}" method="POST">
+                        <form id="checkout-form" action="{{ route('attendence.checkout', $employee->id) }}" method="post">
                             @csrf
+                            @method('PUT')
                             <button id="checkout-button" type="submit" class="w-48 h-16 text-xl bg-red-200 text-red-600 font-semibold rounded-xl ">
                                 Check Out
                                 <i class="fa-solid fa-chevron-right mx-2"></i>

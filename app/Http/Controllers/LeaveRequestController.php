@@ -47,7 +47,7 @@ class LeaveRequestController extends Controller
         $credenetials = $request->validate([
             'leave_type' => 'required',
             'start_date' => 'required',
-            'end_date' => 'required',
+            'end_date' => 'nullable',
             'reason' => 'required'
         ]);
         if (!$credenetials) {

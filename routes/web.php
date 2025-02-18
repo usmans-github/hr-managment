@@ -22,8 +22,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('employees', [AdminController::class, 'employees'])->name('admin.employees');
     Route::resource('payroll', PayrollController::class);
     Route::resource('attendence', AttendenceController::class);
-    Route::post('attendence/checkin/{id}', [AttendenceController::class, 'checkin'])->name('attendence.checkin');
-    Route::post('attendence/checkout/{id}', [AttendenceController::class, 'checkout'])->name('attendence.checkout');
+    Route::put('attendence/checkin/{id}', [AttendenceController::class, 'checkin'])->name('attendence.checkin');
+    Route::put('attendence/checkout/{id}', [AttendenceController::class, 'checkout'])->name('attendence.checkout');
     Route::post('attendence/search', [AttendenceController::class, 'search']);
     Route::put('leave-request/approve/{id}', [AdminController::class, 'leaveRequestApprove'])->name('leave-request.approve');
     Route::put('leave-request/reject/{id}', [AdminController::class, 'leaveRequestReject'])->name('leave-request.reject');

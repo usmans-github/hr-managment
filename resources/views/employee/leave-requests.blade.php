@@ -140,8 +140,8 @@
             @foreach ($leaverequests as $leave)
                 <tr class="hover:bg-zinc-800">
                     <td class="px-6 py-4">{{ $leave->leave_type }}</td>
-                    <td class="px-6 py-4">{{ $leave->start_date }}</td>
-                    <td class="px-6 py-4">{{ $leave->end_date }}</td>
+                    <td class="px-6 py-4">{{ $leave->start_date ?? 'N/A' }}</td>
+                    <td class="px-6 py-4">{{ $leave->end_date ?? 'N/A' }}</td>
                     <td class="px-6 py-4">
                         <span 
                             class="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold w-auto

@@ -143,8 +143,8 @@
                                                 {{ $leave->employee->position->position_name ?? 'N/A' }}</div>
                                         </div>
                                     </td>
-                                    <td class="py-4 px-4 text-gray-300">{{ $leave->start_date }} -
-                                        {{ $leave->end_date }}</td>
+                                    <td class="py-4 px-4 text-gray-300">{{ $leave->start_date ?? 'N/A' }} -
+                                        {{ $leave->end_date ?? 'N/A' }}</td>
                                     <td class="py-4 px-4 text-gray-300 break-words ">{{ $leave->reason }}</td>
                                     <td class="py-4 px-4 flex items-center space-x-2">
                                         @if ($leave->status === 'Approved')
