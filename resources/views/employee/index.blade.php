@@ -30,7 +30,7 @@
         <nav class="mt-8">
             <ul class="space-y-4 px-4">
                 <li>
-                    <a href="/admin" class="flex items-center gap-3 px-4 py-3 bg-zinc-900 rounded-xl">
+                    <a href="/employee" class="flex items-center gap-3 px-4 py-3 bg-zinc-900 rounded-xl">
                         <i class="fas fa-tachometer-alt"></i>
                         <span class="font-semibold">Dashboard</span>
                     </a>
@@ -43,7 +43,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/attendence"
+                    <a href='/leave-requests'
                         class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-xl transition">
                         <i class="fas fa-calendar-check"></i>
                         <span class="font-semibold">Leave Requests</span>

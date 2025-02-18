@@ -43,7 +43,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/attendence"
+                    <a href='/leave-requests'
                         class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-xl transition">
                         <i class="fas fa-calendar-check"></i>
                         <span class="font-semibold">Leave Requests</span>

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\LeaveRequest;
 use App\Http\Requests\StoreLeaveRequestRequest;
 use App\Http\Requests\UpdateLeaveRequestRequest;
+use App\Models\Employee;
+use Illuminate\Support\Facades\Auth;
 
 class LeaveRequestController extends Controller
 {
@@ -13,7 +15,9 @@ class LeaveRequestController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+        $employee = Employee::where('user_id', $user->id)->first();
+        return view('employee.leave-requests', compact('employee'));
     }
 
     /**
