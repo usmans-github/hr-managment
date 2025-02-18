@@ -19,9 +19,9 @@ Route::post('/login', [AuthController::class, 'authenticate']);
 Route::middleware(['auth'])->group(function () {
 
     Route::resource('admin', AdminController::class);
-    Route::get('employees', [AdminController::class, 'employees'])->name('admin.employees');
     Route::resource('payroll', PayrollController::class);
     Route::resource('attendence', AttendenceController::class);
+    Route::get('employees', [AdminController::class, 'employees'])->name('admin.employees');
     Route::put('attendence/checkin/{id}', [AttendenceController::class, 'checkin'])->name('attendence.checkin');
     Route::put('attendence/checkout/{id}', [AttendenceController::class, 'checkout'])->name('attendence.checkout');
     Route::put('leave-request/approve/{id}', [AdminController::class, 'leaveRequestApprove'])->name('leave-request.approve');
@@ -29,6 +29,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('reports', ReportsController::class);
     Route::resource('department', DepartmentsController::class);
     Route::resource('position', PositionController::class);
+
 });
 
 // Employee ROutes
@@ -37,4 +38,5 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('employee', EmployeeController::class);
     Route::get('/profile', [EmployeeController::class, 'profile']);
     Route::resource('/leave-request', LeaveRequestController::class);
+
 });
