@@ -43,7 +43,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href='/leave-requests'
+                    <a href='/leave-request'
                         class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-xl transition">
                         <i class="fas fa-calendar-check"></i>
                         <span class="font-semibold">Leave Requests</span>
@@ -131,9 +131,12 @@
                 <div class="bg-zinc-900 text-white rounded-xl p-6 shadow-lg">
                     <h3 class="text-lg font-semibold mb-4">Quick Actions</h3>
                     <div class="space-y-3">
-                        <button
+                        <a href="/leave-request">
+
+                            <button
                             class="w-full bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 rounded-xl shadow">Apply
                             for Leave</button>
+                        </a>
                         <button
                             class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 rounded-xl shadow">Request
                             WFH</button>

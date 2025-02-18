@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\LeaveRequest;
-use App\Http\Requests\StoreLeaveRequestRequest;
-use App\Http\Requests\UpdateLeaveRequestRequest;
 use App\Models\Employee;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class LeaveRequestController extends Controller
@@ -17,13 +16,21 @@ class LeaveRequestController extends Controller
     {
         $user = Auth::user();
         $employee = Employee::where('user_id', $user->id)->first();
-        return view('employee.leave-requests', compact('employee'));
+
+        if (!$employee) {
+            return redirect()->back()->withErrors('error', 'Employee record not found.');
+        }
+
+        $leaverequests = LeaveRequest::where('employee_id', $employee->id)->get();
+
+        return view('employee.leave-requests', compact('employee', 'leaverequests'));
     }
+
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
         //
     }
@@ -31,10 +38,33 @@ class LeaveRequestController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreLeaveRequestRequest $request)
+    public function store(Request $request)
     {
-        //
+        
+
+        //   return dd($request->all(), $employeeId);
+
+        $credenetials = $request->validate([
+            'leave_type' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required',
+            'reason' => 'required'
+        ]);
+        if (!$credenetials) {
+            return back()->withErrors('error', 'All fields are required');
+        }
+        $employeeId = Auth::user()->employee->id;
+        //Make a leave request;
+        LeaveRequest::create([
+            'leave_type' => $credenetials['leave_type'],
+            'employee_id' => $employeeId,
+            'start_date' => $credenetials['start_date'],
+            'end_date' => $credenetials['end_date'],
+            'reason' => $credenetials['reason']
+        ]);
+        return redirect('/leave-request')->with('success', 'Leave request created successfuly');
     }
+
 
     /**
      * Display the specified resource.
@@ -55,7 +85,7 @@ class LeaveRequestController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateLeaveRequestRequest $request, LeaveRequest $leaveRequest)
+    public function update()
     {
         //
     }

@@ -43,7 +43,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href='/leave-requests'
+                    <a href='/leave-request'
                         class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-xl transition">
                         <i class="fas fa-calendar-check"></i>
                         <span class="font-semibold">Leave Requests</span>
@@ -75,8 +75,11 @@
             <h1 class="text-4xl font-bold">{{ $employee->first_name . ' ' . $employee->last_name }}</h1>
         </div>
 
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+        
         <!-- Profile Info Section -->
-        <div class="max-w-7xl mx-auto bg-zinc-900 rounded-xl p-6 shadow-lg">
+        <div class="bg-zinc-900 rounded-xl p-6">
             <h2 class="text-2xl font-bold mb-4">Profile Information</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
@@ -85,7 +88,7 @@
                 </div>
                 <div>
                     <p class="text-sm font-medium text-gray-300">Email:</p>
-                    <p class="text-lg font-semibold">{{ $employee->email }}</p>
+                    <p class="text-lg font-semibold break-words overflow-hidden">{{ $employee->email }}</p>
                 </div>
                 <div>
                     <p class="text-sm font-medium text-gray-300">Position:</p>
@@ -107,7 +110,7 @@
         </div>
 
         <!-- Edit Profile Section -->
-        <div class="bg-zinc-900 rounded-xl p-6 mt-6">
+        <div class="bg-zinc-900 rounded-xl p-6">
             <h2 class="text-2xl font-bold mb-4">Edit Profile</h2>
             <form action="{{ route('employee.update', $employee->id) }}" method="POST">
                 @csrf
@@ -141,11 +144,12 @@
                 </div>
 
                     <button type="submit"
-                    class="w-1/4 mt-6  rounded-xl bg-zinc-700 hover:bg-zinc-600 px-6 py-3 text-sm font-medium text-white">Save
+                    class="w-full mt-6  rounded-xl bg-zinc-700 hover:bg-zinc-600 px-6 py-3 text-sm font-medium text-white">Save
                     Changes</button>
             </form>
         </div>
 
+        </div>
     </main>
 
 </x-layout>

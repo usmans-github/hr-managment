@@ -35,5 +35,5 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('employee', EmployeeController::class);
     Route::get('/profile', [EmployeeController::class, 'profile']);
-    Route::resource('/leave-requests', LeaveRequestController::class);
+    Route::resource('/leave-request', LeaveRequestController::class);
 });
