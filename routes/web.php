@@ -22,6 +22,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('payroll', PayrollController::class);
     Route::resource('attendence', AttendenceController::class);
     Route::get('employees', [AdminController::class, 'employees'])->name('admin.employees');
+    Route::get('employeedetails/{id}', [AdminController::class, 'employeedetails'])->name('employeedetails');
     Route::put('attendence/checkin/{id}', [AttendenceController::class, 'checkin'])->name('attendence.checkin');
     Route::put('attendence/checkout/{id}', [AttendenceController::class, 'checkout'])->name('attendence.checkout');
     Route::put('leave-request/approve/{id}', [AdminController::class, 'leaveRequestApprove'])->name('leave-request.approve');

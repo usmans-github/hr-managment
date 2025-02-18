@@ -87,6 +87,15 @@ class AdminController extends Controller
         //
     }
 
+    public function employeedetails($id)
+    {
+        $employee = Employee::where('id', $id)->first();
+        $attendences = Attendence::where('employee_id', $employee->id)->get();
+
+        return view('admin.employee-details', compact('employee', 'attendences'));
+    }
+
+
     public function leaveRequestApprove($id)
     {
         // return dd($id);

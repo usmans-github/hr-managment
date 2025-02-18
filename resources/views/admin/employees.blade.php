@@ -89,69 +89,81 @@
                 </a>
             </div>
 
-          <!-- Employee Grid -->
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14">
-    @foreach ($employees as $employee)
-        <div class="bg-zinc-900 rounded-xl p-6 border border-gray-800 hover:border-gray-700 transition-all">
-            <div class="flex items-start justify-between mb-2">
-                <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 rounded-full bg-white text-black text-xl font-semibold flex items-center justify-center">
-                        {{ substr($employee->first_name, 0, 1) }}{{ substr($employee->last_name, 0, 1) }}
-                    </div>
-                    <div>
-                        <div class="flex items-center gap-2">
-                            <h3 class="text-lg font-semibold text-white">
-                                {{ $employee->first_name }} {{ $employee->last_name }}
-                            </h3>
-                            <span class="px-2 py-1 rounded-full text-xs {{ $employee->status === 'active' ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-700' }}">
-                                {{ ucfirst($employee->status ?? 'active') }}
-                            </span>
+            <!-- Employee Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14">
+                @foreach ($employees as $employee)
+                    <div class="bg-zinc-900 rounded-xl p-6 border border-gray-800 hover:border-gray-700 transition-all">
+                        <div class="flex items-start justify-between mb-2">
+                            <div class="flex items-center gap-4">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-white text-black text-xl font-semibold flex items-center justify-center">
+                                    {{ substr($employee->first_name, 0, 1) }}{{ substr($employee->last_name, 0, 1) }}
+                                </div>
+                                <div>
+                                    <div class="flex items-center gap-2">
+                                        <h3 class="text-lg font-semibold text-white">
+                                            {{ $employee->first_name }} {{ $employee->last_name }}
+                                        </h3>
+                                        <span
+                                            class="px-2 py-1 rounded-full text-xs {{ $employee->status === 'active' ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-700' }}">
+                                            {{ ucfirst($employee->status ?? 'active') }}
+                                        </span>
+                                    </div>
+                                    <p class="text-gray-400">{{ $employee->position->position_name ?? 'N/A' }}</p>
+                                </div>
+                            </div>
                         </div>
-                        <p class="text-gray-400">{{ $employee->position->position_name ?? 'N/A' }}</p>
+
+                        <div class="space-y-3">
+                            <div class="flex items-center gap-2 text-gray-300">
+                                <i class="fas fa-envelope w-5"></i>
+                                <span class="text-sm">{{ $employee->email ?? 'N/A' }}</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-gray-300">
+                                <i class="fa-regular fa-building"></i>
+                                <span class="text-sm">{{ $employee->department->department_name ?? 'N/A' }}</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-gray-300">
+                                <i class="fa-regular fa-calendar-check"></i>
+                                <span
+                                    class="text-sm">{{ $employee->join_date ? date('M d, Y', strtotime($employee->join_date)) : 'N/A' }}</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-gray-300">
+                                <i class="fas fa-phone w-5"></i>
+                                <span class="text-sm">{{ $employee->phone ?? 'N/A' }}</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-gray-300">
+                                <i class="fas fa-map-marker-alt w-5"></i>
+                                <span class="text-sm">{{ $employee->address ?? 'N/A' }}</span>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-end gap-2">
+                            <a href="{{ route('employee.edit', $employee->id) }}">
+                                <i
+                                    class="fas fa-edit cursor-pointer rounded-md text-gray-300 hover:text-white hover:bg-zinc-700 p-2"></i>
+                            </a>
+                            <form method="POST" action="{{ route('employee.destroy', $employee->id) }}"
+                                onsubmit="return confirm('Are you sure you want to delete this employee?');">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit">
+                                    <i
+                                        class="fas fa-trash cursor-pointer rounded-md text-gray-300 hover:text-white hover:bg-zinc-700 p-2"></i>
+                                </button>
+                            </form>
+                            <!-- View History Button -->
+                            <a href="{{ route('employeedetails', $employee->id) }}">
+                                <button>
+                                    <i
+                                        class="fas fa-history cursor-pointer rounded-md text-gray-300 hover:text-white hover:bg-zinc-700 p-2"></i>
+                                </button>
+                            </a>
+                        </div>
                     </div>
-                </div>
+                @endforeach
             </div>
 
-            <div class="space-y-3">
-                <div class="flex items-center gap-2 text-gray-300">
-                    <i class="fas fa-envelope w-5"></i>
-                    <span class="text-sm">{{ $employee->email ?? 'N/A' }}</span>
-                </div>
-                <div class="flex items-center gap-2 text-gray-300">
-                    <i class="fa-regular fa-building"></i>
-                    <span class="text-sm">{{ $employee->department->department_name ?? 'N/A' }}</span>
-                </div>
-                <div class="flex items-center gap-2 text-gray-300">
-                    <i class="fa-regular fa-calendar-check"></i>
-                    <span class="text-sm">{{ $employee->join_date ? date('M d, Y', strtotime($employee->join_date)) : 'N/A' }}</span>
-                </div>
-                
-                <div class="flex items-center gap-2 text-gray-300">
-                    <i class="fas fa-phone w-5"></i>
-                    <span class="text-sm">{{ $employee->phone ?? 'N/A' }}</span>
-                </div>
-                <!-- Address Section -->
-                <div class="flex items-center gap-2 text-gray-300">
-                    <i class="fas fa-map-marker-alt w-5"></i>
-                    <span class="text-sm">{{ $employee->address ?? 'N/A' }}</span>
-                </div>
-            </div>
-
-            <div class="flex justify-end gap-2">
-                <a href="{{ route('employee.edit', $employee->id) }}">
-                    <i class="fas fa-edit cursor-pointer rounded-md text-gray-300 hover:text-white hover:bg-zinc-700 p-2"></i>
-                </a>
-                <form method="POST" action="{{ route('employee.destroy', $employee->id) }}" onsubmit="return confirm('Are you sure you want to delete this employee?');">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit">
-                        <i class="fas fa-trash cursor-pointer rounded-md text-gray-300 hover:text-white hover:bg-zinc-700 p-2"></i>
-                    </button>
-                </form>
-            </div>
-        </div>
-    @endforeach
-</div>
 
         </main>
     </div>
