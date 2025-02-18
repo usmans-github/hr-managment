@@ -89,9 +89,9 @@
                             <label class="text-gray-300 block mb-1 font-medium">Leave Type</label>
                             <select name="leave_type"
                                 class="w-full p-3 rounded-xl bg-zinc-800 text-gray-300 border border-gray-700">
-                                <option value="sick">Sick Leave</option>
-                                <option value="casual">Casual Leave</option>
-                                <option value="annual">Annual Leave</option>
+                                <option value="Sick">Sick Leave</option>
+                                <option value="Casual">Casual Leave</option>
+                                <option value="Annual">Annual Leave</option>
                             </select>
                         </div>
 
@@ -160,7 +160,7 @@
                                         : 'bg-red-700') }}">
                             </span>
                             
-                            {{ ucfirst($leave->status) }}
+                            {{ $leave->status }}
                         </span>
                     </td>
                 </tr>

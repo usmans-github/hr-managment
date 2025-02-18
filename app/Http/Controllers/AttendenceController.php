@@ -131,13 +131,4 @@ class AttendenceController extends Controller
         return redirect()->route('employee.index')->with('success', 'Check out successfully');
     }
 
-    public function search (Request $request) 
-    {
-        dd($request->all());
-        // $query  = Attendence::query();
-
-        // //Filter by date
-        // if($request->dater)
-    }
-
 }

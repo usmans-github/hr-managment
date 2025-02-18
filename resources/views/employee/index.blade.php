@@ -149,16 +149,20 @@
                 </div>
                 <div class="bg-zinc-900 text-white rounded-xl p-6 shadow-lg">
                     <h3 class="text-lg font-semibold mb-4">Upcoming Leaves</h3>
-                    <ul class="space-y-2">
+                    @if ($upcomingleaves)
+                    @foreach ($upcomingleaves as $leave)
+                        <ul class="space-y-2">
                         <li class="flex justify-between text-sm">
-                            <span>Summer Vacation</span>
-                            <span class="font-semibold">Jul 15 - Jul 20</span>
+                            <span>
+                                <span class="bg-green-500 inline-flex justify-center mr-1 items-center p-1 rounded-full text-sm font-semibold w-auto"></span>
+                                {{ $leave->leave_type }} Leave</span>
+                            <span class="font-semibold">{{ $leave->start_date ?? 'N/A' }} - {{ $leave->end_date ?? 'N/A' }}</span>
                         </li>
-                        <li class="flex justify-between text-sm">
-                            <span>Personal Day</span>
-                            <span class="font-semibold">Aug 5</span>
-                        </li>
-                    </ul>
+                        </ul>
+                    @endforeach
+                    @endif
+                    
+                    
                 </div>
                 <div class="bg-zinc-900 text-white rounded-xl p-6 shadow-lg">
                     <h3 class="text-lg font-semibold mb-4">Recent Payslip</h3>

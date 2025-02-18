@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Department;
 use App\Models\Employee;
+use App\Models\LeaveRequest;
 use App\Models\Position;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -19,7 +20,13 @@ class EmployeeController extends Controller
     {
         $user = Auth::user();
         $employee = Employee::where('user_id', $user->id)->with('latestAttendence')->first();
-        return view('employee.index', compact('employee'));
+        $upcomingleaves = LeaveRequest::where('employee_id', $employee->id)
+                                        ->where('status', 'Approved')
+                                        ->where('start_date', '>', today())
+                                        ->orderBy('start_date', 'asc')
+                                        ->get();
+
+        return view('employee.index', compact('employee', 'upcomingleaves'));
     }
 
     /**
