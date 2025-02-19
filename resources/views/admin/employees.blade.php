@@ -28,13 +28,13 @@
             <div class="mb-8 flex justify-between items-center">
                 <div>
                     <h1 class="text-3xl font-bold text-white">Directory</h1>
-                    <p class="text-gray-300 text-sm font-semibold">View and manage all employees</p>
                 </div>
-                <a href="{{ route('employee.create') }}"
-                    class="bg-zinc-900 hover:bg-zinc-800 rounded-xl border border-gray-700 text-sm
+                <a href="{{ route('employee.create') }}">
+                    <button class="bg-zinc-900 hover:bg-zinc-800 rounded-lg border border-gray-700 text-sm
                      font-medium px-3 py-2 flex items-center gap-2 transition-all">
-                    Add Employee
-                    <i class="fa fa-user-plus"></i>
+                        Add Employee
+                        <i class="fa fa-user-plus"></i>
+                    </button>
                 </a>
             </div>
 
@@ -55,7 +55,7 @@
                                         </h3>
                                         <span
                                             class="px-2 py-1 rounded-full text-xs {{ $employee->status === 'active' ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-700' }}">
-                                            {{ ucfirst($employee->status ?? 'active') }}
+                                            {{ $employee->status ?? 'active' }}
                                         </span>
                                     </div>
                                     <p class="text-gray-400">{{ $employee->position->position_name ?? 'N/A' }}</p>

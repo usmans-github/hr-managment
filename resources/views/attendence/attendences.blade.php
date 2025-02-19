@@ -6,10 +6,8 @@
             <div class="mb-8">
                 <h2 class="text-3xl font-bold text-white mb-6">Attendance Management</h2>
 
-                
-
                 <!-- Stats Cards -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
                     <div class="bg-zinc-900 p-4 rounded-xl flex gap-4 items-center">
                         <i
                             class="w-14 h-14 bg-black rounded-xl flex items-center justify-center fas fa-users text-3xl text-green-500"></i>
@@ -34,14 +32,14 @@
                             <div class="text-2xl font-semibold text-yellow-400">{{ $lateemployees }}</div>
                         </div>
                     </div>
-                    {{-- <div class="bg-zinc-900 p-4 rounded-xl flex gap-4 items-center">
+                    <div class="bg-zinc-900 p-4 rounded-xl flex gap-4 items-center">
                             <i
                                 class="w-14 h-14 bg-black rounded-xl flex items-center justify-center fas fa-user-times text-3xl text-indigo-500"></i>
                             <div>
                                 <div class="text-sm text-gray-300 mb-1 font-semibold">On Leave</div>
                                 <div class="text-2xl font-semibold text-blue-400">5</div>
                             </div>
-                        </div> --}}
+                        </div>
                 </div>
 
                 <!-- Attendance Table -->

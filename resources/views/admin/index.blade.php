@@ -7,7 +7,6 @@
                 <!-- Welcome Header -->
                 <div class="mb-8">
                     <h1 class="text-3xl font-bold text-white">Dashboard</h1>
-                    <p class="text-gray-300 text-sm font-semibold">Manage your HR operations effortlessly.</p>
                 </div>
 
                 <!-- Stats Cards -->

@@ -47,17 +47,16 @@
             <div class="mb-8 flex justify-between items-center">
                 <div>
                     <h1 class="text-3xl font-bold text-white">Departments</h1>
-                    <p class="text-gray-300 text-sm font-semibold">Manage your organization's departments</p>
                 </div>
                 <div class="flex gap-4">
                     <a href="/position/create"
-                        class="bg-zinc-900 hover:bg-zinc-800 rounded-xl border border-gray-700
+                        class="bg-zinc-900 hover:bg-zinc-800 rounded-lg border border-gray-700
                          text-sm font-medium px-4 py-2.5 flex items-center gap-2 transition-all">
                         <span>Add Position</span>
                         <i class="fas fa-circle-plus"></i>
                     </a>
                     <a href="/department/create"
-                        class="bg-zinc-900 hover:bg-zinc-800 rounded-xl border border-gray-700
+                        class="bg-zinc-900 hover:bg-zinc-800 rounded-lg border border-gray-700
                          text-sm font-medium px-4 py-2.5 flex items-center gap-2 transition-all">
                         <span>Add Department</span>
                         <i class="fas fa-square-plus"></i>
