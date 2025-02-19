@@ -1,49 +1,5 @@
 <x-layout>
     <div class="flex min-h-screen">
-        <!-- Sidebar -->
-        <aside class="w-64 absolute h-full">
-           <a href="/"> <div class="mt-4 px-4 text-3xl font-extrabold">HR-Managment</div> </a>
-            <nav class="mt-8">
-                <ul class="space-y-4 px-4">
-                    <li>
-                        <a href="/admin" class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-lg shadow-md">
-                            <i class="fas fa-tachometer-alt"></i>
-                            <span class="font-semibold">Dashboard</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/employees" class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-lg transition">
-                            <i class="fas fa-users"></i>
-                            <span class="font-semibold">Employees</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/attendence" class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-lg transition">
-                            <i class="fas fa-calendar-check"></i>
-                            <span class="font-semibold">Attendance</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/payroll" class="flex items-center gap-3 px-4 py-3 bg-zinc-900 rounded-lg transition">
-                            <i class="fas fa-wallet"></i>
-                            <span class="font-semibold">Payroll</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/reports" class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-lg transition">
-                            <i class="fas fa-chart-line"></i>
-                            <span class="font-semibold">Reports</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/department" class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-lg transition">
-                            <i class="fas fa-building"></i>
-                            <span class="font-semibold">Departments</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </aside>
 
         <!-- Main Content -->
         <main class="flex-1 ml-64 p-8">

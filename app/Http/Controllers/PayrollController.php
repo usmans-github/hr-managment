@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,6 +15,9 @@ class PayrollController extends Controller
     {
         $user = Auth::user();
         if ($user->role === 'admin') {
+
+            
+
             return view('admin.payrolls');
         }
     }

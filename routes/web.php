@@ -27,7 +27,7 @@ Route::middleware(['auth'])->group(function () {
     Route::put('attendence/checkout/{id}', [AttendenceController::class, 'checkout'])->name('attendence.checkout');
     Route::put('leave-request/approve/{id}', [AdminController::class, 'leaveRequestApprove'])->name('leave-request.approve');
     Route::put('leave-request/reject/{id}', [AdminController::class, 'leaveRequestReject'])->name('leave-request.reject');
-    Route::resource('reports', ReportsController::class);
+    Route::resource('report', ReportsController::class);
     Route::resource('department', DepartmentsController::class);
     Route::resource('position', PositionController::class);
 

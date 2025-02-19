@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,7 +16,9 @@ class ReportsController extends Controller
         $user = Auth::user();
         if ($user->role === 'admin') {
 
-            return view('admin.reports');
+            $totalemployees = Employee::all()->count();
+
+            return view('admin.reports', compact('totalemployees'));
         }
     }
 

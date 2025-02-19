@@ -1,5 +1,15 @@
-<x-layout>
-    <div class="flex min-h-screen flex-col px-6 lg:px-8 pt-12">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Human Resources Managment</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+</head>
+<body class="bg-black text-white pb-20">
+     <div class="flex min-h-screen flex-col px-6 lg:px-8 pt-12">
         <!-- Header -->
         <div class="sm:mx-auto sm:w-full sm:max-w-md text-center mb-8">
             <h2 class="text-2xl font-semibold text-gray-100">Sign In</h2>
@@ -59,4 +69,5 @@
             
         </div>
     </div>
-</x-layout>
+</body>
+</html>
