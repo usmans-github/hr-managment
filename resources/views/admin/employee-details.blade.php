@@ -5,7 +5,6 @@
         <div class="mb-8 flex justify-between items-center">
             <div>
                 <h1 class="text-3xl font-bold text-white">Employee Details</h1>
-                <p class="text-gray-300 text-sm font-semibold">View and manage all employees</p>
             </div>
 
             <button
@@ -23,10 +22,9 @@
 
             <!-- Employee Info -->
             <div class="flex items-start gap-6 mb-8">
-                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-MXcQ74LsbcG9GfLlcDf1038pTzzS85.png"
-                    alt="Employee photo" class="w-20 h-20 rounded-full">
+                <div class="w-20 h-20 rounded-full bg-black text-2xl font-semibold flex items-center justify-center mr-3">{{ $employee->first_name[0] . ' ' . $employee->last_name[0] }}</div>
                 <div class="space-y-2">
-                    <h2 class="text-4xl font-bold mb-8">{{ $employee->first_name }}</h2>
+                    <h2 class="text-4xl font-bold mb-8">{{ $employee->first_name . ' ' . $employee->last_name }}</h2>
                     <div class="flex justify-center items-center gap-14">
                         <div class="flex flex-col gap-2">
                             <span class="text-gray-300">Role</span>
@@ -109,7 +107,7 @@
         <div class="bg-zinc-900 rounded-2xl p-6">
 
             <!-- Attendence Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-2 mb-8">
                 @foreach ($attendences as $attendence)
                     <div class="bg-zinc-800 rounded-xl p-4">
                         <div class="flex justify-between items-start mb-4">
@@ -137,12 +135,12 @@
                                 {{ $employee->latestAttendence?->status ?? 'No Record' }}
                             </span>
                         </div>
-                        <div class="space-y-2">
-                            <div class="flex justify-between">
+                        <div class="pt-4 flex justify-between items-center">
+                            <div class="flex flex-col">
                                 <p class="text-gray-300">Check In Time</p>
                                 <p class="font-medium">{{ $attendence->checked_in }}</p>
                             </div>
-                            <div class="flex justify-between">
+                            <div class="flex flex-col">
                                 <p class="text-gray-300">Check Out Time</p>
                                 <p class="font-medium">{{ $attendence->checked_out }}</p>
                             </div>

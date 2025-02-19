@@ -1,4 +1,14 @@
-<x-layout>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+     @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+<body class="bg-black text-white pb-20">
+    
     <div class="flex min-h-screen flex-col px-6 lg:px-8 pt-12">
         <!-- Header -->
         <div class="sm:mx-auto sm:w-full sm:max-w-lg text-center mb-8">
@@ -22,15 +32,6 @@
                         placeholder="Enter department name" />
                 </div>
 
-                {{-- <!-- Positions -->
-                <div>
-                    <label for="positions" class="block text-sm font-medium text-gray-300">Positions</label>
-                    <select name="positions[]" id="positions" multiple
-                        class="mt-2 block w-full rounded-lg bg-zinc-900 border border-gray-700 px-4 py-3 text-gray-300">
-                        <!-- Options will be populated by JavaScript -->
-                    </select>
-                </div> --}}
-
 
                 <!-- Submit Button -->
                 <div>
@@ -52,7 +53,7 @@
 
         </div>
     </div>
-</x-layout>
+
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -70,3 +71,6 @@
             .catch(error => console.error('Error fetching positions:', error));
     });
 </script>
+
+</body>
+</html>

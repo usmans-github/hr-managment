@@ -6,6 +6,7 @@ use App\Models\Attendence;
 use App\Models\Department;
 use App\Models\Employee;
 use App\Models\LeaveRequest;
+use App\Models\Position;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -34,9 +35,11 @@ class AdminController extends Controller
     {
         $user = Auth::user();
         if ($user->role === 'admin') {
-            return view('admin.employees', [
-                'employees' => Employee::with(['department', 'position'])->get()
-            ]);
+            $departments = Department::all();
+            $positions = Position::all();
+            $employees = Employee::with(['department', 'position'])->get();
+
+            return view('admin.employees', compact('employees', 'positions', 'departments'));
         }
     }
 
