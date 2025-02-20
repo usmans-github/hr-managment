@@ -14,9 +14,12 @@
 
 <body class="bg-black text-white pb-20">
 
+    
+
     <!-- Sidebar -->
     @if (auth()->user()->role === 'admin')
         {{-- ADmin Sidebar --}}
+        @if (!request()->is('/', 'employee.create'))
         <aside class="w-64 absolute h-full">
 
             <a href="/">
@@ -69,6 +72,7 @@
                 </ul>
             </nav>
         </aside>
+        @endif
     @else
         <!-- Employee Sidebar -->
         <aside class="w-64 absolute h-full">
@@ -142,8 +146,8 @@
                 class="flex items-center w-full max-w-xs p-4 text-gray-300 bg-zinc-800 border border-gray-700 rounded-lg shadow-sm"
                 role="alert">
                 <div
-                    class="inline-flex items-center justify-center shrink-0 w-8 h-8 text-green-400 bg-zinc-700 rounded-lg">
-                    <i class="fa fa-check"></i>
+                    class="inline-flex items-center justify-center shrink-0 w-8 h-8 text-red-400 bg-zinc-700 rounded-lg">
+                   <i class="fa-solid fa-triangle-exclamation"></i>
                 </div>
                 <div class="mx-3 text-sm font-normal">{{ session('error') }}</div>
                 <button type="button"
@@ -156,11 +160,8 @@
         </div>
     @endif
 
-    
-
     <main>{{ $slot }}</main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
-
 </body>
 
 </html>

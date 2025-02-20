@@ -34,7 +34,7 @@ class EmployeeController extends Controller
      */
     public function create(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -109,6 +109,9 @@ class EmployeeController extends Controller
     public function edit($id)
     {
         $employee = Employee::findOrFail($id);
+
+        $departments = Department::all();
+        $positions = Position::all();
        
         return view('admin.edit-employee', compact('employee', 'departments', 'positions'));
     }
@@ -124,7 +127,7 @@ class EmployeeController extends Controller
             'first_name' => 'required',
             'last_name' => 'required',
             'email' => 'required|email',
-            'password' => 'required|min:6',
+            'password' => 'nullable|min:6',
             'address' => 'required',
             'phone' => 'required',
             'department_id' => 'required|integer',

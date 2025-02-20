@@ -7,7 +7,6 @@ use App\Models\Department;
 use App\Models\Employee;
 use App\Models\LeaveRequest;
 use App\Models\Position;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -35,8 +34,8 @@ class AdminController extends Controller
     {
         $user = Auth::user();
         if ($user->role === 'admin') {
-            $departments = Department::all();
             $positions = Position::all();
+            $departments = Department::all();
             $employees = Employee::with(['department', 'position'])->get();
 
             return view('admin.employees', compact('employees', 'positions', 'departments'));
@@ -46,7 +45,14 @@ class AdminController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create() {}
+    public function create() 
+    {
+        //Create employee
+        $positions = Position::all();
+        $departments = Department::all();
+                                                                                        
+        return view('admin.create-employee', compact('positions', 'departments'));
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -94,10 +100,8 @@ class AdminController extends Controller
     {
         $employee = Employee::where('id', $id)->first();
         $attendences = Attendence::where('employee_id', $employee->id)->get();
-        $departments = Department::all();
-        $positions = Position::all();
 
-        return view('admin.employee-details', compact('employee', 'attendences', 'departments', 'positions'));
+        return view('admin.employee-details', compact('employee', 'attendences'));
     }
 
 

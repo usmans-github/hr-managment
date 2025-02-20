@@ -295,11 +295,6 @@
             </button>
         </form>
 
-        <p class="mt-6 text-center text-sm text-gray-400">
-            Back to Employees?
-            <a href="{{ route('admin.employees') }}" class="text-white hover:underline">Click Here</a>
-        </p>
-
         @if ($errors->any())
             <div class="text-red-500 mt-4">
                 <ul>
@@ -311,5 +306,7 @@
         @endif
     </div>
 </div>
+
+
 
 </x-layout>
