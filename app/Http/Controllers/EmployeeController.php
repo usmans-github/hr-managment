@@ -32,10 +32,7 @@ class EmployeeController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Request $request)
-    {
-        
-    }
+    public function create(Request $request) {}
 
     /**
      * Store a newly created resource in storage.
@@ -44,16 +41,16 @@ class EmployeeController extends Controller
     public function store(Request $request)
     {
         $credentials = $request->validate([
-            'first_name' => 'required|string',
-            'last_name' => 'required|string',
-            'email' => 'required|email',
-            'password' => 'required',
-            'address' => 'required',
-            'phone' =>  'required',
-            'position_id' => 'required',
-            'department_id' => 'required',
-            'join_date' => 'required',
-            'salary' => 'required',
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email', // Ensures email is unique in users table
+            'password' => 'required|min:6',
+            'address' => 'required|string',
+            'phone' => 'required|string|max:15',
+            'position_id' => 'required|exists:positions,id', // Ensure the position exists
+            'department_id' => 'required|exists:departments,id', // Ensure the department exists
+            'join_date' => 'required|date',
+            'salary' => 'required|numeric|min:0',
         ]);
 
         // Check if the user already exists
@@ -112,7 +109,7 @@ class EmployeeController extends Controller
 
         $departments = Department::all();
         $positions = Position::all();
-       
+
         return view('admin.edit-employee', compact('employee', 'departments', 'positions'));
     }
 
@@ -135,7 +132,7 @@ class EmployeeController extends Controller
             'join_date' => 'required|date',
             'salary' => 'required|numeric',
         ]);
-    
+
         // Find the employee by ID
         $employee = Employee::findOrFail($id);
 
@@ -189,7 +186,7 @@ class EmployeeController extends Controller
     {
         $user = Auth::user();
         $employee = Employee::where('user_id', $user->id)->first();
-        
+
 
         if (!$employee) {
             return redirect()->back()->with('error', 'Employee profile not found.');

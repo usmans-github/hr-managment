@@ -21,36 +21,12 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('admin@example'),
             'role' => 'admin',
         ]);
+        Department::factory()->count(5)->create(); // Generates 5 departments
 
-        User::create([
-            'id' => 2,
-            'email' => 'usmanali730771@gmail.com',
-            'password' => bcrypt('usmanali'),
-            'role' => 'employee',
-        ]);
-        Department::create([
-            'id' => 1,
-            'department_name' => 'IT'
-        ]);
-        
-        Position::create([
-            'id' => 1,
-            'position_name' => "Backend Developer",
-            'department_id' => 1
-        ]);
-        Employee::create([
-            'id' => 1,
-            'user_id' => 2,
-            'first_name' => 'Usman',
-            'last_name' => 'Ali',
-            'email' => 'usmanali730771@gmail.com',
-            'password' => bcrypt('usmanali'),
-            'address' => 'House No. 13 Street No. 2 Hussain Colony HaroonAbad',
-            'phone' => '0300-1234567',
-            'position_id' => 1,
-            'department_id' => 1,
-            'join_date' => '2021-01-01',
-            'salary' => 50000,
-        ]);
+        Position::factory()->count(10)->create(); // Generates 10 positions linked to departments
+
+        User::factory()->count(10)->create(); // Generates 10 users
+
+        Employee::factory()->count(10)->create(); // Generates 10 employees
     }
 }

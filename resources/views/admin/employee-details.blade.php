@@ -164,14 +164,14 @@
                 @endforeach
             </div>
 
-            {{-- <!-- Pagination -->
+            <!-- Pagination -->
             <div class="flex justify-center gap-2">
-                <button class="w-10 h-10 flex items-center justify-center rounded-lg bg-zinc-800"> --}}
+                <button class="w-10 h-10 flex items-center justify-center rounded-lg bg-zinc-800">
 
-                    {{ $attendences->links() }}
-                {{-- </button> --}}
+                    {{ $attendences->links('pagination::tailwind') }}
+                </button>
 
-            {{-- </div> --}}
+            </div>
         </div>
 
     </main>
