@@ -10,6 +10,8 @@ use App\Models\Position;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use function Pest\Laravel\get;
+
 class AdminController extends Controller
 {
     /**
@@ -100,10 +102,14 @@ class AdminController extends Controller
     {
         $employee = Employee::where('id', $id)->first();
         $attendences = Attendence::where('employee_id', $employee->id)->get();
-        $positions = Position::all();
-        $departments = Department::all();
+        $presents = Attendence::where('employee_id', $employee->id)
+                    ->where('status', 'Present')->count();
+        $absents = Attendence::where('employee_id', $employee->id)
+                    ->where('status', 'Absent')->count();
+        $lates = Attendence::where('employee_id', $employee->id)
+                    ->where('status', 'Late')->count();
 
-        return view('admin.employee-details', compact('employee', 'attendences', 'positions', 'departments'));
+        return view('admin.employee-details', compact('employee', 'attendences', 'presents', 'absents', 'lates'));
     }
 
 

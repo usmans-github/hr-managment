@@ -62,57 +62,57 @@
 
             <!-- Metrics Grid -->
             <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                <!-- Total Attendence -->
+
+                <!-- Total Presents -->
                 <div class="bg-zinc-800 rounded-xl p-4">
                     <div class="flex items-center gap-4">
                         <div class="px-4 py-4 flex justify-center items-center bg-zinc-700 rounded-full">
-                            <i class="fa-solid fa-calendar-days"></i>
+                           <i class="fa-solid fa-user-check"></i>
                         </div>
                         <div>
-                            <p class="text-2xl font-semibold">309</p>
-                            <p class="text-gray-300">Total Attendence</p>
+                            <p class="text-2xl font-semibold">{{ $presents }}</p>
+                            <p class= "text-gray-300">Total Presents</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Avg Check In -->
+                <!-- Total Absents -->
                 <div class="bg-zinc-800 rounded-xl p-4">
                     <div class="flex items-center gap-4">
                         <div class="px-4 py-4 flex justify-center items-center bg-zinc-700 rounded-full">
-                            <i class="fa-solid mx-1 fa-chevron-left"></i>
+                           <i class="fa-solid fa-user-minus"></i>
                         </div>
                         <div>
-                            <p class="text-2xl font-semibold">08:46</p>
-                            <p class= "text-gray-300">Avg Check In Time</p>
+                            <p class="text-2xl font-semibold">{{ $absents }}</p>
+                            <p class= "text-gray-300">Total Absents</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Total LAte arrivals -->
+                <div class="bg-zinc-800 rounded-xl p-4">
+                    <div class="flex items-center gap-4">
+                        <div class="px-4 py-4 flex justify-center items-center bg-zinc-700 rounded-full">
+                           <i class="fa-solid fa-clock-rotate-left"></i>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-semibold">{{ $lates }}</p>
+                            <p class= "text-gray-300">Total Late Arrivals</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Total Leaves  -->
+                <div class="bg-zinc-800 rounded-xl p-4">
+                    <div class="flex items-center gap-4">
+                        <div class="px-4 py-4 flex justify-center items-center bg-zinc-700 rounded-full">
+                           <i class="fa-solid fa-clock"></i>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-semibold">{{ $lates }}</p>
+                            <p class= "text-gray-300">Total Leaves</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Avg Check Out -->
-                <div class="bg-zinc-800 rounded-xl p-4">
-                    <div class="flex items-center gap-4">
-                        <div class="px-4 py-4 flex justify-center items-center bg-zinc-700 rounded-full">
-                            <i class="fa-solid mx-1 fa-chevron-right"></i>
-                        </div>
-                        <div>
-                            <p class="text-2xl font-semibold">17:04</p>
-                            <p class= "text-gray-300">Avg Check Out Time</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Employee Predicate -->
-                <div class="bg-zinc-800 rounded-xl p-4">
-                    <div class="flex items-center gap-4">
-                        <div class="px-4 py-4 flex justify-center items-center bg-zinc-700 rounded-full">
-                            <i class="fa-solid mx-1 fa-bookmark"></i>
-                        </div>
-                        <div>
-                            <p class="text-2xl font-semibold">Role Model</p>
-                            <p class="text-gray-300">Employee Predicate</p>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
 

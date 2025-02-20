@@ -29,7 +29,7 @@
                         <li>
                             <a href="/admin"
                                 class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-lg ">
-                                <i class="fas fa-tachometer-alt"></i>
+                                <i class="fa-solid fa-border-all"></i>
                                 <span class="text-sm font-medium text-zinc-300">Dashboard</span>
                             </a>
                         </li>
@@ -44,7 +44,7 @@
                         <li>
                             <a href="/attendence"
                                 class="{{ request()->is('attendence') ? 'bg-zinc-900' : 'hover:bg-zinc-900' }} flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-lg transition">
-                                <i class="fas fa-calendar-check"></i>
+                                <i class="fa-regular fa-calendar-days"></i>
                                 <span class="text-sm font-medium text-zinc-300">Attendance</span>
                             </a>
                         </li>
@@ -68,7 +68,7 @@
                             <a href="/department"
                                 class="{{ request()->is('department') ? 'bg-zinc-900' : 'hover:bg-zinc-900' }} flex
                                  items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-lg transition">
-                                <i class="fas fa-building"></i>
+                                <i class="fa-regular fa-building"></i>
                                 <span class="text-sm font-medium text-zinc-300">Departments</span>
                             </a>
                         </li>
@@ -99,7 +99,7 @@
                         <li>
                             <a href='/leave-request'
                                 class="{{ request()->routeIs('leave-request') ? 'bg-zinc-900' : 'hover:bg-zinc-900' }} flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-xl transition">
-                                <i class="fas fa-calendar-check"></i>
+                                <i class="fa-solid fa-hourglass-start"></i>
                                 <span class="text-sm font-medium text-zinc-300">Leave Requests</span>
                             </a>
                         </li>

@@ -17,6 +17,7 @@ class ReportsController extends Controller
         if ($user->role === 'admin') {
 
             $totalemployees = Employee::all()->count();
+            
 
             return view('admin.reports', compact('totalemployees'));
         }

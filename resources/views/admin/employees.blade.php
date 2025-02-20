@@ -13,7 +13,8 @@
 
                 {{-- Create Employee Button --}}
                 <a href="{{ route('admin.create') }}">
-                    <button class="bg-zinc-900 hover:bg-zinc-800 rounded-lg border border-zinc-700 text-sm
+                    <button
+                        class="bg-zinc-900 hover:bg-zinc-800 rounded-lg border border-zinc-700 text-sm
                             font-medium px-3 py-2 flex items-center gap-2 transition-all">
                         Add Employee
                         <i class="fa fa-user-plus"></i>
@@ -24,7 +25,8 @@
             <!-- Employee Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14">
                 @foreach ($employees as $employee)
-                   <div class="bg-zinc-900 rounded-xl p-6 border border-zinc-800 hover:border-zinc-700 transition-all flex flex-col h-full">
+                    <div
+                        class="bg-zinc-900 rounded-xl p-6 border border-zinc-800 hover:border-zinc-700 transition-all flex flex-col h-full">
 
                         <div class="flex items-start justify-between mb-2">
                             <div class="flex items-center gap-4">
@@ -71,22 +73,28 @@
                             </div>
                         </div>
 
-                      <div class="flex justify-end items-center gap-2 mt-auto">
+                        {{-- Buttons bar  --}}
+                        <div class="flex justify-end items-center gap-2 mt-auto">
+
+                            <a href="{{ route('employee.edit', $employee->id) }}">
+                                <button>
+                                    <i class="fas fa-edit cursor-pointer rounded-md text-zinc-300 hover:text-white
+                                      hover:bg-zinc-700 p-2"></i>
+                                </button>
+                            </a>
 
                             <form method="POST" action="{{ route('employee.destroy', $employee->id) }}"
                                 onsubmit="return confirm('Are you sure you want to delete this employee?');">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit">
-                                    <i
-                                        class="fas fa-trash cursor-pointer rounded-md text-zinc-300 hover:text-white hover:bg-zinc-700 p-2"></i>
+                                    <i class="fas fa-trash cursor-pointer rounded-md text-zinc-300 hover:text-white hover:bg-zinc-700 p-2"></i>
                                 </button>
                             </form>
                             <!-- View History Button -->
                             <a href="{{ route('employeedetails', $employee->id) }}">
                                 <button>
-                                    <i
-                                        class="fas fa-history cursor-pointer rounded-md text-zinc-300 hover:text-white hover:bg-zinc-700 p-2"></i>
+                                    <i class="fas fa-history cursor-pointer rounded-md text-zinc-300 hover:text-white hover:bg-zinc-700 p-2"></i>
                                 </button>
                             </a>
                         </div>

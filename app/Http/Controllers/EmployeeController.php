@@ -155,7 +155,7 @@ class EmployeeController extends Controller
         ]);
 
         // Redirect with success message    
-        return back()->with('success', 'Employee updated successfully.');
+        return redirect('/employees')->with('success', 'Employee updated successfully.');
     }
 
 

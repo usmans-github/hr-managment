@@ -37,7 +37,7 @@
                                 class="w-14 h-14 bg-black rounded-xl flex items-center justify-center fas fa-user-times text-3xl text-indigo-500"></i>
                             <div>
                                 <div class="text-sm text-gray-300 mb-1 font-semibold">On Leave</div>
-                                <div class="text-2xl font-semibold text-blue-400">5</div>
+                                <div class="text-2xl font-semibold text-blue-400">{{ $onleaveemployees }}</div>
                             </div>
                         </div>
                 </div>

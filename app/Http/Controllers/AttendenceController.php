@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Attendence;
 use App\Models\Department;
 use App\Models\Employee;
+use App\Models\LeaveRequest;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -31,8 +32,11 @@ class AttendenceController extends Controller
             //All Absent Employees          
             $absentemployees = Attendence::where('status', 'Absent')
                 ->whereDate('date', today())->count();        
+            //All Onleave EMployees
+            $onleaveemployees = Attendence::where('status', 'Absent')
+                ->whereDate('date', today())->count();            ;
 
-            return view('attendence.attendences', compact('employees',  'departments', 'presentemployees', 'lateemployees', 'absentemployees'));
+            return view('attendence.attendences', compact('employees',  'departments', 'presentemployees', 'lateemployees', 'absentemployees', 'onleaveemployees'));
         }
     }
 
