@@ -61,7 +61,10 @@
                                     <td class="px-6 py-4">{{ $department['employees'] }}</td>
                                     <td class="px-6 py-4">{{ $department['avg_attendance'] }}</td>
                                     <td class="px-6 py-4">
-                                        <div style="width: {{ $department['avg_attendance'] }}" class="bg-blue-600 h-2.5 rounded-full w-2.5"></div>
+                                        <div class="bg-zinc-700 rounded-full">
+                                            
+                                            <div style="width: {{ $department['avg_attendance'] }}" class="bg-green-400 h-2.5 rounded-full w-2.5"></div>
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach
