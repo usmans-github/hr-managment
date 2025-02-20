@@ -132,15 +132,7 @@ class EmployeeController extends Controller
             'join_date' => 'required|date',
             'salary' => 'required|numeric',
         ]);
-        
-        $existingEmployee = Employee::where('last_name', $credentials['last_name'])
-            ->where('id', '!=', $id)
-            ->first();
-
-        if ($existingEmployee) {
-            return redirect()->back()->withErrors('error', 'Last name already exists. Please choose another.');
-        }
-
+    
         // Find the employee by ID
         $employee = Employee::findOrFail($id);
 
@@ -160,7 +152,7 @@ class EmployeeController extends Controller
         ]);
 
         // Redirect with success message    
-        return redirect('/employees')->with('success', 'Employee updated successfully.');
+        return back()->with('success', 'Employee updated successfully.');
     }
 
 
