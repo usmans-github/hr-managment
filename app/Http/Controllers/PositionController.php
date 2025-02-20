@@ -40,19 +40,28 @@ class PositionController extends Controller
     public function store(Request $request)
     {
         $user = Auth::user();
+
         if ($user->role === 'admin') {
-
-
+            // Validate request data
             $credentials = $request->validate([
-                'position_name' => ['required'],
-                'department_id' => ['required']
+                'position_name' => "required|string",
+                'department_id' => "required|exists:departments,id"
             ]);
 
+            // Check if position already exists
+            $existingPosition = Position::where('position_name', $credentials['position_name'])
+                ->where('department_id', $credentials['department_id'])
+                ->first();
+
+            if ($existingPosition) {
+                return redirect('/department')->with('error', 'Position already exists in this department!');
+            }
+
+            // Create a new position
             $position = Position::create($credentials);
-            $position->save();
 
             return redirect('/department')->with('success', 'Position created successfully!');
-        }else{
+        } else {
             return redirect('/department')->with('error', 'You are not authorized to create a position!');
         }
     }

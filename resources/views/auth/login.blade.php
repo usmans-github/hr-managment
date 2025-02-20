@@ -25,14 +25,15 @@
                     <label for="password" class="block text-sm font-medium text-zinc-300">Password</label>
                     <input type="password" name="password" id="password" required
                         class="mt-2 block w-full  rounded-xl bg-zinc-900 border border-gray-700 px-4 py-3
-                        placeholder-zinc-400 "
+                        placeholder-zinc-400"
                         placeholder="Enter your password" />
                 </div>
 
                 <!-- Submit Button -->
                 <div>
                     <button type="submit"
-                        class="w-full rounded-xl bg-zinc-700 hover:bg-zinc-600 px-6 py-3 text-zinc-300 text-sm font-medium">
+                        class="w-full rounded-xl bg-zinc-700 hover:bg-zinc-600 px-6 py-3
+                         text-zinc-300 text-sm font-medium">
                         Sign In
                     </button>
                 </div>

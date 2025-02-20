@@ -1,19 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-     @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
-<body class="bg-black text-white pb-20">
+
+<x-layout class="bg-black text-white pb-20">
     
     <div class="flex min-h-screen flex-col px-6 lg:px-8 pt-12">
         <!-- Header -->
         <div class="sm:mx-auto sm:w-full sm:max-w-lg text-center mb-8">
-            <h2 class="text-2xl font-semibold text-gray-100">Edit Department</h2>
-            <p class="text-gray-300 mt-2 text-sm">Update the details below to edit the department.</p>
+            <h2 class="text-3xl font-bold text-zinc-100">Edit Department</h2>
+            <p class="text-zinc-300 mt-1">Edit the details below to update the department</p>
         </div>
 
         <!-- Form -->
@@ -24,11 +16,11 @@
 
                 <!-- Name -->
                 <div>
-                    <label for="name" class="block text-sm font-medium text-gray-300">Name</label>
+                    <label for="name" class="block text-sm font-medium text-zinc-300">Name</label>
                     <input type="text" name="department_name" id="department_name" required
                         value="{{ $department->department_name }}"
-                        class="mt-2 block w-full rounded-lg bg-zinc-900 border border-gray-700 px-4 py-3
-                        text-gray-300"
+                        class="mt-2 block w-full  rounded-xl bg-zinc-900 border border-zinc-700 px-4 py-3
+                        placeholder-zinc-400"
                         placeholder="Enter department name" />
                 </div>
 
@@ -36,11 +28,20 @@
                 <!-- Submit Button -->
                 <div>
                     <button type="submit"
-                        class="w-full  rounded-xl bg-zinc-700 hover:bg-zinc-600 px-6 py-3 text-sm font-medium text-white">
+                        class="w-full rounded-xl bg-zinc-700 hover:bg-zinc-600 px-6 py-3 text-zinc-300
+                         text-sm font-medium">
                         Update Department
                     </button>
                 </div>
             </form>
+            <!-- Back to Departments Link -->
+            <p class="text-zinc-300 mt-4">
+                Back to Departments?
+                <a href="/department" class="text-zinc-300 mt-1 hover:underline">
+                    Click Here
+                </a>
+            </p>
+
             @if ($errors->any())
                 <div class="text-red-500">
                     <ul>
@@ -54,7 +55,7 @@
         </div>
     </div>
 
-
+</x-layout>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         fetch(`/department/{{ $department->id }}/getPositions`)
@@ -71,6 +72,3 @@
             .catch(error => console.error('Error fetching positions:', error));
     });
 </script>
-
-</body>
-</html>

@@ -47,7 +47,7 @@ class DepartmentsController extends Controller
     public function store(Request $request)
     {
         $credentials = $request->validate([
-            'department_name' => ['required'],
+            'department_name' => 'required',
         ]);
         if (Department::where('department_name', $credentials['department_name'])->exists()) {
             return redirect()->back()->with('error', 'Department already exists.');
@@ -86,7 +86,6 @@ class DepartmentsController extends Controller
         if ($user->role === 'admin') {
             $credentials = $request->validate([
                 'department_name' => 'required|string|max:255',
-                'positions' => 'required|array',
             ]);
 
             $department = Department::findOrFail($id);
