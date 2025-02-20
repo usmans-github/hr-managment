@@ -101,7 +101,7 @@ class AdminController extends Controller
     public function employeedetails($id)
     {
         $employee = Employee::where('id', $id)->first();
-        $attendences = Attendence::where('employee_id', $employee->id)->get();
+        $attendences = Attendence::where('employee_id', $employee->id)->Paginate(8);
         $presents = Attendence::where('employee_id', $employee->id)
                     ->where('status', 'Present')->count();
         $absents = Attendence::where('employee_id', $employee->id)

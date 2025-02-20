@@ -8,13 +8,15 @@
             </div>
             <div class="flex justify-center items-center gap-2">
                 <a href="{{ route('employee.edit', $employee->id) }}">
-                <button>
-                    <i class="fas fa-edit cursor-pointer rounded-md text-zinc-300 hover:text-white
+                    <button>
+                        <i
+                            class="fas fa-edit cursor-pointer rounded-md text-zinc-300 hover:text-white
                      hover:bg-zinc-700 p-2"></i>
-                </button>
+                    </button>
                 </a>
                 <button type="submit">
-                    <i class="fa-solid fa-arrow-down cursor-pointer rounded-md text-zinc-300 hover:text-white hover:bg-zinc-700 p-2"></i>
+                    <i
+                        class="fa-solid fa-arrow-down cursor-pointer rounded-md text-zinc-300 hover:text-white hover:bg-zinc-700 p-2"></i>
                 </button>
             </div>
 
@@ -67,7 +69,7 @@
                 <div class="bg-zinc-800 rounded-xl p-4">
                     <div class="flex items-center gap-4">
                         <div class="px-4 py-4 flex justify-center items-center bg-zinc-700 rounded-full">
-                           <i class="fa-solid fa-user-check"></i>
+                            <i class="fa-solid fa-user-check"></i>
                         </div>
                         <div>
                             <p class="text-2xl font-semibold">{{ $presents }}</p>
@@ -80,7 +82,7 @@
                 <div class="bg-zinc-800 rounded-xl p-4">
                     <div class="flex items-center gap-4">
                         <div class="px-4 py-4 flex justify-center items-center bg-zinc-700 rounded-full">
-                           <i class="fa-solid fa-user-minus"></i>
+                            <i class="fa-solid fa-user-minus"></i>
                         </div>
                         <div>
                             <p class="text-2xl font-semibold">{{ $absents }}</p>
@@ -92,7 +94,7 @@
                 <div class="bg-zinc-800 rounded-xl p-4">
                     <div class="flex items-center gap-4">
                         <div class="px-4 py-4 flex justify-center items-center bg-zinc-700 rounded-full">
-                           <i class="fa-solid fa-clock-rotate-left"></i>
+                            <i class="fa-solid fa-clock-rotate-left"></i>
                         </div>
                         <div>
                             <p class="text-2xl font-semibold">{{ $lates }}</p>
@@ -104,7 +106,7 @@
                 <div class="bg-zinc-800 rounded-xl p-4">
                     <div class="flex items-center gap-4">
                         <div class="px-4 py-4 flex justify-center items-center bg-zinc-700 rounded-full">
-                           <i class="fa-solid fa-clock"></i>
+                            <i class="fa-solid fa-clock"></i>
                         </div>
                         <div>
                             <p class="text-2xl font-semibold">{{ $lates }}</p>
@@ -162,16 +164,14 @@
                 @endforeach
             </div>
 
-            <!-- Pagination -->
+            {{-- <!-- Pagination -->
             <div class="flex justify-center gap-2">
-                @foreach ([1, 2, 3, '...', 8, 9, 10] as $page)
-                    <button
-                        class="w-10 h-10 flex items-center justify-center rounded-lg bg-zinc-800 
-                        {{ $page === 1 ? 'bg-zinc-600' : '' }}">
-                        {{ $page }}
-                    </button>
-                @endforeach
-            </div>
+                <button class="w-10 h-10 flex items-center justify-center rounded-lg bg-zinc-800"> --}}
+
+                    {{ $attendences->links() }}
+                {{-- </button> --}}
+
+            {{-- </div> --}}
         </div>
 
     </main>
