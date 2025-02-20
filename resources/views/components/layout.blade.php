@@ -136,6 +136,27 @@
             </div>
         </div>
     @endif
+    @if (session('error'))
+        <div class="fixed top-4 left-1/2 transform -translate-x-1/2 z-50">
+            <div id="toast-success"
+                class="flex items-center w-full max-w-xs p-4 text-gray-300 bg-zinc-800 border border-gray-700 rounded-lg shadow-sm"
+                role="alert">
+                <div
+                    class="inline-flex items-center justify-center shrink-0 w-8 h-8 text-green-400 bg-zinc-700 rounded-lg">
+                    <i class="fa fa-check"></i>
+                </div>
+                <div class="mx-3 text-sm font-normal">{{ session('error') }}</div>
+                <button type="button"
+                    class="ms-auto -mx-1.5 -my-1.5 bg-zinc-800 text-gray-300 hover:text-white rounded-lg
+                        p-1.5 hover:bg-zinc-700 inline-flex items-center justify-center h-8 w-8"
+                    data-dismiss-target="#toast-success" aria-label="Close">
+                    <i class="fa fa-xmark"></i>
+                </button>
+            </div>
+        </div>
+    @endif
+
+    
 
     <main>{{ $slot }}</main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>

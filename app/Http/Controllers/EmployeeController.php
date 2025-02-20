@@ -21,10 +21,10 @@ class EmployeeController extends Controller
         $user = Auth::user();
         $employee = Employee::where('user_id', $user->id)->with('latestAttendence')->first();
         $upcomingleaves = LeaveRequest::where('employee_id', $employee->id)
-                                        ->where('status', 'Approved')
-                                        ->where('start_date', '>', today())
-                                        ->orderBy('start_date', 'asc')
-                                        ->get();
+            ->where('status', 'Approved')
+            ->where('start_date', '>', today())
+            ->orderBy('start_date', 'asc')
+            ->get();
 
         return view('employee.index', compact('employee', 'upcomingleaves'));
     }
@@ -34,10 +34,7 @@ class EmployeeController extends Controller
      */
     public function create(Request $request)
     {
-        $departments = Department::all();
-        $positions = Position::all();
-
-        return view('admin.create-employee', compact('departments', 'positions'));
+        //
     }
 
     /**
@@ -112,9 +109,7 @@ class EmployeeController extends Controller
     public function edit($id)
     {
         $employee = Employee::findOrFail($id);
-        $departments = Department::all();
-        $positions = Position::all();
-
+       
         return view('admin.edit-employee', compact('employee', 'departments', 'positions'));
     }
 
@@ -124,26 +119,50 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // return dd($request->all(), $id);
+        // Validate the request data
         $credentials = $request->validate([
             'first_name' => 'required',
             'last_name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|min:6',
             'address' => 'required',
             'phone' => 'required',
+            'department_id' => 'required|integer',
+            'position_id' => 'required|integer',
+            'join_date' => 'required|date',
+            'salary' => 'required|numeric',
         ]);
+        
+        $existingEmployee = Employee::where('last_name', $credentials['last_name'])
+            ->where('id', '!=', $id)
+            ->first();
 
+        if ($existingEmployee) {
+            return redirect()->back()->withErrors('error', 'Last name already exists. Please choose another.');
+        }
+
+        // Find the employee by ID
         $employee = Employee::findOrFail($id);
 
+
+        // Update the employee record
         $employee->update([
             'first_name' => $credentials['first_name'],
             'last_name' => $credentials['last_name'],
+            'email' => $credentials['email'],
+            'password' => $credentials['password'] ? bcrypt($credentials['password']) : $employee->password,
             'address' => $credentials['address'],
-            'phone' => $request->phone,
+            'phone' => $credentials['phone'],
+            'department_id' => $credentials['department_id'],
+            'position_id' => $credentials['position_id'],
+            'join_date' => $credentials['join_date'],
+            'salary' => $credentials['salary'],
         ]);
-        
 
-        return redirect('/employee')->with('success', 'Employee updated successfully.');
+        // Redirect with success message    
+        return redirect('/employees')->with('success', 'Employee updated successfully.');
     }
+
 
 
     /**
@@ -175,6 +194,8 @@ class EmployeeController extends Controller
     {
         $user = Auth::user();
         $employee = Employee::where('user_id', $user->id)->first();
+        
+
         if (!$employee) {
             return redirect()->back()->with('error', 'Employee profile not found.');
         }

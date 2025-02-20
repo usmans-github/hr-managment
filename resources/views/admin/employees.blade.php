@@ -10,15 +10,14 @@
                     <h1 class="text-3xl font-bold text-white">Directory</h1>
                 </div>
 
-                {{-- <a href="{{ route('employee.create') }}"> --}}
-                {{-- Add Employee Toggle --}}
+              
+                {{-- Create Employee Toggle --}}
                 <button data-modal-target="crud-modal" data-modal-toggle="crud-modal"
                     class="bg-zinc-900 hover:bg-zinc-800 rounded-lg border border-zinc-700 text-sm
                      font-medium px-3 py-2 flex items-center gap-2 transition-all">
                     Add Employee
                     <i class="fa fa-user-plus"></i>
                 </button>
-                {{-- </a> --}}
             </div>
 
             <!-- Employee Grid -->
@@ -71,24 +70,19 @@
                         </div>
 
                         <div class="flex justify-end gap-2">
-                            <a href="{{ route('employee.edit', $employee->id) }}">
-                                <i
-                                    class="fas fa-edit cursor-pointer rounded-md text-zinc-300 hover:text-white hover:bg-zinc-700 p-2"></i>
-                            </a>
+                          
                             <form method="POST" action="{{ route('employee.destroy', $employee->id) }}"
                                 onsubmit="return confirm('Are you sure you want to delete this employee?');">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit">
-                                    <i
-                                        class="fas fa-trash cursor-pointer rounded-md text-zinc-300 hover:text-white hover:bg-zinc-700 p-2"></i>
+                                    <i class="fas fa-trash cursor-pointer rounded-md text-zinc-300 hover:text-white hover:bg-zinc-700 p-2"></i>
                                 </button>
                             </form>
                             <!-- View History Button -->
                             <a href="{{ route('employeedetails', $employee->id) }}">
                                 <button>
-                                    <i
-                                        class="fas fa-history cursor-pointer rounded-md text-zinc-300 hover:text-white hover:bg-zinc-700 p-2"></i>
+                                    <i class="fas fa-history cursor-pointer rounded-md text-zinc-300 hover:text-white hover:bg-zinc-700 p-2"></i>
                                 </button>
                             </a>
                         </div>
@@ -100,13 +94,13 @@
         </main>
     </div>
 
-   <!-- Main modal -->
-<div id="crud-modal" tabindex="-1" aria-hidden="true"
+   <!-- Create Employee modal -->
+<div id="crud-modal" tabindex="-1" aria-hidden="true"   
     class="hidden fixed inset-0 z-50 items-center justify-center bg-black/60">
 
     <!-- Modal Container -->
     <div
-        class="relative w-full max-w-2xl bg-zinc-900 text-white rounded-2xl shadow-2xl p-8 max-h-[90vh] overflow-y-hidden transition-transform transform scale-95">
+        class="relative w-full max-w-2xl bg-zinc-900 text-white rounded-2xl shadow-2xl p-8 max-h-[90vh] overflow-y-auto transition-transform transform scale-95">
 
         <!-- Close Button -->
         <button data-modal-toggle="crud-modal" class="absolute top-4 right-4 text-zinc-400 hover:text-white text-3xl">
@@ -127,13 +121,15 @@
                 <div>
                     <label for="first_name" class="text-sm font-medium text-zinc-300">First Name</label>
                     <input type="text" name="first_name" id="first_name" required
-                        class="w-full mt-2 px-5 py-4 bg-zinc-800 border border-zinc-700 text-zinc-300 rounded-lg text-lg">
+                        class="mt-2 block w-full rounded-xl bg-zinc-900 border border-gray-700 px-4 py-3
+                         text-zinc-300 placeholder-zinc-400">
                 </div>
 
                 <div>
                     <label for="last_name" class="text-sm font-medium text-zinc-300">Last Name</label>
                     <input type="text" name="last_name" id="last_name" required
-                        class="w-full mt-2 px-5 py-4 bg-zinc-800 border border-zinc-700 text-zinc-300 rounded-lg text-lg">
+                        class="mt-2 block w-full rounded-xl bg-zinc-900 border border-gray-700 px-4 py-3
+                         text-zinc-300 placeholder-zinc-400">
                 </div>
             </div>
 
@@ -141,13 +137,15 @@
                 <div>
                     <label for="email" class="text-sm font-medium text-zinc-300">Email</label>
                     <input type="email" name="email" id="email" required
-                        class="w-full mt-2 px-5 py-4 bg-zinc-800 border border-zinc-700 text-zinc-300 rounded-lg text-lg">
+                        class="mt-2 block w-full rounded-xl bg-zinc-900 border border-gray-700 px-4 py-3
+                         text-zinc-300 placeholder-zinc-400">
                 </div>
 
                 <div>
                     <label for="password" class="text-sm font-medium text-zinc-300">Password</label>
                     <input type="password" name="password" id="password" required
-                        class="w-full mt-2 px-5 py-4 bg-zinc-800 border border-zinc-700 text-zinc-300 rounded-lg text-lg">
+                        class="mt-2 block w-full rounded-xl bg-zinc-900 border border-gray-700 px-4 py-3
+                         text-zinc-300 placeholder-zinc-400">
                 </div>
             </div>
 
@@ -155,13 +153,15 @@
                 <div>
                     <label for="address" class="text-sm font-medium text-zinc-300">Address</label>
                     <input type="text" name="address" id="address" required
-                        class="w-full mt-2 px-5 py-4 bg-zinc-800 border border-zinc-700 text-zinc-300 rounded-lg text-lg">
+                        class="mt-2 block w-full rounded-xl bg-zinc-900 border border-gray-700 px-4 py-3
+                         text-zinc-300 placeholder-zinc-400">
                 </div>
 
                 <div>
                     <label for="phone" class="text-sm font-medium text-zinc-300">Phone</label>
                     <input type="text" name="phone" id="phone" required
-                        class="w-full mt-2 px-5 py-4 bg-zinc-800 border border-zinc-700 text-zinc-300 rounded-lg text-lg">
+                        class="mt-2 block w-full rounded-xl bg-zinc-900 border border-gray-700 px-4 py-3
+                         text-zinc-300 placeholder-zinc-400">
                 </div>
             </div>
 
@@ -169,7 +169,8 @@
                 <div>
                     <label for="department" class="text-sm font-medium text-zinc-300">Department</label>
                     <select name="department_id" id="department_id"
-                        class="w-full mt-2 px-5 py-4 bg-zinc-800 border border-zinc-700 text-zinc-300 rounded-lg cursor-pointer text-lg">
+                        class="mt-2 block w-full rounded-xl bg-zinc-900 border border-gray-700 px-4 py-3
+                         text-zinc-300 placeholder-zinc-400">
                         <option value="" disabled selected>Select a department</option>
                         @foreach ($departments as $department)
                             <option value="{{ $department->id }}">{{ $department->department_name }}</option>
@@ -180,7 +181,8 @@
                 <div>
                     <label for="position" class="text-sm font-medium text-zinc-300">Position</label>
                     <select name="position_id" id="position_id"
-                        class="w-full mt-2 px-5 py-4 bg-zinc-800 border border-zinc-700 text-zinc-300 rounded-lg cursor-pointer text-lg">
+                       class="mt-2 block w-full rounded-xl bg-zinc-900 border border-gray-700 px-4 py-3
+                         text-zinc-300 placeholder-zinc-400">
                         <option value="" disabled selected>Select a Position</option>
                         @foreach ($positions as $position)
                             <option value="{{ $position->id }}">{{ $position->position_name }}</option>
@@ -193,21 +195,25 @@
                 <div>
                     <label for="join_date" class="text-sm font-medium text-zinc-300">Date of Joining</label>
                     <input type="date" name="join_date" id="join_date" required
-                        class="w-full mt-2 px-5 py-4 bg-zinc-800 border border-zinc-700 text-zinc-300 rounded-lg text-lg">
+                        class="mt-2 block w-full rounded-xl bg-zinc-900 border border-gray-700 px-4 py-3
+                         text-zinc-300 placeholder-zinc-400">
                 </div>
 
                 <div>
                     <label for="salary" class="text-sm font-medium text-zinc-300">Salary</label>
                     <input type="text" name="salary" id="salary" required
-                        class="w-full mt-2 px-5 py-4 bg-zinc-800 border border-zinc-700 text-zinc-300 rounded-lg text-lg">
+                        class="mt-2 block w-full rounded-xl bg-zinc-900 border border-gray-700 px-4 py-3
+                         text-zinc-300 placeholder-zinc-400">
                 </div>
             </div>
 
             <button type="submit"
-                class="w-full bg-green-600 hover:bg-green-500 text-white font-medium py-4 rounded-xl text-lg transition">
+                class="w-full rounded-xl bg-zinc-700 hover:bg-zinc-600 px-6 py-3 text-zinc-300 text-sm font-medium">
                 Create Employee
             </button>
         </form>
     </div>
 </div>
+
+
 </x-layout>

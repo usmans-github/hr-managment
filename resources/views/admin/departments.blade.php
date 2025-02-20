@@ -117,7 +117,7 @@
                             </div>
                             <div class="flex items-center gap-2">
                                 <i class="fas fa-user-tie"></i>
-                                <span>{{ $department->employees->count() }} members</span>
+                                <span>{{ $department->employees->count() }} employees</span>
                             </div>
                         </div>
                     </div>

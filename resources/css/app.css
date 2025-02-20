@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* Minimal rounded scrollbar */
+::-webkit-scrollbar {
+    width: 8px; /* Thin scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: #3f3f46; /* Dark background */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #515152; /* Gray color */
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #707070; /* Lighter gray on hover */
+}
