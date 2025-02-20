@@ -57,13 +57,13 @@
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-800">
-                                @foreach ($leaverequests as $leave)
+                                @foreach ($leaverequests  as $leave)
                                     <tr class="text-left transition-all hover:bg-zinc-800">
                                         <td class="py-4 px-4 text-gray-300">{{ $leave->id }}</td>
                                         <td class="py-4 px-4 text-gray-300 flex items-center space-x-3">
                                             <div>
-                                                <div class="font-semibold">{{ $leave->employee->first_name }}
-                                                    {{ $leave->employee->last_name }}</div>
+                                                <div class="font-semibold">{{ $leave->employee->first_name ?? 'N/A' }}
+                                                    {{ $leave->employee->last_name ?? 'N/A' }}</div>
                                                 <div class="text-sm text-gray-400">
                                                     {{ $leave->employee->position->position_name ?? 'N/A' }}</div>
                                             </div>
