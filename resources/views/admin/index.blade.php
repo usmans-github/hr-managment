@@ -75,7 +75,8 @@
                                             @if ($leave->status === 'Approved')
                                                 <span
                                                     class="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold bg-green-100 text-green-700">
-                                                    <span class="h-2 w-2 rounded-full bg-green-700 mr-2"></span> Approved
+                                                    <span class="h-2 w-2 rounded-full bg-green-700 mr-2"></span>
+                                                    Approved
                                                 </span>
                                             @elseif ($leave->status === 'Rejected')
                                                 <span
@@ -83,21 +84,22 @@
                                                     <span class="h-2 w-2 rounded-full bg-red-700 mr-2"></span> Rejected
                                                 </span>
                                             @else
-                                                <form action="{{ route('leave-request.approve', $leave->id )}}" method="post">
+                                                <form action="{{ route('leave-request.approve', $leave->id) }}"
+                                                    method="post">
                                                     @csrf
                                                     @method('PUT')
-                                                    <button 
-                                                    type="submit"
-                                                    class="px-4 py-2 text-sm font-semibold bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-full transition">Approve</button>
+                                                    <button type="submit"
+                                                        class="px-4 py-2 text-sm font-semibold bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-full transition">Approve</button>
                                                 </form>
                                             @endif
 
                                             <!-- Reject Button (X) -->
-                                            <form action="{{ route('leave-request.reject', $leave->id )}}" method="post">
+                                            <form action="{{ route('leave-request.reject', $leave->id) }}"
+                                                method="post">
                                                 @csrf
                                                 @method('PUT')
                                                 <button
-                                                class="w-8 h-8 flex items-center justify-center bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-full transition">✕</button>
+                                                    class="w-8 h-8 flex items-center justify-center bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-full transition">✕</button>
                                             </form>
                                         </td>
 

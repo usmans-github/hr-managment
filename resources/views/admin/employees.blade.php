@@ -24,7 +24,8 @@
             <!-- Employee Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14">
                 @foreach ($employees as $employee)
-                    <div class="bg-zinc-900 rounded-xl p-6 border border-zinc-800 hover:border-zinc-700 transition-all">
+                   <div class="bg-zinc-900 rounded-xl p-6 border border-zinc-800 hover:border-zinc-700 transition-all flex flex-col h-full">
+
                         <div class="flex items-start justify-between mb-2">
                             <div class="flex items-center gap-4">
                                 <div
@@ -46,7 +47,7 @@
                             </div>
                         </div>
 
-                        <div class="space-y-3">
+                        <div class="space-y-3 pl-2">
                             <div class="flex items-center gap-2 text-zinc-300">
                                 <i class="fas fa-envelope w-5"></i>
                                 <span class="text-sm">{{ $employee->email ?? 'N/A' }}</span>
@@ -70,7 +71,7 @@
                             </div>
                         </div>
 
-                        <div class="flex justify-end gap-2">
+                      <div class="flex justify-end items-center gap-2 mt-auto">
 
                             <form method="POST" action="{{ route('employee.destroy', $employee->id) }}"
                                 onsubmit="return confirm('Are you sure you want to delete this employee?');">
@@ -99,3 +100,4 @@
 
 
 </x-layout>
+////

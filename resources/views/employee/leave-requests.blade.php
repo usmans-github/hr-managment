@@ -3,8 +3,8 @@
     @if (session('success'))
         <div class="fixed top-4 left-1/2 transform -translate-x-1/2 z-50">
             <div id="toast-success"
-                class="flex items-center w-full max-w-xs p-4 text-gray-300 bg-zinc-800
-                 border border-gray-700 rounded-xl shadow-sm"
+                class="flex items-center w-full max-w-xs p-4 text-zinc-300 bg-zinc-800
+                 border border-zinc-700 rounded-xl shadow-sm"
                 role="alert">
                 <div
                     class="inline-flex items-center justify-center shrink-0 w-8 h-8 text-green-400
@@ -13,7 +13,7 @@
                 </div>
                 <div class="mx-3 text-sm font-normal">{{ session('success') }}</div>
                 <button type="button"
-                    class="ms-auto -mx-1.5 -my-1.5 bg-zinc-800 text-gray-300 hover:text-white rounded-xl
+                    class="ms-auto -mx-1.5 -my-1.5 bg-zinc-800 text-zinc-300 hover:text-white rounded-xl
                     p-1.5 hover:bg-zinc-700 inline-flex items-center justify-center h-8 w-8"
                     data-dismiss-target="#toast-success" aria-label="Close">
                     <i class="fa fa-xmark"></i>
@@ -70,7 +70,7 @@
     {{-- Main COntent --}}
     <main class="flex ml-64 p-8 min-h-screen flex-col">
         <div class="mb-6">
-            <h1 class="text-sm font-medium text-gray-300">Welcome Back,</h1>
+            <h1 class="text-sm font-medium text-zinc-300">Welcome Back,</h1>
             <h1 class="text-4xl font-bold">{{ $employee->first_name . ' ' . $employee->last_name }}</h1>
         </div>
 
@@ -86,9 +86,9 @@
 
                         <!-- Leave Type -->
                         <div>
-                            <label class="text-gray-300 block mb-1 font-medium">Leave Type</label>
+                            <label class="block text-sm font-medium text-zinc-300 pb-3">Leave Type</label>
                             <select name="leave_type"
-                                class="w-full p-3 rounded-xl bg-zinc-800 text-gray-300 border border-gray-700">
+                                class="w-full p-3 rounded-xl bg-zinc-800 text-zinc-300 border border-zinc-700">
                                 <option value="Sick">Sick Leave</option>
                                 <option value="Casual">Casual Leave</option>
                                 <option value="Annual">Annual Leave</option>
@@ -97,23 +97,23 @@
 
                         <!-- Reason -->
                         <div class="sm:col-span-2">
-                            <label class="text-gray-300 block mb-1 font-medium">Reason</label>
-                            <textarea name="reason" class="w-full p-3 rounded-xl bg-zinc-800 text-gray-300 border border-gray-700 resize-y"
+                            <label class="block text-sm font-medium text-zinc-300 pb-3">Reason</label>
+                            <textarea name="reason" class="w-full p-3 rounded-xl bg-zinc-800 text-zinc-300 border border-zinc-700 resize-y"
                                 rows="3"></textarea>
                         </div>
 
                         <!-- Start Date -->
                         <div>
-                            <label class="text-gray-300 block mb-1 font-medium">Start Date</label>
+                            <label class="block text-sm font-medium text-zinc-300 pb-3">Start Date</label>
                             <input type="date" name="start_date"
-                                class="w-full p-3 rounded-xl bg-zinc-800 text-gray-300 border border-gray-700">
+                                class="w-full p-3 rounded-xl bg-zinc-800 text-zinc-300 border border-zinc-700">
                         </div>
 
                         <!-- End Date -->
                         <div>
-                            <label class="text-gray-300 block mb-1 font-medium">End Date</label>
+                            <label class="block text-sm font-medium text-zinc-300 pb-3">End Date</label>
                             <input type="date" name="end_date"
-                                class="w-full p-3 rounded-xl bg-zinc-800 text-gray-300 border border-gray-700">
+                                class="w-full p-3 rounded-xl bg-zinc-800 text-zinc-300 border border-zinc-700">
                         </div>
                     </div>
 
@@ -136,7 +136,7 @@
                 <th class="px-6 py-4 text-left">Status</th>
             </tr>
         </thead>
-        <tbody class="divide-y divide-gray-800">
+        <tbody class="divide-y divide-zinc-800">
             @foreach ($leaverequests as $leave)
                 <tr class="hover:bg-zinc-800">
                     <td class="px-6 py-4">{{ $leave->leave_type }}</td>

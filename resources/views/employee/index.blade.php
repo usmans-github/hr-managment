@@ -3,7 +3,7 @@
     <main class="flex-1 ml-64 p-8  min-h-screen">
         <!-- Welcome Header -->
         <div class="mb-6">
-            <h1 class="text-sm font-medium text-gray-300">Welcome Back,</h1>
+            <h1 class="text-sm font-medium text-zinc-300">Welcome Back,</h1>
             <h1 class="text-4xl font-bold">{{ $employee->first_name . ' ' . $employee->last_name }}</h1>
 
         </div>
@@ -15,11 +15,11 @@
                     <h2 class="text-2xl font-bold mb-4">Attendance</h2>
                     <div class="flex items-center justify-between">
                         <div>
-                            <p class="mb-2 text-sm font-medium text-gray-300">Current Status:</p>
+                            <p class="mb-2 text-sm font-medium text-zinc-300">Current Status:</p>
                             @if ($employee->latestAttendence && $employee->latestAttendence->checked_out)
                                 <span
-                                    class="inline-flex items-center bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm font-semibold">
-                                    <span class="h-2 w-2 bg-gray-700 rounded-full mr-2"></span>
+                                    class="inline-flex items-center bg-zinc-200 text-zinc-700 px-3 py-1 rounded-full text-sm font-semibold">
+                                    <span class="h-2 w-2 bg-zinc-700 rounded-full mr-2"></span>
                                     Checked Out ({{ $employee->latestAttendence->checked_in }} -
                                     {{ $employee->latestAttendence->checked_out }})
                                 </span>
@@ -31,8 +31,8 @@
                                 </span>
                             @else
                                 <span
-                                    class="inline-flex items-center bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm font-semibold">
-                                    <span class="h-2 w-2 bg-gray-700 rounded-full mr-2"></span>
+                                    class="inline-flex items-center bg-zinc-200 text-zinc-700 px-3 py-1 rounded-full text-sm font-semibold">
+                                    <span class="h-2 w-2 bg-zinc-700 rounded-full mr-2"></span>
                                     No Attendance Record
                                 </span>
                             @endif
@@ -114,7 +114,7 @@
             </div>
         </div>
 
-        <!-- Recent Activity -->
+        {{-- <!-- Recent Activity -->
         <div class="bg-zinc-900 text-white rounded-xl p-6 shadow-lg">
             <h3 class="text-lg font-semibold mb-4">Recent Activity</h3>
             <ul class="space-y-4">
@@ -122,30 +122,30 @@
                     <span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
                     <div>
                         <p class="text-sm font-semibold">Leave Request Approved</p>
-                        <p class="text-xs text-gray-300">Your leave request for Jul 15 - Jul 20 has been approved.
+                        <p class="text-xs text-zinc-300">Your leave request for Jul 15 - Jul 20 has been approved.
                         </p>
                     </div>
-                    <span class="ml-auto text-xs text-gray-500">2 days ago</span>
+                    <span class="ml-auto text-xs text-zinc-500">2 days ago</span>
                 </li>
                 <li class="flex items-center">
                     <span class="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
                     <div>
                         <p class="text-sm font-semibold">New Announcement</p>
-                        <p class="text-xs text-gray-300">Company picnic scheduled for next month. Save the date!</p>
+                        <p class="text-xs text-zinc-300">Company picnic scheduled for next month. Save the date!</p>
                     </div>
-                    <span class="ml-auto text-xs text-gray-500">1 week ago</span>
+                    <span class="ml-auto text-xs text-zinc-500">1 week ago</span>
                 </li>
                 <li class="flex items-center">
                     <span class="w-2 h-2 bg-yellow-500 rounded-full mr-3"></span>
                     <div>
                         <p class="text-sm font-semibold">Training Reminder</p>
-                        <p class="text-xs text-gray-300">Don't forget about the upcoming safety training session.
+                        <p class="text-xs text-zinc-300">Don't forget about the upcoming safety training session.
                         </p>
                     </div>
-                    <span class="ml-auto text-xs text-gray-500">2 weeks ago</span>
+                    <span class="ml-auto text-xs text-zinc-500">2 weeks ago</span>
                 </li>
             </ul>
-        </div>
+        </div> --}}
         </div>
     </main>
 

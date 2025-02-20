@@ -28,44 +28,48 @@
                     <ul class="space-y-4 px-4">
                         <li>
                             <a href="/admin"
-                                class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-lg shadow-md">
+                                class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-lg ">
                                 <i class="fas fa-tachometer-alt"></i>
-                                <span class="font-semibold">Dashboard</span>
+                                <span class="text-sm font-medium text-zinc-300">Dashboard</span>
                             </a>
                         </li>
                         <li>
                             <a href="/employees"
-                                class="{{ request()->routeIs('admin.employees') ? 'bg-zinc-900' : 'hover:bg-zinc-900' }} flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-lg transition">
+                                class="{{ request()->routeIs('admin.employees') ? 'bg-zinc-900' : 'hover:bg-zinc-900' }}
+                                 flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-lg transition">
                                 <i class="fas fa-users"></i>
-                                <span class="font-semibold">Employees</span>
+                                <span class="text-sm font-medium text-zinc-300">Employees</span>
                             </a>
                         </li>
                         <li>
                             <a href="/attendence"
                                 class="{{ request()->is('attendence') ? 'bg-zinc-900' : 'hover:bg-zinc-900' }} flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-lg transition">
                                 <i class="fas fa-calendar-check"></i>
-                                <span class="font-semibold">Attendance</span>
+                                <span class="text-sm font-medium text-zinc-300">Attendance</span>
                             </a>
                         </li>
                         <li>
                             <a href="/payroll"
-                                class="{{ request()->is('payroll') ? 'bg-zinc-900' : 'hover:bg-zinc-900' }} flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-lg transition">
+                                class="{{ request()->is('payroll') ? 'bg-zinc-900' : 'hover:bg-zinc-900' }} flex
+                                 items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-lg transition">
                                 <i class="fas fa-wallet"></i>
-                                <span class="font-semibold">Payroll</span>
+                                <span class="text-sm font-medium text-zinc-300">Payroll</span>
                             </a>
                         </li>
                         <li>
                             <a href="/report"
-                                class="{{ request()->is('report') ? 'bg-zinc-900' : 'hover:bg-zinc-900' }} flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-lg transition">
+                                class="{{ request()->is('report') ? 'bg-zinc-900' : 'hover:bg-zinc-900' }} flex
+                                 items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-lg transition">
                                 <i class="fas fa-chart-line"></i>
-                                <span class="font-semibold">Reports</span>
+                                <span class="text-sm font-medium text-zinc-300">Reports</span>
                             </a>
                         </li>
                         <li>
                             <a href="/department"
-                                class="{{ request()->is('department') ? 'bg-zinc-900' : 'hover:bg-zinc-900' }} flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-lg transition">
+                                class="{{ request()->is('department') ? 'bg-zinc-900' : 'hover:bg-zinc-900' }} flex
+                                 items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-lg transition">
                                 <i class="fas fa-building"></i>
-                                <span class="font-semibold">Departments</span>
+                                <span class="text-sm font-medium text-zinc-300">Departments</span>
                             </a>
                         </li>
                     </ul>
@@ -82,35 +86,35 @@
                         <li>
                             <a href="/employee" class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-xl">
                                 <i class="fas fa-tachometer-alt"></i>
-                                <span class="font-semibold">Dashboard</span>
+                                <span class="text-sm font-medium text-zinc-300">Dashboard</span>
                             </a>
                         </li>
                         <li>
                             <a href="/profile"
                                 class="{{ request()->routeIs('profile') ? 'bg-zinc-900' : 'hover:bg-zinc-900' }} flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-xl transition">
                                 <i class="fas fa-user"></i>
-                                <span class="font-semibold">My Profile</span>
+                                <span class="text-sm font-medium text-zinc-300">My Profile</span>
                             </a>
                         </li>
                         <li>
                             <a href='/leave-request'
                                 class="{{ request()->routeIs('leave-request') ? 'bg-zinc-900' : 'hover:bg-zinc-900' }} flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-xl transition">
                                 <i class="fas fa-calendar-check"></i>
-                                <span class="font-semibold">Leave Requests</span>
+                                <span class="text-sm font-medium text-zinc-300">Leave Requests</span>
                             </a>
                         </li>
                         <li>
                             <a href="/payroll"
                                 class="{{ request()->routeIs('payroll') ? 'bg-zinc-900' : 'hover:bg-zinc-900' }} flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-xl transition">
                                 <i class="fas fa-wallet"></i>
-                                <span class="font-semibold">Payslips</span>
+                                <span class="text-sm font-medium text-zinc-300">Payslips</span>
                             </a>
                         </li>
                         <li>
                             <a href="/reports"
                                 class="{{ request()->routeIs('reports') ? 'bg-zinc-900' : 'hover:bg-zinc-900' }} flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-xl transition">
                                 <i class="fas fa-chart-line"></i>
-                                <span class="font-semibold">Performance</span>
+                                <span class="text-sm font-medium text-zinc-300">Performance</span>
                             </a>
                         </li>
                     </ul>
@@ -124,7 +128,7 @@
     @if (session('success'))
         <div class="fixed top-4 left-1/2 transform -translate-x-1/2 z-50">
             <div id="toast-success"
-                class="flex items-center w-full max-w-xs p-4 text-zinc-300 bg-zinc-800 border border-zinc-700 rounded-lg shadow-sm"
+                class="flex items-center w-full max-w-xs p-4 text-zinc-300 bg-zinc-800 border border-zinc-700 rounded-lg "
                 role="alert">
                 <div
                     class="inline-flex items-center justify-center shrink-0 w-8 h-8 text-green-400 bg-zinc-700 rounded-lg">
@@ -143,7 +147,7 @@
     @if (session('error'))
         <div class="fixed top-4 left-1/2 transform -translate-x-1/2 z-50">
             <div id="toast-success"
-                class="flex items-center w-full max-w-xs p-4 text-zinc-300 bg-zinc-800 border border-zinc-700 rounded-lg shadow-sm"
+                class="flex items-center w-full max-w-xs p-4 text-zinc-300 bg-zinc-800 border border-zinc-700 rounded-lg "
                 role="alert">
                 <div
                     class="inline-flex items-center justify-center shrink-0 w-8 h-8 text-red-400 bg-zinc-700 rounded-lg">
