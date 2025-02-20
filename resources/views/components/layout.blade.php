@@ -19,7 +19,7 @@
     <!-- Sidebar -->
     @if (auth()->user()->role === 'admin')
         {{-- ADmin Sidebar --}}
-        @if (!request()->is('/', 'employee.create'))
+        @if (!request()->is('/', 'admin/create'))
         <aside class="w-64 absolute h-full">
 
             <a href="/">

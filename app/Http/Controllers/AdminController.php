@@ -100,8 +100,10 @@ class AdminController extends Controller
     {
         $employee = Employee::where('id', $id)->first();
         $attendences = Attendence::where('employee_id', $employee->id)->get();
+        $positions = Position::all();
+        $departments = Department::all();
 
-        return view('admin.employee-details', compact('employee', 'attendences'));
+        return view('admin.employee-details', compact('employee', 'attendences', 'positions', 'departments'));
     }
 
 
