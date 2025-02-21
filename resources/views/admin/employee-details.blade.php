@@ -122,7 +122,7 @@
         <div class="bg-zinc-900 rounded-2xl p-6">
 
             <!-- Attendence Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-2 mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
                 @foreach ($attendences as $attendence)
                     <div class="bg-zinc-800 rounded-xl p-4">
                         <div class="flex justify-between items-start mb-4">
@@ -165,12 +165,8 @@
             </div>
 
             <!-- Pagination -->
-            <div class="flex justify-center gap-2">
-                <button class="w-10 h-10 flex items-center justify-center rounded-lg bg-zinc-800">
-
-                    {{ $attendences->links('pagination::tailwind') }}
-                </button>
-
+            <div class="mt-4">
+                {{ $attendences->links('pagination::tailwind') }}
             </div>
         </div>
 

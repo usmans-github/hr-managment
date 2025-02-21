@@ -14,13 +14,13 @@
                         class="bg-zinc-900 hover:bg-zinc-800 rounded-lg border border-gray-700
                          text-sm font-medium px-4 py-2.5 flex items-center gap-2 transition-all">
                         <span>Add Position</span>
-                        <i class="fas fa-circle-plus"></i>
+                        <i class="fa-solid fa-plus"></i>
                     </a>
                     <a href="/department/create"
                         class="bg-zinc-900 hover:bg-zinc-800 rounded-lg border border-gray-700
                          text-sm font-medium px-4 py-2.5 flex items-center gap-2 transition-all">
                         <span>Add Department</span>
-                        <i class="fas fa-square-plus"></i>
+                        <i class="fa-regular fa-square-plus"></i>
                     </a>
                 </div>
             </div>

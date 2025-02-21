@@ -21,15 +21,15 @@ class EmployeeFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::factory(), // Create a user if not exists
+            'user_id' => User::inRandomOrder()->first()->id ?? User::factory(),
             'first_name' => $this->faker->firstName,
             'last_name' => $this->faker->lastName,
             'email' => $this->faker->unique()->safeEmail,
             'password' => Hash::make('password'), // Default password
             'address' => $this->faker->address,
             'phone' => $this->faker->phoneNumber,
-            'position_id' => Position::factory(), // Create a position if not exists
-            'department_id' => Department::factory(), // Create a department if not exists
+            'position_id' => Position::inRandomOrder()->first()->id ?? Position::factory(),
+            'department_id' => Department::inRandomOrder()->first()->id ?? Department::factory(),
             'join_date' => $this->faker->date(),
             'salary' => $this->faker->numberBetween(50000, 150000), // Random salary
             'created_at' => now(),

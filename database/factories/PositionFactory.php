@@ -18,8 +18,8 @@ class PositionFactory extends Factory
     public function definition(): array
     {
         return [
-            'position_name' => $this->faker->jobTitle, // Generates a random job title
-            'department_id' => Department::factory(), // Creates a department if not exists
+            'position_name' => $this->faker->jobTitle, 
+            'department_id' => Department::inRandomOrder()->first()->id
         ];
     }
 }

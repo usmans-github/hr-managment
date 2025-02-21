@@ -23,7 +23,7 @@
                             class="w-14 h-14 bg-black rounded-xl flex items-center justify-center fas fa-percentage text-3xl text-green-500"></i>
                         <div>
                             <div class="text-sm text-gray-300 mb-1 font-semibold">Avg. Attendance</div>
-                            <div class="text-2xl font-semibold text-green-400">{{ $avgAttendence }}</div>
+                            <div class="text-2xl font-semibold text-green-400">{{ $avgAttendence }}%</div>
                         </div>
                     </div>
                     <div class="bg-zinc-900 p-4 rounded-xl flex gap-4 items-center">

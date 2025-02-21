@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Attendence;
-use App\Models\Department;
 use App\Models\Employee;
-use App\Models\LeaveRequest;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,9 +18,7 @@ class AttendenceController extends Controller
         $user = Auth::user();
         if ($user->role === 'admin') {
             //All Employees
-            $employees = Employee::all();
-            //All Deparmtnets
-            $departments = Department::all();
+            $employees = Employee::latest()->paginate(6);
             //All Present Employees
             $presentemployees = Attendence::where('status', 'Present')
                 ->whereDate('date', today())->count();
@@ -36,7 +32,7 @@ class AttendenceController extends Controller
             $onleaveemployees = Attendence::where('status', 'Absent')
                 ->whereDate('date', today())->count();            ;
 
-            return view('attendence.attendences', compact('employees',  'departments', 'presentemployees', 'lateemployees', 'absentemployees', 'onleaveemployees'));
+            return view('attendence.attendences', compact('employees', 'presentemployees', 'lateemployees', 'absentemployees', 'onleaveemployees'));
         }
     }
 
@@ -45,7 +41,7 @@ class AttendenceController extends Controller
      */
     public function create()
     {
-        return view('employee.index');
+        //
     }
 
     /**

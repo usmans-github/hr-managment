@@ -24,9 +24,8 @@ class DepartmentsController extends Controller
     {
         $user = Auth::user();
         if ($user->role === 'admin') {
-            return view('admin.departments', [
-                'departments' => Department::with(['positions', 'employees'])->get()
-            ]);
+            $departments = Department::with(['positions', 'employees'])->paginate(6);
+            return view('admin.departments', compact('departments'));
         }
     }
 

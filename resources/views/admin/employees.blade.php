@@ -101,8 +101,11 @@
                     </div>
                 @endforeach
             </div>
-
-
+            <!-- Pagination -->
+            <div class="mt-4">
+                {{ $employees->links('pagination::tailwind') }}
+            </div>
+            
         </main>
     </div>
 

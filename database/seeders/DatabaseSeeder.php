@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Attendence;
 use App\Models\Department;
 use App\Models\Employee;
 use App\Models\Position;
@@ -21,12 +22,19 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('admin@example'),
             'role' => 'admin',
         ]);
-        Department::factory()->count(5)->create(); // Generates 5 departments
 
-        Position::factory()->count(10)->create(); // Generates 10 positions linked to departments
+        Department::factory()->count(5)->create(); 
 
-        User::factory()->count(10)->create(); // Generates 10 users
+        Position::factory()->count(10)->create(); 
 
-        Employee::factory()->count(10)->create(); // Generates 10 employees
+        User::factory()->count(10)->create(); 
+
+        Employee::factory()->count(10)->create();
+
+        Employee::all()->each(function ($employee) {
+            Attendence::factory()->count(rand(20, 30))->create([
+                'employee_id' => $employee->id,
+            ]);
+        });
     }
 }

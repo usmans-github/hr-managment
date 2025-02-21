@@ -107,61 +107,13 @@
 
                                 </tr>
                             @endforeach
-                            {{-- <tr class="hover:bg-zinc-800">
-                                    <td class="px-6 py-4">
-                                        <div class="flex items-center">
-                                            <div
-                                                class="w-8 h-8 rounded-full bg-black flex items-center justify-center mr-3">
-                                                JS
-                                            </div>
-                                            <div>
-                                                <div class="font-medium">Jane Smith</div>
-                                                <div class="text-sm text-gray-400">#EMP002</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-4">Design</td>
-                                    <td class="px-6 py-4">2024-01-26</td>
-                                    <td class="px-6 py-4">09:30 AM</td>
-                                    <td class="px-6 py-4">05:45 PM</td>
-                                    <td class="px-6 py-4">
-                                        <span
-                                            class="inline-flex items-center bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm font-semibold w-auto">
-                                            <span class="h-2 w-2 bg-yellow-700 rounded-full mr-2"></span>
-                                            Leave
-                                        </span>
-                                    </td>
-
-                                </tr>
-                                <tr class="hover:bg-zinc-800">
-                                    <td class="px-6 py-4">
-                                        <div class="flex items-center">
-                                            <div
-                                                class="w-8 h-8 rounded-full bg-black flex items-center justify-center mr-3">
-                                                MJ
-                                            </div>
-                                            <div>
-                                                <div class="font-medium">Mike Johnson</div>
-                                                <div class="text-sm text-gray-400">#EMP003</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-4">Management</td>
-                                    <td class="px-6 py-4">2024-01-26</td>
-                                    <td class="px-6 py-4">--</td>
-                                    <td class="px-6 py-4">--</td>
-                                    <td class="px-6 py-4">
-                                        <span
-                                            class="inline-flex items-center bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm font-semibold w-auto">
-                                            <span class="h-2 w-2 bg-red-700 rounded-full mr-2"></span>
-                                            Absent
-                                        </span>
-                                    </td>
-
-                                </tr> --}}
                         </tbody>
                     </table>
                 </div>
+            </div>
+            <!-- Pagination -->
+            <div class="mt-4">
+                {{ $employees->links('pagination::tailwind') }}
             </div>
         </main>
     </div>

@@ -38,7 +38,7 @@ class AdminController extends Controller
         if ($user->role === 'admin') {
             $positions = Position::all();
             $departments = Department::all();
-            $employees = Employee::with(['department', 'position'])->get();
+            $employees = Employee::with(['department', 'position'])->latest()->paginate(6);
 
             return view('admin.employees', compact('employees', 'positions', 'departments'));
         }
