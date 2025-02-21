@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Attendence;
 use App\Models\Department;
 use App\Models\Employee;
+use App\Models\LeaveRequest;
 use App\Models\Position;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -33,6 +34,12 @@ class DatabaseSeeder extends Seeder
 
         Employee::all()->each(function ($employee) {
             Attendence::factory()->count(rand(20, 30))->create([
+                'employee_id' => $employee->id,
+            ]);
+        });
+
+        Employee::all()->each(function ($employee) {
+            LeaveRequest::factory()->count(rand(2, 5))->create([
                 'employee_id' => $employee->id,
             ]);
         });
