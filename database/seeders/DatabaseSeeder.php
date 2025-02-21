@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-
+        //admin
         User::create([
             'email' => 'admin@example.com',
             'password' => bcrypt('admin@example'),
@@ -39,7 +39,7 @@ class DatabaseSeeder extends Seeder
         });
 
         Employee::all()->each(function ($employee) {
-            LeaveRequest::factory()->count(rand(2, 5))->create([
+            LeaveRequest::factory(5)->create([
                 'employee_id' => $employee->id,
             ]);
         });

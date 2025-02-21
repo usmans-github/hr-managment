@@ -27,7 +27,7 @@ class AdminController extends Controller
             $presentemployees = Attendence::where('status', 'Present')
                 ->whereDate('date', today())->count();
             $totaldepartments = Department::all()->count(); 
-            $leaverequests = LeaveRequest::all();  
+            $leaverequests = LeaveRequest::latest()->paginate(6);  
 
             return view('admin.index', compact('employees', 'totalemployees', 'presentemployees', 'totaldepartments', 'leaverequests'));
         }

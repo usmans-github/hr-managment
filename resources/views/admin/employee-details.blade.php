@@ -6,7 +6,16 @@
             <div>
                 <h1 class="text-3xl font-bold text-white">Employee Details</h1>
             </div>
+
+
             <div class="flex justify-center items-center gap-2">
+
+                <button type="submit">
+                    <i
+                        class="fa-solid fa-arrow-down cursor-pointer rounded-md text-zinc-300 hover:text-white
+                     hover:bg-zinc-700 p-2"></i>
+                </button>
+
                 <a href="{{ route('employee.edit', $employee->id) }}">
                     <button>
                         <i
@@ -14,10 +23,18 @@
                      hover:bg-zinc-700 p-2"></i>
                     </button>
                 </a>
-                <button type="submit">
-                    <i
-                        class="fa-solid fa-arrow-down cursor-pointer rounded-md text-zinc-300 hover:text-white hover:bg-zinc-700 p-2"></i>
-                </button>
+
+
+                <form method="POST" action="{{ route('employee.destroy', $employee->id) }}"
+                    onsubmit="return confirm('Are you sure you want to delete this employee?');">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit">
+                        <i
+                            class="fa-regular fa-trash-can cursor-pointer rounded-md text-zinc-300 hover:text-white
+                             hover:bg-zinc-700 p-2"></i>
+                    </button>
+                </form>
             </div>
 
         </div>

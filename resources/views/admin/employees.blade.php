@@ -83,14 +83,7 @@
                                 </button>
                             </a>
 
-                            <form method="POST" action="{{ route('employee.destroy', $employee->id) }}"
-                                onsubmit="return confirm('Are you sure you want to delete this employee?');">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit">
-                                    <i class="fas fa-trash cursor-pointer rounded-md text-zinc-300 hover:text-white hover:bg-zinc-700 p-2"></i>
-                                </button>
-                            </form>
+                    
                             <!-- View History Button -->
                             <a href="{{ route('employeedetails', $employee->id) }}">
                                 <button>

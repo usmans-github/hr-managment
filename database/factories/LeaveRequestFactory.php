@@ -18,12 +18,12 @@ class LeaveRequestFactory extends Factory
      */
     public function definition(): array
     {
-        $startDate = Carbon::parse($this->faker->dateTimeBetween('-1 month', '+1 month')->format('Y-m-d'));
+        $startDate = Carbon::parse($this->faker->dateTimeBetween('-1 month', '+1 month'))->format('Y-m-d');
 
         // Ensure end_date is always AFTER start_date
         $endDate = $this->faker->boolean(70)
-            ? $startDate->copy()->addDays(rand(1, 7))->format('Y-m-d')
-            : null;
+            ? Carbon::parse($startDate)->addDays(rand(1, 7))->format('Y-m-d')
+            : null; // Make sure null is handled properly   
 
         return [
             'leave_type' => $this->faker->randomElement(['Sick Leave', 'Casual Leave', 'Annual Leave', 'Maternity Leave']),

@@ -109,6 +109,10 @@
                         </table>
                     </div>
                 </div>
+                <!-- Pagination -->
+            <div class="mt-4">
+                {{ $leaverequests->links('pagination::tailwind') }}
+            </div>
 
             </main>
         </div>
