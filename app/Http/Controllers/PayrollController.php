@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Employee;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,6 +21,14 @@ class PayrollController extends Controller
             return view('admin.payrolls');
         }
     }
+
+    public function employee()
+    {
+
+        return view('employee.payslip');
+    }
+    
+
 
     /**
      * Show the form for creating a new resource.

@@ -39,5 +39,6 @@ Route::middleware(['auth'])->group(function () {
     Route::put('attendence/checkout/{id}', [AttendenceController::class, 'checkout'])->name('attendence.checkout');
     Route::get('/profile', [EmployeeController::class, 'profile']);
     Route::resource('/leave-request', LeaveRequestController::class);
+    Route::get('/payslip', [PayrollController::class, 'employee']);
 
 });

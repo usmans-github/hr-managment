@@ -108,8 +108,8 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/payroll"
-                                class="{{ request()->routeIs('payroll') ? 'bg-zinc-900' : 'hover:bg-zinc-900' }} flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-xl transition">
+                            <a href="/payslip"
+                                class="{{ request()->routeIs('payslip') ? 'bg-zinc-900' : 'hover:bg-zinc-900' }} flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-xl transition">
                                 <i class="fas fa-wallet"></i>
                                 <span class="text-sm font-medium text-zinc-300">Payslips</span>
                             </a>
