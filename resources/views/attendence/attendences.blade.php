@@ -1,8 +1,8 @@
 <x-layout>
-    <div class="flex min-h-screen">
+    <div class="flex">
 
         <!-- Main Content -->
-        <main class="flex-1 ml-64 p-8">
+        <main class="flex-1 md:ml-64 p-8">
             <div class="mb-8">
                 <h2 class="text-3xl font-bold text-white mb-6">Attendance Management</h2>
 
@@ -43,7 +43,7 @@
                 </div>
 
                 <!-- Attendance Table -->
-                <div class="bg-zinc-900 rounded-xl overflow-hidden">
+                <div class="bg-zinc-900 rounded-xl overflow-x-scroll">
                     <table class="w-full">
                         <thead class="bg-zinc-800">
                             <tr>
@@ -59,7 +59,7 @@
                             @foreach ($employees as $employee)
                                 <tr class="hover:bg-zinc-800">
 
-                                    <td class="px-6 py-4">
+                                    <td class="px-6">
                                         <div class="flex items-center">
                                             <div
                                                 class="w-10 h-10 rounded-full bg-black flex items-center justify-center mr-3">

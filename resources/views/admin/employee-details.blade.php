@@ -1,5 +1,5 @@
 <x-layout>
-    <main class="flex-1  ml-64 p-8">
+    <main class="flex-1  md:ml-64 p-8">
 
         <!-- Header -->
         <div class="mb-8 flex justify-between items-center">

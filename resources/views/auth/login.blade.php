@@ -1,6 +1,6 @@
 <x-layout>
 
-    <div class="flex min-h-screen flex-col px-6 lg:px-8 pt-12">
+    <div class="flex flex-col px-6 lg:px-8 pt-12">
         <!-- Header -->
         <div class="sm:mx-auto sm:w-full sm:max-w-md text-center mb-8">
             <h2 class="text-3xl font-bold text-zinc-100">Sign In</h2>

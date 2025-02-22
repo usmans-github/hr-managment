@@ -1,8 +1,8 @@
 <x-layout>
-    <div class="flex min-h-screen">
+    <div class="flex">
 
         <!-- Main Content -->
-        <main class="flex-1 ml-64 p-8">
+        <main class="flex-1 md:ml-64 p-8">
             <div class="mb-8">
                 <h2 class="text-3xl font-bold text-white mb-6">Reports</h2>
 

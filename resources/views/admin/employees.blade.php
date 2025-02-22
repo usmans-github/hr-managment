@@ -1,9 +1,9 @@
 <x-layout>
 
-    <div class="flex min-h-screen">
+    <div class="flex">
 
         <!-- Main Content -->
-        <main class="flex-1 ml-64 p-8">
+        <main class="flex-1 md:ml-64 p-8">
             <!-- Header -->
             <div class="mb-8 flex justify-between items-center">
                 <div>
@@ -23,7 +23,7 @@
             </div>
 
             <!-- Employee Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                 @foreach ($employees as $employee)
                     <div
                         class="bg-zinc-900 rounded-xl p-6 border border-zinc-800 hover:border-zinc-700 transition-all flex flex-col h-full">
