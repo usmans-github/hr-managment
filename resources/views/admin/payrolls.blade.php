@@ -1,11 +1,20 @@
 <x-layout>
-    <div class="flex min-h-screen">
+    <div class="flex min-h-screen"> 
 
         <!-- Main Content -->
         <main class="flex-1 ml-64 p-8">
             <div class="mb-8">
-                <h2 class="text-3xl font-bold text-white mb-6">Payroll Management</h2>
+                    <div class="flex justify-between items-center">
 
+                        <h2 class="text-3xl font-bold text-white mb-6">Payroll Management</h2>
+                        <a href="/payroll/create"
+                        class="bg-zinc-900 hover:bg-zinc-800 rounded-lg border border-gray-700
+                         text-sm font-medium px-4 py-2.5 flex items-center gap-2 transition-all">
+                        <span>New Payroll</span>
+                        <i class="fa-solid fa-plus"></i>
+                    </a>
+                    </div>
+                
                 <!-- Stats Cards -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                     <div class="bg-zinc-900 p-4 rounded-xl flex gap-4 items-center">

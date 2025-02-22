@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Models\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -35,7 +35,9 @@ class PayrollController extends Controller
      */
     public function create()
     {
-        //
+        $employees = Employee::with(['position', 'department'])->get();
+
+        return view('admin.create-payroll', compact('employees'));
     }
 
     /**

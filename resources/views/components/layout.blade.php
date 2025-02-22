@@ -21,7 +21,7 @@
 
     <!-- Sidebar -->
     @if (auth()->check() &&
-            !request()->is('/', 'admin/create', '*/*/edit') &&
+            !request()->is('/', 'admin/create', 'payroll/create', '*/*/edit') &&
             !request()->routeIs('position.create', 'department.create'))
         @if (auth()->user()->role === 'admin')
             {{-- Admin Sidebar --}}
