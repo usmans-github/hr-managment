@@ -43,7 +43,7 @@
                 </div>
 
                 <!-- Attendance Table -->
-                <div class="bg-zinc-900 rounded-xl overflow-x-scroll">
+                <div class="bg-zinc-900 rounded-xl">
                     <table class="w-full">
                         <thead class="bg-zinc-800">
                             <tr>
