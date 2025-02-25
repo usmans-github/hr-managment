@@ -37,4 +37,9 @@ class Employee extends Model
     {
         return $this->hasMany(Attendence::class)->orderBy('created_at', 'desc');
     }
+
+    public function payrolls(): HasMany
+    {
+        return $this->hasMany(Payroll::class)->orderBy('created_at', 'desc');
+    }
 }

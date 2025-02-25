@@ -1,11 +1,9 @@
 <x-layout>
     <div class="flex">
-        <!-- Main Content -->
         <main class="flex-1 md:ml-64 p-8">
-            <!-- Header -->
             <div class="mb-6 flex flex-wrap justify-between items-center gap-4">
                 <h1 class="text-2xl md:text-3xl font-bold text-white">Departments</h1>
-                <div class="flex gap-14 justify-center">
+                <div class="flex gap-6   justify-center">
                     <a href="/position/create"
                         class="bg-zinc-900 hover:bg-zinc-800 rounded-lg border border-gray-700 text-sm font-medium px-4 py-2 flex items-center gap-2 transition-all">
                         <i class="fa-solid fa-plus"></i>
@@ -20,9 +18,9 @@
             </div>
 
             <!-- Department Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
                 @foreach ($departments as $department)
-                <div class="bg-zinc-900 rounded-xl p-4 md:p-6 border border-gray-800 hover:border-gray-700 transition-all flex flex-col w-full h-64">
+                <div class="bg-zinc-900 rounded-xl p-4 md:p-6 border border-gray-800 hover:border-gray-700 transition-all flex flex-col h-full">
                     <div class="flex items-start justify-between mb-4">
                         <div class="flex items-center gap-3">
                             <i class="fa-regular fa-building text-gray-300 p-3 md:p-4 bg-zinc-800 rounded-lg"></i>
@@ -47,14 +45,18 @@
                     </div>
 
                     <!-- Positions Section -->
-                    <div class="mt-4 space-y-2 flex-grow">
+                    <div class="mt-4 space-y-2 flex-grow min-h-16 h-auto">
                         <div class="text-sm font-medium text-gray-300">Positions</div>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 max-h-32 overflow-y-auto">
-                            @foreach ($department->positions as $position)
-                            <div class="bg-zinc-800 px-3 py-2 rounded-xl text-sm text-gray-300">
-                                {{ $position->position_name ?? 'No Positions' }}
-                            </div>
-                            @endforeach
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                            @if ($department->positions->count() > 0)
+                                @foreach ($department->positions as $position)
+                                <div class="bg-zinc-800 px-3 py-2 rounded-xl text-sm text-gray-300">
+                                    {{ $position->position_name }}
+                                </div>
+                                @endforeach
+                            @else
+                                <p class="text-gray-500 text-sm">No positions available</p>
+                            @endif
                         </div>
                     </div>
 

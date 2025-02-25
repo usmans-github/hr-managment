@@ -37,7 +37,7 @@
                     <!-- Amount -->
                     <div>
                         <label for="amount" class="block text-sm font-medium text-gray-300">Salary Amount</label>
-                        <input type="text" name="amount" id="amount" required
+                        <input type="number" name="amount" id="amount" required
                             class="mt-2 block w-full rounded-xl bg-zinc-900 border border-gray-700 px-4 py-3
                             placeholder-zinc-400"
                             placeholder="Enter salary amount" />

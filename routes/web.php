@@ -19,6 +19,7 @@ Route::post('/login', [AuthController::class, 'authenticate']);
 Route::middleware(['auth'])->group(function () {
 
     Route::resource('admin', AdminController::class);
+    Route::put('payroll.update/{id}', [PayrollController::class, 'update'])->name('payroll.update');
     Route::resource('payroll', PayrollController::class);
     Route::resource('attendence', AttendenceController::class);
     Route::get('employees', [AdminController::class, 'employees'])->name('admin.employees');

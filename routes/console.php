@@ -9,3 +9,5 @@ Artisan::command('inspire', function () {
 })->purpose('Display an inspiring quote')->hourly();
 
 Schedule::command('app:check-absent-employees')->dailyAt('19:00');
+
+Schedule::command('app:generate-monthly-payroll')->monthlyOn(1, '00:00');
