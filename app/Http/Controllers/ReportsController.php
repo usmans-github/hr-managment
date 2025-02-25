@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Attendence;
 use App\Models\Department;
 use App\Models\Employee;
+use App\Models\Payroll;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,7 +23,7 @@ class ReportsController extends Controller
             $totalEmployees = Employee::count();
 
             //  Total Payroll (assuming each employee has a payroll record)
-            $totalPayroll = "$210000";
+            $totalPayroll = Payroll::where('status', 'Paid')->sum('amount');;
 
             //  Average Attendance Calculation (for all employees)
             $totalDays = Attendence::distinct('date')->count('date'); // Total working days
