@@ -1,7 +1,6 @@
 <x-layout>
 
-    {{-- Main COntent --}}
-    <main class="flex ml-64 p-8 min-h-screen flex-col">
+    <main class="flex-1 md:ml-64 p-8">
         <div class="mb-6">
             <h1 class="text-sm font-medium text-zinc-300">Welcome Back,</h1>
             <h1 class="text-4xl font-bold">{{ $employee->first_name . ' ' . $employee->last_name }}</h1>
@@ -59,48 +58,48 @@
             </div>
 
             <!-- Your Leave Requests -->
-<div class="bg-zinc-900 rounded-xl overflow-hidden">
-    <table class="w-full">
-        <thead class="bg-zinc-800">
-            <tr>
-                <th class="px-6 py-4 text-left">Type</th>
-                <th class="px-6 py-4 text-left">Start Date</th>
-                <th class="px-6 py-4 text-left">End Date</th>
-                <th class="px-6 py-4 text-left">Status</th>
-            </tr>
-        </thead>
-        <tbody class="divide-y divide-zinc-800">
-            @foreach ($leaverequests as $leave)
-                <tr class="hover:bg-zinc-800">
-                    <td class="px-6 py-4">{{ $leave->leave_type }}</td>
-                    <td class="px-6 py-4">{{ $leave->start_date ?? 'N/A' }}</td>
-                    <td class="px-6 py-4">{{ $leave->end_date ?? 'N/A' }}</td>
-                    <td class="px-6 py-4">
-                        <span 
-                            class="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold w-auto
-                            {{ $leave->status === 'Approved' 
-                                ? 'bg-green-100 text-green-700' 
-                                : ($leave->status === 'Pending' 
-                                    ? 'bg-yellow-100 text-yellow-700' 
+            <div class="bg-zinc-900 rounded-xl overflow-hidden">
+                <table class="w-full">
+                    <thead class="bg-zinc-800">
+                        <tr>
+                            <th class="px-6 py-4 text-left">Type</th>
+                            <th class="px-6 py-4 text-left">Start Date</th>
+                            <th class="px-6 py-4 text-left">End Date</th>
+                            <th class="px-6 py-4 text-left">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-zinc-800">
+                        @foreach ($leaverequests as $leave)
+                            <tr class="hover:bg-zinc-800">
+                                <td class="px-6 py-4">{{ $leave->leave_type }}</td>
+                                <td class="px-6 py-4">{{ $leave->start_date ?? 'N/A' }}</td>
+                                <td class="px-6 py-4">{{ $leave->end_date ?? 'N/A' }}</td>
+                                <td class="px-6 py-4">
+                                    <span
+                                        class="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold w-auto
+                            {{ $leave->status === 'Approved'
+                                ? 'bg-green-100 text-green-700'
+                                : ($leave->status === 'Pending'
+                                    ? 'bg-yellow-100 text-yellow-700'
                                     : 'bg-red-100 text-red-700') }}">
-                            
-                            <span 
-                                class="h-2 w-2 rounded-full mr-2
-                                {{ $leave->status === 'Approved' 
-                                    ? 'bg-green-700' 
-                                    : ($leave->status === 'Pending' 
-                                        ? 'bg-yellow-700' 
+
+                                        <span
+                                            class="h-2 w-2 rounded-full mr-2
+                                {{ $leave->status === 'Approved'
+                                    ? 'bg-green-700'
+                                    : ($leave->status === 'Pending'
+                                        ? 'bg-yellow-700'
                                         : 'bg-red-700') }}">
-                            </span>
-                            
-                            {{ $leave->status }}
-                        </span>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-</div>
+                                        </span>
+
+                                        {{ $leave->status }}
+                                    </span>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
 
         </div>
     </main>

@@ -2,7 +2,7 @@
 
 
     <!-- Main Content -->
-    <main class="flex-1 ml-64 p-8 min-h-screen">
+    <main class="flex-1 md:ml-64 p-8">
         <!-- Profile Header -->
         <div class="mb-6">
             <h1 class="text-sm font-medium text-gray-300">Welcome Back,</h1>
