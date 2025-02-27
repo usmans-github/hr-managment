@@ -24,27 +24,7 @@
                         </div>
 
                         <!-- Recent Evaluations -->
-                        {{-- <div class="bg-zinc-800 p-6 rounded-xl">
-                            <h3 class="text-lg font-semibold mb-2">Recent Evaluations</h3>
-                            @if($performance->evaluations->isEmpty())
-                                <p class="text-zinc-400">No evaluations available.</p>
-                            @else
-                                <ul class="space-y-3">
-                                    @foreach ($performance->evaluations as $evaluation)
-                                        <li class="flex justify-between">
-                                            <span class="text-sm font-medium text-zinc-300">{{ $evaluation->date }}</span>
-                                            <span class="text-sm font-bold 
-                                                @if($evaluation->rating >= 80) text-green-400 
-                                                @elseif($evaluation->rating >= 50) text-yellow-400 
-                                                @else text-red-400 
-                                                @endif">
-                                                {{ $evaluation->rating }}%
-                                            </span>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            @endif
-                        </div> --}}
+                        
                     </div>
 
                     <!-- Key Metrics -->
