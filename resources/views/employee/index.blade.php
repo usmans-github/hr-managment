@@ -104,13 +104,13 @@
                         </ul>
                     @endforeach
                 @endif
-
+        
 
             </div>
             <div class="bg-zinc-900 text-white rounded-xl p-6 shadow-lg">
                 <h3 class="text-lg font-semibold mb-4">Recent Payslip</h3>
-                <p class="text-sm mb-2">May 2024</p>
-                <p class="text-2xl font-bold">$3,500.00</p>
+                <p class="text-sm mb-2">{{ $recentpayslip->pay_period ?? "No record"}}</p>
+                <p class="text-2xl font-bold">Rs. {{ $recentpayslip->amount ?? 'N/A' }}</p>
                 <a href="#" class="text-sm text-indigo-400 hover:text-indigo-600">View Details</a>
             </div>
         </div>

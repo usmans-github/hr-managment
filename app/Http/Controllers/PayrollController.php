@@ -31,11 +31,13 @@ class PayrollController extends Controller
 
     public function employee()
     {
+        $user = Auth::user();
+        $employee = Employee::where('user_id', $user->id)->with('payrolls')->first();
+        
 
-        return view('employee.payslip');
+        return view('employee.payslip', compact('employee'));
     }
     
-
 
     /**
      * Show the form for creating a new resource.

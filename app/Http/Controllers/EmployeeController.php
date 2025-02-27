@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Department;
 use App\Models\Employee;
 use App\Models\LeaveRequest;
+use App\Models\Payroll;
 use App\Models\Position;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -25,9 +26,32 @@ class EmployeeController extends Controller
             ->where('start_date', '>', today())
             ->orderBy('start_date', 'asc')
             ->get();
+        $recentpayslip = Payroll::where('employee_id', $employee->id)->latest()->first();  
 
-        return view('employee.index', compact('employee', 'upcomingleaves'));
+        return view('employee.index', compact('employee', 'upcomingleaves', 'recentpayslip'));
     }
+
+    public function performance()
+    {
+        $user = Auth::user();
+        $employee = Employee::where('user_id', $user->id)->first();
+
+        if (!$employee) {
+            return redirect()->back()->with('error', 'Employee not found.');
+        }
+
+        // Fetch performance data
+        $performance = [
+            'score' => rand(50, 100), // Replace with actual calculation from database
+            'tasks_completed' => rand(10, 50),
+            'late_submissions' => rand(0, 10),
+            'team_contributions' => rand(5, 20),
+            'evaluations' => 3232
+        ];
+
+        return view('employee.performance', compact('employee', 'performance'));
+    }
+
 
     /**
      * Show the form for creating a new resource.

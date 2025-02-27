@@ -41,5 +41,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [EmployeeController::class, 'profile']);
     Route::resource('/leave-request', LeaveRequestController::class);
     Route::get('/payslip', [PayrollController::class, 'employee']);
+    Route::get('/performance', [EmployeeController::class, 'performance']);
 
 });

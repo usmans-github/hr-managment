@@ -1,9 +1,9 @@
 <x-layout>
-    <div class="flex-1 ml-64 p-8 min-h-screen">
+    <div class="flex-1 md:ml-64 p-8">
     <!-- Welcome Header -->
     <div class="mb-6">
         <h1 class="text-sm font-medium text-zinc-300">Your Payslips</h1>
-        <h1 class="text-4xl font-bold">John Doe</h1>
+        <h1 class="text-4xl font-bold">{{ $employee->first_name . ' ' . $employee->last_name }}</h1>
     </div>
 
     <div class="max-w-7xl mx-auto">
@@ -21,45 +21,33 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($employee->payrolls as $payslip)
+                            
+                        
                         <tr class="border-t border-zinc-700">
-                            <td class="py-3">May 1 - May 31, 2024</td>
-                            <td class="py-3 font-semibold">$3,500.00</td>
+                            <td class="py-3">{{ $payslip->pay_period ?? "No record"}}</td>
+                            <td class="py-3 font-semibold">Rs. {{ $payslip->amount ?? 'N/A' }}</td>
                             <td class="py-3">
-                                <span class="inline-flex items-center bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs font-semibold">
-                                    <span class="h-1.5 w-1.5 bg-green-700 rounded-full mr-1.5"></span>
-                                    Paid
-                                </span>
+                                 @if ($payslip->status === 'Paid')
+                                            <span
+                                                class="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold bg-green-100 text-green-700">
+                                                <span class="h-2 w-2 rounded-full bg-green-700 mr-2"></span>
+                                                Paid
+                                            </span>
+                                        @elseif ($payslip->status === 'Pending')
+                                             <span
+                                                class="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold bg-white text-black">
+                                                <span class="h-2 w-2 rounded-full bg-black mr-2"></span>
+                                                Pending
+                                            </span>
+                                        @endif
                             </td>
                             <td class="py-3">
                                 <a href="#" class="text-indigo-400 hover:text-indigo-600">View Details</a>
                             </td>
                         </tr>
-                        <tr class="border-t border-zinc-700">
-                            <td class="py-3">April 1 - April 30, 2024</td>
-                            <td class="py-3 font-semibold">$3,500.00</td>
-                            <td class="py-3">
-                                <span class="inline-flex items-center bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs font-semibold">
-                                    <span class="h-1.5 w-1.5 bg-green-700 rounded-full mr-1.5"></span>
-                                    Paid
-                                </span>
-                            </td>
-                            <td class="py-3">
-                                <a href="#" class="text-indigo-400 hover:text-indigo-600">View Details</a>
-                            </td>
-                        </tr>
-                        <tr class="border-t border-zinc-700">
-                            <td class="py-3">March 1 - March 31, 2024</td>
-                            <td class="py-3 font-semibold">$3,500.00</td>
-                            <td class="py-3">
-                                <span class="inline-flex items-center bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs font-semibold">
-                                    <span class="h-1.5 w-1.5 bg-green-700 rounded-full mr-1.5"></span>
-                                    Paid
-                                </span>
-                            </td>
-                            <td class="py-3">
-                                <a href="#" class="text-indigo-400 hover:text-indigo-600">View Details</a>
-                            </td>
-                        </tr>
+
+                        @endforeach
                     </tbody>
                 </table>
             </div>

@@ -122,19 +122,19 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="/payroll"
+                                <a href="/payslip"
                                     class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-xl">
                                     <i class="fas fa-wallet"></i>
                                     <span class="font-semibold">Payslips</span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="/reports"
+                            {{-- <li>
+                                <a href="/performance"
                                     class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-xl">
                                     <i class="fas fa-chart-line"></i>
                                     <span class="font-semibold">Performance</span>
                                 </a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </nav>
                 </aside>
