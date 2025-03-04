@@ -186,7 +186,6 @@
 
     <script>
         function toggleSidebar() {
-            const userRole = "{{ auth()->user()->role }}";
             const sidebar = document.getElementById(userRole === "admin" ? "admin-sidebar" : "employee-sidebar");
             const overlay = document.getElementById('overlay');
             const sidebarWrapper = document.getElementById('sidebar-wrapper');
