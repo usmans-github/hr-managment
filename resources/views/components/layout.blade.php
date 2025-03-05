@@ -184,8 +184,8 @@
 
     <main>{{ $slot }}</main>
 
-    <script>
-        const  userRole = "{{auth()->user()->role}}"
+    <script>    
+        const  userRole = "admin"
 
         function toggleSidebar() {
             const sidebar = document.getElementById(userRole === "admin" ? "admin-sidebar" : "employee-sidebar");
