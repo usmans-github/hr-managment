@@ -114,21 +114,34 @@ class AttendenceController extends Controller
 
     public function checkout($id)
     {
-        // return dd($id);
         $today = Carbon::today()->toDateString();
+
+        // Find any pending checkout from previous days
+        $previousAttendance = Attendence::where('employee_id', $id)
+            ->where('date', '<', $today) // Ensure it's a past date
+            ->whereNull('checked_out')   // Ensure they never checked out
+            ->first();
+
+        if ($previousAttendance) {
+            // Auto-checkout for the previous day
+            $previousAttendance->update([
+                'checked_out' => '02:59 AM', // Auto-checkout
+            ]);
+            return redirect()->route('employee.index')->with('success', 'Auto checked out from previous day.');
+        }
 
         // Find today's attendance record
         $attendance = Attendence::where('employee_id', $id)->where('date', $today)->first();
+
         if (!$attendance || $attendance->checked_out) {
             return redirect()->route('employee.index')->with('error', 'Either not checkin OR Already checked out.');
         }
 
-        // Update check-out time
+        // Update check-out time for today
         $attendance->update([
             'checked_out' => Carbon::now()->format('h:i A'),
         ]);
 
-        return redirect()->route('employee.index')->with('success', 'Check out successfully');
+        return redirect()->route('employee.index')->with('success', 'Checked out successfully.');
     }
-
 }

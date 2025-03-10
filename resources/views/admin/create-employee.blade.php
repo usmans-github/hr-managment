@@ -8,7 +8,7 @@
 
         <!-- Form -->
         <div class="sm:mx-auto sm:w-full max-w-4xl bg-zinc-800 rounded-xl shadow-md p-8">
-            <form class="space-y-6" action="{{ route('employee.store') }}" method="POST">
+            <form  class="space-y-6" action="{{ route('employee.store') }}" method="POST">
                 @csrf
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
