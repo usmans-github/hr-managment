@@ -6,6 +6,7 @@
         <div class="mb-6">
             <h1 class="text-sm font-medium text-zinc-300">Welcome Back,</h1>
             <h1 class="text-4xl font-bold">{{ $employee->first_name . ' ' . $employee->last_name }}</h1>
+            <p  class="text-sm font-medium text-zinc-300 pt-2"> {{ \Carbon\Carbon::now()->format('l, F d') }}</p>
 
         </div>
 

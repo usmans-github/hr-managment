@@ -103,21 +103,21 @@
                             <li>
                                 <a href="/employee"
                                     class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-xl">
-                                    <i class="fas fa-tachometer-alt"></i>
+                                    <i class="fa-solid fa-border-all"></i>
                                     <span class="font-semibold">Dashboard</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="/profile"
                                     class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-xl">
-                                    <i class="fas fa-user"></i>
+                                    <i class="fa-regular fa-circle-user"></i>
                                     <span class="font-semibold">My Profile</span>
                                 </a>
                             </li>
                             <li>
                                 <a href='/leave-request'
                                     class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-900 rounded-xl">
-                                    <i class="fas fa-calendar-check"></i>
+                                    <i class="fa-regular fa-calendar-minus"></i>
                                     <span class="font-semibold">Leave Requests</span>
                                 </a>
                             </li>
